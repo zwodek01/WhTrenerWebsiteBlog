@@ -1,1 +1,78 @@
+@import '~src/styles/custom';
+@import '~src/styles/variables';
+@import '~src/styles/mixins';
 
+.home-page {
+  margin-top: 56px;
+
+  &__image-list {
+    height: calc(100vh - 56px)
+  }
+
+  &__title {
+    font-size: $font-title-mobile;
+    color: $primary-color;
+    font-weight: bold;
+    text-align: left;
+    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include media-tablet {
+      font-size: $font-title-tablet;
+    }
+
+    @include media-desktop {
+      font-size: $font-title-desktop;
+      text-align: center;
+    }
+  }
+
+  &__divider {
+    background-color: $primary-color;
+  }
+
+  &__sub-title {
+    font-size: $font-sub-title-mobile;
+    color: #fff;
+    text-align: left;
+    font-family: $karla;
+    font-weight: bold;
+
+    @include media-tablet {
+      font-size: $font-sub-title-tablet;
+    }
+
+    @include media-desktop {
+      font-size: $font-sub-title-desktop;
+      text-align: center;
+    }
+  }
+
+  &__container-welcome {
+    margin: 16px;
+    display: grid;
+    gap: 25px;
+
+    @include media-tablet {
+      margin: 25px;
+    }
+
+    @include media-desktop {
+      margin: 50px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__image-thumb {
+    width: 75px;
+
+    @include media-tablet {
+      width: 100px;
+    }
+
+  }
+
+
+
+}
