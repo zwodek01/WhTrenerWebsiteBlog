@@ -5,6 +5,7 @@
 .home-page {
   max-width: 2000px;
   margin: 56px auto 0;
+  overflow: hidden;
 
   &__image-list {
     height: calc(100vh - 56px)
