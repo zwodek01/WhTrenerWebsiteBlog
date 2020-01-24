@@ -4,7 +4,7 @@
 
 .home-page {
   max-width: 2000px;
-  margin: 50px auto 0;
+  margin: 56px auto 0;
 
   &__image-list {
     height: calc(100vh - 56px)
@@ -18,6 +18,7 @@
     background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-style: italic;
 
     @include media-tablet {
       font-size: $font-title-tablet;
@@ -35,10 +36,10 @@
 
   &__sub-title {
     font-size: $font-sub-title-mobile;
-    color: #fff;
     text-align: left;
     font-family: $karla;
     font-weight: bold;
+    font-style: italic;
 
     @include media-tablet {
       font-size: $font-sub-title-tablet;
@@ -52,9 +53,9 @@
 
   &__container-welcome {
     display: grid;
-    gap: 25px;
     box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
-    overflow: hidden;
+    padding: 75px 16px;
+    gap: 25px;
 
     @include media-desktop {
       grid-template-columns: 1fr 1fr;
@@ -70,12 +71,15 @@
   }
 
   &__container-welcome-text {
-    padding: 16px;
     align-self: center;
   }
 
   &__welcome-title {
     @include sub-title;
+
+    @include media-desktop {
+      padding: 75px 0;
+    }
   }
 
   &__color {
@@ -98,11 +102,12 @@
       grid-template-rows: 1fr auto;
       grid-template-columns: repeat(3, 1fr);
       gap: 50px;
-      padding: 100px 25px;
     }
   }
 
   &__card-title {
+    @include sub-title;
+
     @include media-desktop {
       grid-area: 1 / 1 / 2 / 4;
     }
@@ -147,22 +152,10 @@
 
   &__card-text {
     @include text;
-
   }
-
-
-
-
-
-
 
   &__you-get {
     background-color: #1D1919;
-  }
-
-  &__wrapper-you-get {
-    display: grid;
-    gap: 25px;
   }
 
   &__container-you-get {
@@ -176,6 +169,11 @@
     }
   }
 
+  &__wrapper-you-get {
+    display: grid;
+    gap: 25px;
+  }
+
   &__you-get-title {
     @include sub-title;
     color: #fff;
@@ -184,12 +182,6 @@
   &__you-get-text {
     @include text;
   }
-
-
-
-
-
-
 
   &__container-articles {
     padding: 75px 16px;
@@ -203,6 +195,8 @@
   }
 
   &__articles-title {
+    @include sub-title;
+
     @include media-desktop {
       grid-area: 1 / 1 / 2 / 4;
     }
@@ -213,7 +207,6 @@
     grid-template-rows: auto;
     justify-items: center;
     box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
-
     border-radius: 20px;
     align-items: center;
     position: relative;
@@ -227,7 +220,6 @@
     background-position: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-
   }
 
   &__articles-sub-title {
@@ -257,15 +249,4 @@
     color: #fff;
     font-weight: bold;
   }
-
-
-
-
-
-
-
-
-
-
-
 }
