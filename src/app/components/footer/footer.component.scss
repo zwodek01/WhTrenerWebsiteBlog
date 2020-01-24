@@ -1,0 +1,28 @@
+@import '~src/styles/custom';
+@import '~src/styles/variables';
+@import '~src/styles/mixins';
+
+.footer {
+  &__container {
+    padding: 10px 16px;
+  }
+
+  &__icons {
+    display: grid;
+    grid-template-columns: 30px 30px;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  &__created-by {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+  }
+
+  &__color {
+    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

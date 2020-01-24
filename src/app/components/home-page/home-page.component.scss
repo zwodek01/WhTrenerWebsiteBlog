@@ -3,7 +3,8 @@
 @import '~src/styles/mixins';
 
 .home-page {
-  margin-top: 56px;
+  max-width: 2000px;
+  margin: 50px auto 0;
 
   &__image-list {
     height: calc(100vh - 56px)
@@ -50,16 +51,12 @@
   }
 
   &__container-welcome {
-    margin: 16px;
     display: grid;
     gap: 25px;
-
-    @include media-tablet {
-      margin: 25px;
-    }
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
 
     @include media-desktop {
-      margin: 50px;
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -70,8 +67,204 @@
     @include media-tablet {
       width: 100px;
     }
+  }
+
+  &__container-welcome-text {
+    padding: 16px;
+    align-self: center;
+  }
+
+  &__welcome-title {
+    @include sub-title;
+  }
+
+  &__color {
+    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__welcome-text {
+    @include text;
+  }
+
+  &__container-cards {
+    padding: 75px 16px;
+    display: grid;
+    gap: 30px;
+    text-align: center;
+
+    @include media-desktop {
+      grid-template-rows: 1fr auto;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      padding: 100px 25px;
+    }
+  }
+
+  &__card-title {
+    @include media-desktop {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+  }
+
+  &__card {
+    display: grid;
+    gap: 25px;
+    justify-items: center;
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+
+    padding: 35px 25px;
+    border-radius: 20px;
+    align-items: center;
+
+    @include media-tablet {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include media-desktop {
+      grid-template-columns: 1fr;
+      padding: 50px;
+    }
+  }
+
+  &__card-box {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+    transform: rotate(45deg);
+    margin: 0 auto;
+    transition: .3s;
+
+    &:hover {
+      transform: rotate(0);
+    }
+  }
+
+  &__card-sub-title {
+    font-weight: bold;
+  }
+
+  &__card-text {
+    @include text;
 
   }
+
+
+
+
+
+
+
+  &__you-get {
+    background-color: #1D1919;
+  }
+
+  &__wrapper-you-get {
+    display: grid;
+    gap: 25px;
+  }
+
+  &__container-you-get {
+    padding: 25px 16px;
+    display: grid;
+    gap: 25px;
+
+    @include media-desktop {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  &__you-get-title {
+    @include sub-title;
+    color: #fff;
+  }
+
+  &__you-get-text {
+    @include text;
+  }
+
+
+
+
+
+
+
+  &__container-articles {
+    padding: 75px 16px;
+    display: grid;
+    gap: 50px;
+    text-align: center;
+
+    @include media-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__articles-title {
+    @include media-desktop {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+  }
+
+  &__articles-wrapper {
+    display: grid;
+    grid-template-rows: auto;
+    justify-items: center;
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+
+    border-radius: 20px;
+    align-items: center;
+    position: relative;
+  }
+
+  &__articles-img {
+    height: 400px;
+    width: 100%;
+    background: url('../../../assets/background_hero.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+  }
+
+  &__articles-sub-title {
+    margin: 20px 0 0;
+  }
+
+  &__articles-date {
+    margin: 0;
+    @include text;
+    font-size: 12px;
+  }
+
+  &__articles-text {
+    padding: 0 25px;
+    margin: 20px 0 40px;
+  }
+
+  &__articles-button {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-weight: bold;
+  }
+
+
+
+
+
+
+
+
 
 
 

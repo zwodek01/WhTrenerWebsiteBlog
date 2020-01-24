@@ -11,6 +11,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { CooperationComponent } from './components/cooperation/cooperation.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'start', component: HomePageComponent },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     CooperationComponent,
     BlogComponent,
     ContactComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
