@@ -1,0 +1,10 @@
+.new-post {
+  padding: 0 16px;
+  margin: 106px auto 0;
+  max-width: 1200px;
+  min-height: calc(100vh - 106px);
+
+  &__form {
+    margin-top: 50px;
+  }
+}

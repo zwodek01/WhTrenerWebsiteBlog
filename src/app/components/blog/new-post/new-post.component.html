@@ -1,0 +1,30 @@
+<section class="new-post">
+  <h2 class="uk-heading-line uk-text-center uk-margin"><span>Nowy post</span></h2>
+  <form [formGroup]="addNewPostForm" (ngSubmit)="addNewPost()"
+    class="text-center border border-light p-3 new-post__form">
+
+    <div class="md-form">
+      <input formControlName="title" mdbInput type="text" id="title" class="form-control">
+      <label for="title" class="">Tytuł</label>
+    </div>
+
+    <div class="md-form">
+      <input formControlName="subTitle" mdbInput type="text" id="subTitle" class="form-control">
+      <label for="subTitle" class="">Podtytuł</label>
+    </div>
+
+    <div class="md-form">
+      <input formControlName="category" mdbInput type="text" id="category" class="form-control">
+      <label for="category" class="">Kategoria</label>
+    </div>
+
+
+
+    <div formControlName="htmlPost" [froalaEditor]></div>
+
+    <button gradient="peach" rounded="true" mdbWavesEffect mdbBtn [disabled]="!addNewPostForm.valid"> <span
+        *ngIf="!addNewPostForm.valid">Wypełnij wszystkie pola</span><span
+        *ngIf="addNewPostForm.valid">Dodaj</span></button>
+  </form>
+
+</section>

@@ -1,41 +1,51 @@
-const admin = require('firebase-admin');
 // JSON secret key
 const serviceAccount = require("./src/whstrona-firebase-adminsdk");
+const admin = require('firebase-admin');
+const express = require('express');
+const app = express();
+const port = 3000;
+const bodyParser = require('body-parser');
+
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://whstrona.firebaseio.com"
 });
 
-//   const db = admin.database();
-//   const cloudFirestore = admin.firestore();
+const cloudFirestore = admin.firestore();
 
-//   function writeUserData(userId, name, email, imageUrl) {
-//     return db.ref('users/' + userId).set({
-//       username: name,
-//       email: email,
-//       profile_picture : imageUrl
-//     });
-//   }
 
-//   writeUserData("2","1","4","9").then(() => {
-//       console.log("OK")
-//   })
+app.use(bodyParser.json());
 
-// let data = {
-//     name: 'Los Angeles',
-//     state: 'CA',
-//     country: 'USA'
-//   };
-  
-  // Add a new document in collection "cities" with ID 'LA'
+app.use(function (req, res, next) {
 
-//   function addNewPost(collection,doc) {
-//    return cloudFirestore.collection(collection).doc(doc).set(data);
-//   }
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-//   addNewPost('Blog', 'Post').then(() => {
-//       console.log("OK")
-//   }).catch(() => {
-// console.log("notok")
-//   })
+
+app.post('/addNewPost', function (req, res) {
+  let id = req.body.id;
+  cloudFirestore.collection('blog').doc(id).set(req.body).then((response) => {
+      res.send("OK")
+    })
+    .catch((error) => {
+      res.send("Error")
+    })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+app.listen(port, function () {
+  console.log('Express started on port: ', port);
+});
