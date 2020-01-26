@@ -24,6 +24,22 @@ app.use(function (req, res, next) {
   next();
 });
 
+let database = [];
+
+function actualDatabase() {
+  cloudFirestore.collection('blog').get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
+        database.push(doc.data())
+      });
+    })
+    .catch((err) => {
+      console.log('Error getting documents', err);
+    });
+}
+
+actualDatabase()
+
 
 app.post('/addNewPost', function (req, res) {
   let id = req.body.id;
@@ -33,15 +49,21 @@ app.post('/addNewPost', function (req, res) {
     .catch((error) => {
       res.send("Error")
     })
+  actualDatabase()
 });
 
 
+app.get('/getPosts', function (req, res) {
+  res.send(database)
+})
 
-
-
-
-
-
+app.post('/getCategory', function (req, res) {
+  const category = req.body.category;
+  const result = database.filter(obj => {
+    return obj.category === category
+  })
+  res.send(result)
+})
 
 
 

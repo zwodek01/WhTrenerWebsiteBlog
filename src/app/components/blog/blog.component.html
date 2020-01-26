@@ -1,0 +1,30 @@
+<section class="blog">
+  <section class="blog__hero-section" uk-parallax="bgy: -100">
+    <div class="blog__hero-section-container">
+      <h2 class="blog__hero-section-title">Witaj na moim blogu</h2>
+      <hr class="blog__hero-section-divider">
+    </div>
+  </section>
+  <section class="blog__content">
+    <section class="blog__content-container">
+      <div *ngFor="let post of database" class="blog__content-post">
+        <img class="blog__content-post-image" src="../../../assets/background_hero.jpg" alt="">
+        <p class="blog__content-post-category">{{post.category}}</p>
+        <p class="blog__content-post-date">{{post.date}}</p>
+        <h2 class="blog__content-post-title">{{post.title}}</h2>
+        <p class="blog__content-post-text">{{post.subTitle}}</p>
+        <button class="blog__content-post-button" gradient="peach" rounded="true" mdbWavesEffect mdbBtn>Czytaj
+          więcej</button>
+        <hr class="blog__hero-section-divider">
+      </div>
+
+    </section>
+    <aside class="blog__content-aside">
+      <hr class="blog__hero-section-divider">
+      <h2 class="blog__content-aside-title">Kategorie</h2>
+      <hr class="blog__hero-section-divider">
+      <p *ngFor="let item of category" (click)="filterByCategory($event)">{{item.category}}</p>
+    </aside>
+  </section>
+
+</section>
