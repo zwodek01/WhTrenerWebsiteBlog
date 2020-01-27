@@ -8,11 +8,18 @@ export class ConnectionService {
   urlAddNewPost: string = 'http://localhost:3000/addNewPost';
   urlGetPosts: string = 'http://localhost:3000/getPosts';
   urlGetCategory: string = 'http://localhost:3000/getCategory';
+  urlDeletePost: string = 'http://localhost:3000/deletePost';
 
   constructor(private http: HttpClient) { }
 
   addNewPost(messageContent: any) {
     return this.http.post(this.urlAddNewPost,
+      JSON.stringify(messageContent),
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+  }
+
+  deletePost(messageContent: any) {
+    return this.http.post(this.urlDeletePost,
       JSON.stringify(messageContent),
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
   }
@@ -26,4 +33,5 @@ export class ConnectionService {
       JSON.stringify(messageContent),
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
   }
+
 }

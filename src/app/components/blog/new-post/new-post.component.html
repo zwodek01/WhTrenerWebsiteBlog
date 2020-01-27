@@ -2,29 +2,39 @@
   <h2 class="uk-heading-line uk-text-center uk-margin"><span>Nowy post</span></h2>
   <form [formGroup]="addNewPostForm" (ngSubmit)="addNewPost()"
     class="text-center border border-light p-3 new-post__form">
-
     <div class="md-form">
       <input formControlName="title" mdbInput type="text" id="title" class="form-control">
       <label for="title" class="">Tytuł</label>
     </div>
-
     <div class="md-form">
       <input formControlName="subTitle" mdbInput type="text" id="subTitle" class="form-control">
       <label for="subTitle" class="">Podtytuł</label>
     </div>
-
     <div class="md-form">
       <input formControlName="category" mdbInput type="text" id="category" class="form-control">
       <label for="category" class="">Kategoria</label>
     </div>
-
-
-
     <div formControlName="htmlPost" [froalaEditor]></div>
-
     <button gradient="peach" rounded="true" mdbWavesEffect mdbBtn [disabled]="!addNewPostForm.valid"> <span
         *ngIf="!addNewPostForm.valid">Wypełnij wszystkie pola</span><span
         *ngIf="addNewPostForm.valid">Dodaj</span></button>
+
   </form>
 
+  <h2 class="uk-heading-line uk-text-center uk-margin"><span>Lista postów</span></h2>
+
+  <section class="new-post__content-container">
+    <div *ngFor="let post of database" class="new-post__content-post">
+      <div class="new-post__content-post-icon-container">
+        <i (click)="deletePost(post.id)" class="far fa-trash-alt"></i>
+        <i (click)="setValuesToForm(post.title, post.subTitle, post.category, post.htmlPost)" class="fas fa-edit"></i>
+      </div>
+      <img class="new-post__content-post-image" src="../../../assets/background_hero.jpg" alt="">
+      <p class="new-post__content-post-category">{{post.category}}</p>
+      <p class="new-post__content-post-date">{{post.date}}</p>
+      <h2 class="new-post__content-post-title">{{post.title}}</h2>
+      <p class="new-post__content-post-text">{{post.subTitle}}</p>
+      <hr>
+    </div>
+  </section>
 </section>

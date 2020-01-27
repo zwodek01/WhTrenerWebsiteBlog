@@ -15,6 +15,10 @@ export class BlogComponent implements OnInit {
   allDatabase;
 
   ngOnInit() {
+    this.getPosts()
+  }
+
+  getPosts() {
     this.connectionService.getPosts().subscribe((data) => {
       this.database = data
       this.allDatabase = data;
@@ -33,8 +37,8 @@ export class BlogComponent implements OnInit {
       this.database = this.allDatabase
     } else {
       let category = { category: event.target.innerText }
-      this.connectionService.getCategory(category).subscribe((date) => {
-        this.database = date
+      this.connectionService.getCategory(category).subscribe((data) => {
+        this.database = data
       })
     }
   }

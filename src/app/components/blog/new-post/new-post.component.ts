@@ -23,21 +23,55 @@ export class NewPostComponent implements OnInit {
 
   constructor(private connectionService: ConnectionService, private router: Router) { }
 
+  database;
+
   ngOnInit() {
+    this.getPosts()
   }
 
-
+  getPosts() {
+    this.connectionService.getPosts().subscribe((data) => {
+      this.database = data
+    })
+  }
 
   addNewPost() {
     this.connectionService.addNewPost(this.addNewPostForm.value).subscribe((response) => {
-      this.addNewPostForm.reset();
       if (response === "OK") {
+        this.addNewPostForm.reset();
         UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Post został dodany!', status: 'success' })
-        // this.router.navigate(['/blog'])
+        setTimeout(() => {
+          window.location.reload()
+        }, 1500)
       }
     }, error => {
       UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Wystąpił błąd. Spróbuj jeszcze raz.', status: 'danger' });
     });
   }
+
+  deletePost(idPost) {
+    this.connectionService.deletePost({ id: idPost }).subscribe((response) => {
+      console.log(response)
+      if (response === "OK") {
+        UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Post został usunięty!', status: 'success' })
+        setTimeout(() => {
+          window.location.reload()
+        }, 1500)
+      }
+    }, error => {
+      UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Wystąpił błąd. Spróbuj jeszcze raz.', status: 'danger' });
+    })
+  }
+
+  setValuesToForm(titleForm, subTitleForm, categoryForm, htmlPostForm) {
+    this.addNewPostForm.patchValue({
+      title: titleForm,
+      subTitle: subTitleForm,
+      category: categoryForm,
+      htmlPost: htmlPostForm
+    });
+    window.scrollTo(0, 0);
+  }
+
 
 }
