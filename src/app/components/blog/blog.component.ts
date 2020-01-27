@@ -11,25 +11,31 @@ export class BlogComponent implements OnInit {
   constructor(private connectionService: ConnectionService) { }
 
   database;
-  category;
-  unique;
+  listCategory;
+  allDatabase;
 
   ngOnInit() {
-    this.connectionService.getPosts().subscribe((date) => {
-      this.database = date
-      this.category = date
+    this.connectionService.getPosts().subscribe((data) => {
+      this.database = data
+      this.allDatabase = data;
+      let categoryList = [];
+      this.database.forEach((item) => {
+        categoryList.push(item.category)
+      })
+      const list = new Set(categoryList)
+      const uniqueList = [...list]
+      this.listCategory = uniqueList
     })
-
   }
 
-
   filterByCategory(event) {
-    let category = { category: event.target.textContent }
-    this.connectionService.getCategory(category).subscribe((date) => {
-      this.database = date
-    })
-    var unique = this.category.filter(function (elem, index, self) {
-      return index === self.indexOf(elem);
-    })
+    if (event.target.innerText === "Wszystko") {
+      this.database = this.allDatabase
+    } else {
+      let category = { category: event.target.innerText }
+      this.connectionService.getCategory(category).subscribe((date) => {
+        this.database = date
+      })
+    }
   }
 }

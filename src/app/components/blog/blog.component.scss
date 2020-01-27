@@ -115,7 +115,20 @@
   &__content-aside-title {
     font-size: 20px;
     margin: 20px;
-
   }
 
+  &__content-aside-list {
+    list-style: none;
+    padding: 0;
+  }
+
+}
+
+
+.item {
+  cursor: pointer;
+  padding: 10px 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  margin: 20px 0;
 }

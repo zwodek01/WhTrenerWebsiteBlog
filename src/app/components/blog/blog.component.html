@@ -17,14 +17,16 @@
           więcej</button>
         <hr class="blog__hero-section-divider">
       </div>
-
     </section>
     <aside class="blog__content-aside">
       <hr class="blog__hero-section-divider">
       <h2 class="blog__content-aside-title">Kategorie</h2>
       <hr class="blog__hero-section-divider">
-      <p *ngFor="let item of category" (click)="filterByCategory($event)">{{item.category}}</p>
+      <ul class="blog__content-aside-list">
+        <li class="item" (click)="filterByCategory($event)">Wszystko</li>
+        <li class="item" *ngFor="let item of this.listCategory" (click)="filterByCategory($event)">{{item}}
+        </li>
+      </ul>
     </aside>
   </section>
-
 </section>
