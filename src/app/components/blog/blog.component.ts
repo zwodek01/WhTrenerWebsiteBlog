@@ -13,10 +13,12 @@ export class BlogComponent implements OnInit {
   database;
   listCategory;
   allDatabase;
+  p: number = 1;
 
   ngOnInit() {
     this.getPosts()
   }
+
 
   getPosts() {
     this.connectionService.getPosts().subscribe((data) => {
@@ -32,6 +34,11 @@ export class BlogComponent implements OnInit {
     })
   }
 
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
+    this.p = 1;
+  }
+
   filterByCategory(event) {
     if (event.target.innerText === "Wszystko") {
       this.database = this.allDatabase
@@ -41,5 +48,6 @@ export class BlogComponent implements OnInit {
         this.database = data
       })
     }
+    this.p = 1;
   }
 }

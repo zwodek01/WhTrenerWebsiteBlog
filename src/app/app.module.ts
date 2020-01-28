@@ -11,6 +11,7 @@ import 'froala-editor/js/third_party/embedly.min';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
