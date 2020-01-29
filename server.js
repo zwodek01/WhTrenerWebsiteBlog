@@ -25,7 +25,10 @@ app.use(function (req, res, next) {
 
 
 app.post('/addNewPost', function (req, res) {
-  cloudFirestore.collection('blog').doc(req.body.id).set(req.body)
+  let link = req.body.link;
+  let data = req.body;
+
+  cloudFirestore.collection('blog').doc(link).set(data)
     .then((response) => {
       res.send("OK")
     })
@@ -50,8 +53,21 @@ app.get('/getPosts', function (req, res) {
     });
 })
 
+app.post('/getOnePost', function (req, res) {
+  let link = req.body.link
+
+  cloudFirestore.collection('blog').doc(link).get()
+    .then(doc => {
+      res.send(doc.data())
+    })
+    .catch(err => {
+      console.log('Error getting document', err);
+    });
+})
+
 app.post('/getCategory', function (req, res) {
   const category = req.body.category;
+
   const result = databaseCategory.filter(obj => {
     return obj.category === category
   })
@@ -59,9 +75,9 @@ app.post('/getCategory', function (req, res) {
 })
 
 app.post('/deletePost', function (req, res) {
-  let id = req.body.id;
+  let link = req.body.link;
 
-  cloudFirestore.collection('blog').doc(id).delete()
+  cloudFirestore.collection('blog').doc(link).delete()
     .then(() => {
       res.send("OK")
     })

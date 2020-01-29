@@ -17,8 +17,8 @@ export class NewPostComponent implements OnInit {
     subTitle: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
     htmlPost: new FormControl('', Validators.required),
+    link: new FormControl('', Validators.required),
     date: new FormControl(new Date().toLocaleDateString()),
-    id: new FormControl(uuid.v4())
   });
 
   constructor(private connectionService: ConnectionService, private router: Router) { }
@@ -42,7 +42,7 @@ export class NewPostComponent implements OnInit {
         UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Post został dodany!', status: 'success' })
         setTimeout(() => {
           window.location.reload()
-        }, 1500)
+        }, 500)
       }
     }, error => {
       UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Wystąpił błąd. Spróbuj jeszcze raz.', status: 'danger' });
@@ -50,7 +50,7 @@ export class NewPostComponent implements OnInit {
   }
 
   deletePost(idPost) {
-    this.connectionService.deletePost({ id: idPost }).subscribe((response) => {
+    this.connectionService.deletePost({ link: idPost }).subscribe((response) => {
       console.log(response)
       if (response === "OK") {
         UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Post został usunięty!', status: 'success' })

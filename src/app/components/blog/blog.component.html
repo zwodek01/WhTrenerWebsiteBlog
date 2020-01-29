@@ -6,30 +6,33 @@
     </div>
   </section>
   <section class="blog__content">
-    <section #target class="blog__content-container">
-      <div *ngFor="let post of database | paginate: { itemsPerPage: 3, currentPage: p }" class="blog__content-post">
-        <img class="blog__content-post-image" src="../../../assets/background_hero.jpg" alt="">
-        <p class="blog__content-post-category">{{post.category}}</p>
-        <p class="blog__content-post-date">{{post.date}}</p>
-        <h2 class="blog__content-post-title">{{post.title}}</h2>
-        <p class="blog__content-post-text">{{post.subTitle}}</p>
-        <button class="blog__content-post-button" gradient="peach" rounded="true" mdbWavesEffect mdbBtn>Czytaj
-          więcej</button>
-        <hr>
+    <section class="blog__content-container">
+      <div *ngIf="!showPost" uk-spinner="ratio: 3"></div>
+      <div *ngIf="showPost">
+        <div [@inOutAnimation] *ngFor="let post of database | paginate: { itemsPerPage: 3, currentPage: p }"
+          class="blog__content-post">
+          <img class="blog__content-post-image" src="../../../assets/background_hero.jpg" alt="">
+          <p class="blog__content-post-category">{{post.category}}</p>
+          <p class="blog__content-post-date">{{post.date}}</p>
+          <h2 class="blog__content-post-title">{{post.title}}</h2>
+          <p class="blog__content-post-text">{{post.subTitle}}</p>
+          <button [routerLink]="['/blog', post.link]" class="blog__content-post-button" gradient="peach" rounded="true"
+            mdbWavesEffect mdbBtn>Czytaj
+            więcej</button>
+        </div>
       </div>
-      <pagination-controls (click)="scroll(target)" class="my-pagination" (pageChange)="p = $event" nextLabel=""
-        previousLabel="">
+      <pagination-controls *ngIf="showPost" (click)="scroll()" class="my-pagination" (pageChange)="p = $event"
+        nextLabel="" previousLabel="">
       </pagination-controls>
     </section>
-    <aside class="blog__content-aside">
+    <aside *ngIf="showPost" class="blog__content-aside">
       <div class="blog__content-aside-contianer">
         <hr class="blog__hero-section-divider">
         <h2 class="blog__content-aside-title">Kategorie</h2>
         <hr class="blog__hero-section-divider">
         <ul class="blog__content-aside-list">
-          <li class="item" (click)="scroll(target)" (click)="filterByCategory($event)">Wszystko</li>
-          <li class="item" (click)="scroll(target)" *ngFor="let item of this.listCategory"
-            (click)="filterByCategory($event)">
+          <li class="item" (click)="filterByCategory($event)">Wszystko</li>
+          <li class="item" *ngFor="let item of this.listCategory" (click)="filterByCategory($event)">
             {{item}}
           </li>
         </ul>

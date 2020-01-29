@@ -1,24 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectionService } from '../../services/connection.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
+  styleUrls: ['./blog.component.scss'],
+  animations: [
+    trigger(
+      'inOutAnimation',
+      [
+        transition(
+          ':enter',
+          [
+            style({ opacity: 0 }),
+            animate('1s ease-out',
+              style({ opacity: 1 }))
+          ]
+        ),
+        transition(
+          ':leave',
+          [
+            style({ opacity: 1 }),
+            animate('1s ease-in',
+              style({ opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class BlogComponent implements OnInit {
 
   constructor(private connectionService: ConnectionService) { }
 
-  database;
-  listCategory;
-  allDatabase;
+  database: any;
+  listCategory: Array<string>;
+  allDatabase: any;
   p: number = 1;
+  showPost: boolean;
 
   ngOnInit() {
     this.getPosts()
   }
-
 
   getPosts() {
     this.connectionService.getPosts().subscribe((data) => {
@@ -31,15 +55,16 @@ export class BlogComponent implements OnInit {
       const list = new Set(categoryList)
       const uniqueList = [...list]
       this.listCategory = uniqueList
+      this.showPost = true;
     })
   }
 
-  scroll(el: HTMLElement) {
-    el.scrollIntoView();
-    this.p = 1;
+  scroll() {
+    return window.scroll(0, 300);
   }
 
   filterByCategory(event) {
+    this.scroll()
     if (event.target.innerText === "Wszystko") {
       this.database = this.allDatabase
     } else {
