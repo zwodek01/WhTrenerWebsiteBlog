@@ -1,0 +1,42 @@
+@import '~src/styles/custom';
+@import '~src/styles/variables';
+@import '~src/styles/mixins';
+
+.post {
+  margin-top: 56px;
+  position: relative;
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    width: 1300px;
+  }
+
+  &__container {
+    padding: 20px;
+    background-color: #fff;
+    margin: -40px 16px 0;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    text-align: center;
+  }
+
+  &__title {}
+
+  &__date {}
+
+  &__html-content {
+    padding: 20px;
+  }
+
+
+
+}
+
+
+.class {
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

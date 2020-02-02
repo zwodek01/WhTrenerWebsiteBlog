@@ -1,0 +1,11 @@
+<section class="post">
+  <div uk-parallax="bgy: -200" class="class" [style.background-image]="backgroundImg">
+  </div>
+  <div class="post__container">
+    <h2 class="post__title">{{database?.title}}</h2>
+    <p class="post__date">{{database?.date}}</p>
+    <p class="post__sub-title">{{database?.subTitle}}</p>
+    <div class="post__html-content" [innerHtml]="database?.htmlPost | safe: 'html'">
+    </div>
+  </div>
+</section>

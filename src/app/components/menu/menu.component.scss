@@ -1,3 +1,7 @@
+@import '~src/styles/custom';
+@import '~src/styles/variables';
+@import '~src/styles/mixins';
+
 .nav-item {
   letter-spacing: 1px;
 }
@@ -5,9 +9,7 @@
 .active {
   padding-bottom: 5px;
   background:
-    linear-gradient(to right,
-      #FCD307,
-      #FC6B29 100%) left bottom no-repeat;
+    linear-gradient(40deg, $primary-color 0%, $secondary-color 100%) left bottom no-repeat;
   background-size: 100% 5px;
 }
 

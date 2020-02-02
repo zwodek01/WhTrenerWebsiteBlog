@@ -13,11 +13,10 @@
 
   &__title {
     font-size: $font-title-mobile;
-    color: $primary-color;
     font-weight: bold;
     text-align: left;
-    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
-    -webkit-background-clip: text;
+    background: linear-gradient(40deg, $primary-color 0%, $secondary-color 100%);
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-style: italic;
 

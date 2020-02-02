@@ -14,6 +14,7 @@ a {
 body,
 html {
   background-color: #F6F6F6 !important;
+  scroll-behavior: smooth;
 }
 
 .navbar-toggler {
@@ -78,3 +79,20 @@ html {
     transform: scale(1.0);
   }
 }
+
+.ngx-pagination {
+  padding: 0;
+}
+
+.my-pagination .ngx-pagination .current {
+  background: linear-gradient(40deg, #FFD86F, #FC6262);
+}
+
+/* UIkit */
+@import "../../node_modules/uikit/src/scss/variables-theme";
+@import "../../node_modules/uikit/src/scss/mixins-theme";
+@import "../../node_modules/uikit/src/scss/uikit-theme";
+/* Custom Variables */
+@import 'variables';
+@import 'mixins';
+@import 'custom';

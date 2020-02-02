@@ -1,1 +1,40 @@
-<p>blog works!</p>
+<section class="blog">
+  <section class="blog__hero-section" uk-parallax="bgy: -100">
+    <div class="blog__hero-section-container">
+      <h2 class="blog__hero-section-title">Witaj na moim blogu</h2>
+      <hr class="blog__hero-section-divider">
+    </div>
+  </section>
+  <section class="blog__content">
+    <section class="blog__content-container">
+      <div *ngIf="!showPost" uk-spinner="ratio: 3"></div>
+      <div *ngIf="showPost">
+        <div [@inOutAnimation] *ngFor="let post of database | paginate: { itemsPerPage: 3, currentPage: p }"
+          class="blog__content-post">
+          <img class="blog__content-post-image" [src]=post.image alt="">
+          <p class="blog__content-post-category">{{post.category}}</p>
+          <p class="blog__content-post-date">{{post.date}}</p>
+          <h2 class="blog__content-post-title">{{post.title}}</h2>
+          <p class="blog__content-post-text">{{post.subTitle}}</p>
+          <button [routerLink]="['/blog', post.link]" class="blog__content-post-button" gradient="peach" rounded="true"
+            mdbWavesEffect mdbBtn>Czytaj
+            więcej</button>
+        </div>
+      </div>
+      <pagination-controls *ngIf="showPost" (click)="scroll()" class="my-pagination" (pageChange)="p = $event"
+        nextLabel="" previousLabel="">
+      </pagination-controls>
+    </section>
+    <aside *ngIf="showPost" class="blog__content-aside">
+      <div class="blog__content-aside-contianer">
+        <h2 gradient="peach" rounded="true" mdbBtn class="blog__content-aside-title">Kategorie</h2>
+        <ul class="blog__content-aside-list">
+          <li class="item" (click)="filterByCategory($event)">Wszystko</li>
+          <li class="item" *ngFor="let item of this.listCategory" (click)="filterByCategory($event)">
+            {{item}}
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+</section>

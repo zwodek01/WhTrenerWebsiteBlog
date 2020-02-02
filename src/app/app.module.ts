@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RouterModule, Routes } from '@angular/router';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -12,6 +17,9 @@ import { CooperationComponent } from './components/cooperation/cooperation.compo
 import { ContactComponent } from './components/contact/contact.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NewPostComponent } from './components/blog/new-post/new-post.component';
+import { PostComponent } from './components/blog/post/post.component';
+import { SafePipe } from './safe.pipe';
 
 const appRoutes: Routes = [
   { path: 'start', component: HomePageComponent },
@@ -19,6 +27,8 @@ const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'wspolpraca', component: CooperationComponent },
   { path: 'kontakt', component: ContactComponent },
+  { path: 'nowy-post', component: NewPostComponent },
+  { path: 'blog/:link', component: PostComponent },
   { path: '**', component: PageNotFoundComponent },
   { path: '', redirectTo: 'start', pathMatch: 'full' }
 ];
@@ -33,12 +43,20 @@ const appRoutes: Routes = [
     BlogComponent,
     ContactComponent,
     PageNotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    NewPostComponent,
+    PostComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
-    RouterModule.forRoot(appRoutes, { scrollPositionRestoration: 'enabled' })
+    RouterModule.forRoot(appRoutes, { scrollPositionRestoration: 'enabled' }),
+    RichTextEditorAllModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
