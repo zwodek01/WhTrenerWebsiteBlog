@@ -22,13 +22,13 @@ import { PostComponent } from './components/blog/post/post.component';
 import { SafePipe } from './safe.pipe';
 
 const appRoutes: Routes = [
-  { path: 'start', component: HomePageComponent },
-  { path: 'o-mnie', component: AboutMeComponent },
-  { path: 'blog', component: BlogComponent },
-  { path: 'wspolpraca', component: CooperationComponent },
-  { path: 'kontakt', component: ContactComponent },
+  { path: '', component: HomePageComponent, data: { animation: 'Home' } },
+  { path: 'o-mnie', component: AboutMeComponent, data: { animation: 'AboutMe' } },
+  { path: 'blog', component: BlogComponent, data: { animation: 'Blog' } },
+  { path: 'wspolpraca', component: CooperationComponent, data: { animation: 'Cooperation' } },
+  { path: 'kontakt', component: ContactComponent, data: { animation: 'Contact' } },
   { path: 'nowy-post', component: NewPostComponent },
-  { path: 'blog/:link', component: PostComponent },
+  { path: 'blog/:link', component: PostComponent, data: { animation: 'Post' } },
   { path: '**', component: PageNotFoundComponent },
   { path: '', redirectTo: 'start', pathMatch: 'full' }
 ];
