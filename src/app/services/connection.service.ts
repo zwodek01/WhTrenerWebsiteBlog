@@ -11,7 +11,6 @@ export class ConnectionService {
   urlDeletePost: string = 'http://localhost:3000/deletePost';
   urlGetOnePost: string = 'http://localhost:3000/getOnePost';
 
-
   constructor(private http: HttpClient) { }
 
   addNewPost(messageContent: any) {
@@ -27,7 +26,8 @@ export class ConnectionService {
   }
 
   getPosts() {
-    return this.http.get(this.urlGetPosts, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
+    return this.http.get(this.urlGetPosts,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
   }
 
   getCategory(messageContent) {
@@ -41,5 +41,4 @@ export class ConnectionService {
       JSON.stringify(messageContent),
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
   }
-
 }

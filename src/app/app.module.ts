@@ -2,13 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RouterModule, Routes } from '@angular/router';
-import 'froala-editor/js/plugins.pkgd.min.js';
-import 'froala-editor/js/plugins/align.min.js';
-import 'froala-editor/js/languages/de.js';
-import 'froala-editor/js/third_party/font_awesome.min';
-import 'froala-editor/js/third_party/image_tui.min';
-import 'froala-editor/js/third_party/embedly.min';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -24,6 +18,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NewPostComponent } from './components/blog/new-post/new-post.component';
 import { PostComponent } from './components/blog/post/post.component';
+import { SafePipe } from './safe.pipe';
 
 const appRoutes: Routes = [
   { path: 'start', component: HomePageComponent },
@@ -48,14 +43,14 @@ const appRoutes: Routes = [
     ContactComponent,
     PageNotFoundComponent,
     NewPostComponent,
-    PostComponent
+    PostComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),
+    RichTextEditorAllModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,

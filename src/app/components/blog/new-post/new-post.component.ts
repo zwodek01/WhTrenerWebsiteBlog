@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ConnectionService } from '../../../services/connection.service';
-import * as uuid from 'uuid';
 import { Router } from '@angular/router';
+import { ToolbarService, LinkService, ImageService, HtmlEditorService, TableService, QuickToolbarService } from '@syncfusion/ej2-angular-richtexteditor';
+
 declare var UIkit: any;
 
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
-  styleUrls: ['./new-post.component.scss']
+  styleUrls: ['./new-post.component.scss'],
+  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService, QuickToolbarService]
 })
 export class NewPostComponent implements OnInit {
 
@@ -17,6 +19,7 @@ export class NewPostComponent implements OnInit {
     subTitle: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
     htmlPost: new FormControl('', Validators.required),
+    image: new FormControl('', Validators.required),
     link: new FormControl('', Validators.required),
     date: new FormControl(new Date().toLocaleDateString()),
   });
@@ -24,6 +27,22 @@ export class NewPostComponent implements OnInit {
   constructor(private connectionService: ConnectionService, private router: Router) { }
 
   database;
+
+  public tools: object = {
+    items: ['Undo', 'Redo', '|',
+      'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+      'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+      'SubScript', 'SuperScript', '|',
+      'LowerCase', 'UpperCase', '|',
+      'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+      'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
+      'Image', '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen']
+  };
+  public quickTools: object = {
+    image: [
+      'Replace', 'Align', 'Caption', 'Remove', 'InsertLink', '-', 'Display', 'AltText', 'Dimension']
+  };
+
 
   ngOnInit() {
     this.getPosts()
@@ -38,7 +57,6 @@ export class NewPostComponent implements OnInit {
   addNewPost() {
     this.connectionService.addNewPost(this.addNewPostForm.value).subscribe((response) => {
       if (response === "OK") {
-        this.addNewPostForm.reset();
         UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Post został dodany!', status: 'success' })
         setTimeout(() => {
           window.location.reload()
@@ -63,15 +81,16 @@ export class NewPostComponent implements OnInit {
     })
   }
 
-  setValuesToForm(titleForm, subTitleForm, categoryForm, htmlPostForm) {
+  setValuesToForm(titleForm, subTitleForm, categoryForm, htmlPostForm, linkForm, imageForm) {
     this.addNewPostForm.patchValue({
       title: titleForm,
       subTitle: subTitleForm,
       category: categoryForm,
-      htmlPost: htmlPostForm
+      link: linkForm,
+      htmlPost: htmlPostForm,
+      image: imageForm
     });
     window.scrollTo(0, 0);
   }
-
 
 }
