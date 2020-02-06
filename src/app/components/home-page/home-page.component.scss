@@ -15,7 +15,7 @@
     font-size: $font-title-mobile;
     font-weight: bold;
     text-align: left;
-    background: linear-gradient(40deg, $primary-color 0%, $secondary-color 100%);
+    background: linear-gradient(45deg, $primary-color 0%, $secondary-color 100%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-style: italic;
@@ -53,8 +53,7 @@
 
   &__container-welcome {
     display: grid;
-    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
-    padding: 75px 16px;
+    padding: 75px 16px 0;
     gap: 25px;
 
     @include media-desktop {
@@ -76,6 +75,7 @@
 
   &__welcome-title {
     @include sub-title;
+    color: #fff;
 
     @include media-desktop {
       padding: 75px 0;
@@ -83,8 +83,8 @@
   }
 
   &__color {
-    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
-    -webkit-background-clip: text;
+    background: linear-gradient(45deg, $primary-color 0%, $secondary-color 100%);
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -93,50 +93,40 @@
   }
 
   &__container-cards {
-    padding: 75px 16px;
+    padding: 75px 16px 0;
     display: grid;
     gap: 30px;
     text-align: center;
-
-    @include media-desktop {
-      grid-template-rows: 1fr auto;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 50px;
-    }
   }
 
   &__card-title {
     @include sub-title;
-
-    @include media-desktop {
-      grid-area: 1 / 1 / 2 / 4;
-    }
+    color: #fff;
   }
 
   &__card {
     display: grid;
     gap: 25px;
     justify-items: center;
-    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
-
     padding: 35px 25px;
     border-radius: 20px;
     align-items: center;
 
     @include media-tablet {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 200px 300px;
+      justify-content: center;
     }
 
     @include media-desktop {
-      grid-template-columns: 1fr;
-      padding: 50px;
+      grid-template-columns: 375px 375px;
+      gap: 50px;
     }
   }
 
   &__card-box {
     width: 100px;
     height: 100px;
-    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+    background: linear-gradient(45deg, $primary-color 0%, $secondary-color 100%);
     transform: rotate(45deg);
     margin: 0 auto;
     transition: .3s;
@@ -148,6 +138,7 @@
 
   &__card-sub-title {
     font-weight: bold;
+    color: #fff;
   }
 
   &__card-text {
@@ -188,25 +179,19 @@
     display: grid;
     gap: 50px;
     text-align: center;
-
-    @include media-desktop {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   &__articles-title {
     @include sub-title;
-
-    @include media-desktop {
-      grid-area: 1 / 1 / 2 / 4;
-    }
+    color: #fff;
   }
 
   &__articles-wrapper {
     display: grid;
     grid-template-rows: auto;
     justify-items: center;
-    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
     border-radius: 20px;
     align-items: center;
     position: relative;
@@ -241,7 +226,7 @@
     position: absolute;
     bottom: 0;
     transform: translateY(50%);
-    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+    background: linear-gradient(45deg, $primary-color 0%, $secondary-color 100%);
     padding: 10px;
     border-radius: 10px;
     border: none;

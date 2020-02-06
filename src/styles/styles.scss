@@ -5,15 +5,22 @@
 @import 'mixins';
 @import 'custom';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 html,
 a {
+  color: #fff;
   font-family: 'Oswald', sans-serif;
 }
 
 body,
 html {
-  background-color: #F6F6F6 !important;
+  background-color: #000;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -83,10 +90,15 @@ html {
 
 .ngx-pagination {
   padding: 0;
+  color: #fff;
 }
 
 .my-pagination .ngx-pagination .current {
   background: linear-gradient(40deg, #FFD86F, #FC6262);
+}
+
+.ng-star-inserted {
+  color: #fff !important;
 }
 
 .router {

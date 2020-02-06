@@ -173,51 +173,18 @@
         class="home-page__color">NAJNOWSZE
         ARTYKUŁY</span> NA BLOGU
     </h2>
-    <article class="home-page__articles-wrapper wow fadeInUp" data-wow-duration="1s" data-wow-offset="100"
+    <article *ngFor="let post of database | paginate: { itemsPerPage: 3, currentPage: p }"
+      class="home-page__articles-wrapper wow fadeInUp" data-wow-duration="1s" data-wow-offset="100"
       data-wow-delay="0.2s">
-      <div class=" home-page__articles-img">
-      </div>
-      <h3 class="home-page__articles-sub-title">Nagłówek</h3>
-      <p class="home-page__articles-date">01.01.2020</p>
-      <p class="home-page__articles-text"> Cras ante enim, molestie dapibus
-        urna eget, condimentum placerat
-        lectus. Maecenas vulputate, tortor
-        vel egestas consectetur, enim
-        metus efficitur tellus, at dapibus
-        tortor enim in nisl. Duis sit amet
-        orci facilisis, scelerisque odio vel.</p>
+
+      <img [src]=post.image class="home-page__articles-img">
+      <h3 class="home-page__articles-sub-title">{{post.title}}</h3>
+      <p class="home-page__articles-date">{{post.date}}</p>
+      <p class="home-page__articles-text">{{post.subtitle}}</p>
       <button class="home-page__articles-button">Czytaj więcej</button>
     </article>
-    <article class="home-page__articles-wrapper wow fadeInUp" data-wow-duration="1s" data-wow-offset="100"
-      data-wow-delay="0.4s">
-      <div class=" home-page__articles-img">
-      </div>
-      <h3 class="home-page__articles-sub-title">Nagłówek</h3>
-      <p class="home-page__articles-date">01.01.2020</p>
-      <p class="home-page__articles-text"> Cras ante enim, molestie dapibus
-        urna eget, condimentum placerat
-        lectus. Maecenas vulputate, tortor
-        vel egestas consectetur, enim
-        metus efficitur tellus, at dapibus
-        tortor enim in nisl. Duis sit amet
-        orci facilisis, scelerisque odio vel.</p>
-      <button class="home-page__articles-button">Czytaj więcej</button>
-    </article>
-    <article class="home-page__articles-wrapper wow fadeInUp" data-wow-duration="1s" data-wow-offset="100"
-      data-wow-delay="0.6s">
-      <div class=" home-page__articles-img">
-      </div>
-      <h3 class="home-page__articles-sub-title">Nagłówek</h3>
-      <p class="home-page__articles-date">01.01.2020</p>
-      <p class="home-page__articles-text"> Cras ante enim, molestie dapibus
-        urna eget, condimentum placerat
-        lectus. Maecenas vulputate, tortor
-        vel egestas consectetur, enim
-        metus efficitur tellus, at dapibus
-        tortor enim in nisl. Duis sit amet
-        orci facilisis, scelerisque odio vel.</p>
-      <button class="home-page__articles-button">Czytaj więcej</button>
-    </article>
+    <!-- <pagination-controls class="my-pagination home-page__pagination wow fadeIn" data-wow-delay="0.2s"
+      (pageChange)="p = $event" nextLabel="" previousLabel="">
+    </pagination-controls> -->
   </div>
 </section>
-<!-- <app-footer></app-footer> -->

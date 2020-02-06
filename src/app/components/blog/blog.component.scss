@@ -70,11 +70,9 @@
   &__content-post {
     margin: 0 0 50px;
     border-radius: 20px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
   }
 
   &__content-post-image {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
   }
@@ -124,7 +122,6 @@
   &__content-aside-contianer {
     padding: 50px 20px 5px;
     border-radius: 20px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
     margin-top: 50px;
 
     @include media-desktop {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  database: Object;
+  p: number = 1;
 
-  constructor() { }
+  constructor(private connectionService: ConnectionService) { }
 
   ngOnInit() {
+    this.getPosts()
   }
 
+  getPosts() {
+    this.connectionService.getPosts().subscribe((data) => {
+      this.database = data
+      console.log(this.database)
+    })
+  }
 }

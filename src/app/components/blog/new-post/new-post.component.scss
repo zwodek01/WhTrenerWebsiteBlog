@@ -3,10 +3,14 @@
 @import '~src/styles/mixins';
 
 .new-post {
-  padding: 0 16px;
-  margin: 106px auto 0;
-  max-width: 1200px;
-  min-height: calc(100vh - 106px);
+  background-color: #fff;
+
+  &__container {
+    padding: 106px 16px 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    min-height: calc(100vh - 106px);
+  }
 
   &__form {
     margin-top: 50px;
@@ -17,11 +21,11 @@
     text-align: center;
     margin: 0 auto;
 
-@include media-tablet {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
+    @include media-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
 
     @include media-desktop {
       grid-template-columns: repeat(4, 1fr);
@@ -29,11 +33,12 @@
     }
   }
 
-  &__content-post-icon-container{
+  &__content-post-icon-container {
     display: flex;
     justify-content: space-around;
     margin: 10px 0;
   }
+
   &__content-post {
     margin: 0 0 50px;
   }
@@ -41,7 +46,6 @@
   &__content-post-image {
     max-width: 100%;
     height: auto;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
   }
 
   &__content-post-category {
