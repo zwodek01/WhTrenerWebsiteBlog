@@ -7,7 +7,7 @@ import { ConnectionService } from 'src/app/services/connection.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  database: Object;
+  database: any;
   p: number = 1;
 
   constructor(private connectionService: ConnectionService) { }
@@ -19,7 +19,6 @@ export class HomePageComponent implements OnInit {
   getPosts() {
     this.connectionService.getPosts().subscribe((data) => {
       this.database = data
-      console.log(this.database)
     })
   }
 }

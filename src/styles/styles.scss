@@ -20,7 +20,7 @@ a {
 
 body,
 html {
-  background-color: #000;
+  background-color: #000 !important;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -42,7 +42,7 @@ html {
 .spinner>div {
   width: 18px;
   height: 18px;
-  background-color: #000;
+  background-color: #fff;
 
   border-radius: 100%;
   display: inline-block;

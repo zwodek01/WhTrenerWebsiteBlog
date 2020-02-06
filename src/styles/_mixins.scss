@@ -16,6 +16,25 @@
   }
 }
 
+@mixin title {
+  font-size: $font-title-mobile;
+  font-weight: bold;
+  text-align: left;
+  background: linear-gradient(45deg, $primary-color 0%, $secondary-color 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+
+  @include media-tablet {
+    font-size: $font-title-tablet;
+  }
+
+  @include media-desktop {
+    font-size: $font-title-desktop;
+    text-align: center;
+  }
+}
+
 
 @mixin sub-title {
   font-weight: 900;
@@ -33,7 +52,22 @@
   }
 }
 
+@mixin color-title {
+  background: linear-gradient(45deg, $primary-color 0%, $secondary-color 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @mixin text {
   color: #fff;
   text-align: center;
+}
+
+@mixin space {
+  padding: $space-vertical $space-horizontal;
+
+  @include media-desktop {
+    padding: $space-vertical*2 $space-horizontal*2;
+
+  }
 }
