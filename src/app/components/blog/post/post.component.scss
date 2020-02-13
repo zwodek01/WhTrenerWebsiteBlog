@@ -5,6 +5,12 @@
 .post {
   margin-top: 56px;
   position: relative;
+  color: #000;
+
+  &__back-button {
+    position: fixed;
+    padding: 5px 8px;
+  }
 
   &__image {
     display: block;
@@ -18,15 +24,22 @@
     margin: -40px 16px 40px;
     border-radius: 20px;
     text-align: center;
+    max-width: 1200px;
+
+    @include media-desktop {}
+
+    @media (min-width: 1264px) {
+      margin: -40px auto 40px;
+    }
   }
 
   &__title {}
 
   &__date {}
 
-  &__html-content {
-    padding: 20px;
-  }
+  &__sub-title {}
+
+  &__html-content {}
 
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConnectionService } from 'src/app/services/connection.service';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,14 +10,14 @@ export class HomePageComponent implements OnInit {
   database: any;
   p: number = 1;
 
-  constructor(private connectionService: ConnectionService) { }
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
     this.getPosts()
   }
 
   getPosts() {
-    this.connectionService.getPosts().subscribe((data) => {
+    this.firebaseService.getPosts().subscribe((data) => {
       this.database = data
     })
   }

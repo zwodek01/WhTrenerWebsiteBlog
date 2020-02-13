@@ -24,7 +24,7 @@
         <input formControlName="link" mdbInput type="text" id="link" class="form-control">
         <label for="link">Ścieżka strony</label>
       </div>
-      <ejs-richtexteditor formControlName="htmlPost" id='defaultRTE' [toolbarSettings]='tools'
+      <ejs-richtexteditor class="editor" formControlName="htmlPost" id='defaultRTE' [toolbarSettings]='tools'
         [quickToolbarSettings]='quickTools'></ejs-richtexteditor>
 
       <button gradient="peach" rounded="true" mdbWavesEffect mdbBtn [disabled]="!addNewPostForm.valid"> <span
@@ -43,7 +43,6 @@
         <p class="new-post__content-post-category">{{post.category}}</p>
         <p class="new-post__content-post-date">{{post.date}}</p>
         <h2 class="new-post__content-post-title">{{post.title}}</h2>
-        <p class="new-post__content-post-text">{{post.subTitle}}</p>
         <hr>
       </div>
     </section>

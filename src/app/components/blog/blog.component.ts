@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConnectionService } from '../../services/connection.service';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-blog',
@@ -24,9 +24,10 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class BlogComponent implements OnInit {
 
-  constructor(private connectionService: ConnectionService) { }
+  constructor(private firebaseService: FirebaseService) { }
 
   database: any;
+  databaseCategory: any;
   listCategory: Array<string>;
   allDatabase: any;
   p: number = 1;
@@ -37,9 +38,10 @@ export class BlogComponent implements OnInit {
   }
 
   getPosts() {
-    this.connectionService.getPosts().subscribe((data) => {
+    this.firebaseService.getPosts().subscribe((data) => {
       this.database = data
       this.allDatabase = data;
+      this.databaseCategory = data;
       let categoryList = [];
       this.database.forEach((item) => {
         categoryList.push(item.category)
@@ -60,10 +62,10 @@ export class BlogComponent implements OnInit {
     if (event.target.innerText === "Wszystko") {
       this.database = this.allDatabase
     } else {
-      let category = { category: event.target.innerText }
-      this.connectionService.getCategory(category).subscribe((data) => {
-        this.database = data
+      const result = this.databaseCategory.filter((obj: { category: any; }) => {
+        return obj.category === event.target.innerText
       })
+      this.database = result;
     }
     this.p = 1;
   }

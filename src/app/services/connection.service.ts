@@ -5,11 +5,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ConnectionService {
-  urlAddNewPost: string = 'http://localhost:3000/addNewPost';
-  urlGetPosts: string = 'http://localhost:3000/getPosts';
-  urlGetCategory: string = 'http://localhost:3000/getCategory';
-  urlDeletePost: string = 'http://localhost:3000/deletePost';
-  urlGetOnePost: string = 'http://localhost:3000/getOnePost';
+  urlAddNewPost: string = 'https://evening-basin-89157.herokuapp.com/addNewPost';
+  urlGetPosts: string = 'https://evening-basin-89157.herokuapp.com/getPosts';
+  urlGetCategory: string = 'https://evening-basin-89157.herokuapp.com/getCategory';
+  urlDeletePost: string = 'https://evening-basin-89157.herokuapp.com/deletePost';
+  urlGetOnePost: string = 'https://evening-basin-89157.herokuapp.com/getOnePost';
 
   constructor(private http: HttpClient) { }
 

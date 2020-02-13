@@ -8,4 +8,10 @@ import { slideInAnimation } from './route-animations'
 })
 export class AppComponent {
   title = 'whTrener';
+
+  onActivate(event) {
+    setTimeout(() => {
+      window.scroll(0, 0);
+    }, 500)
+  }
 }
