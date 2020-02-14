@@ -34,7 +34,8 @@ align-items: center;
         justify-items: center;
         background-color: #1D1919;
         border-radius: 20px;
-padding: 20px;
+        padding: 20px;
+
         @include media-tablet {
             grid-template-columns: 1fr 1fr;
             gap: 30px;
@@ -55,14 +56,6 @@ padding: 20px;
     }
 }
 
-label {
-    font-weight: 600;
-}
-
-.md-form {
-    width: 100%;
-}
-
 .form-control {
     color: #fff;
-}
+  }

@@ -106,6 +106,14 @@ html {
   margin: 0 auto;
 }
 
+label {
+  font-weight: 600;
+}
+
+.md-form {
+  width: 100%;
+}
+
 /* UIkit */
 @import "../../node_modules/uikit/src/scss/variables-theme";
 @import "../../node_modules/uikit/src/scss/mixins-theme";

@@ -25,6 +25,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NewPostComponent } from './components/blog/new-post/new-post.component';
 import { PostComponent } from './components/blog/post/post.component';
 import { SafePipe } from './safe.pipe';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent, data: { animation: 'Home' } },
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
   { path: 'kontakt', component: ContactComponent, data: { animation: 'Contact' } },
   { path: 'nowy-post', component: NewPostComponent },
   { path: 'blog/:link', component: PostComponent, data: { animation: 'Post' } },
+  { path: 'logowanie', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent },
   { path: '', redirectTo: 'start', pathMatch: 'full' }
 ];
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
     FooterComponent,
     NewPostComponent,
     PostComponent,
-    SafePipe
+    SafePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
