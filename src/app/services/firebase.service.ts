@@ -13,25 +13,21 @@ export class FirebaseService {
   user: Observable<firebase.User>;
   items: Observable<any[]>;
 
-  constructor(public afAuth: AngularFireAuth, private db: AngularFirestore) {
-    // this.afAuth.auth.signInAnonymously();
-    // this.user = this.afAuth.authState;
-    // this.items = db.collection('blog').valueChanges();
-  }
+  constructor(public afAuth: AngularFireAuth, private db: AngularFirestore) { }
 
   getPosts() {
     return this.db.collection('blog').valueChanges();
   }
 
-  deletePost(link) {
+  deletePost(link: string) {
     return this.db.collection('blog').doc(link).delete()
   }
 
-  addNewPost(link, data) {
+  addNewPost(link: string, data: object) {
     return this.db.collection('blog').doc(link).set(data)
   }
 
-  getOnePost(link) {
+  getOnePost(link: string) {
     return this.db.collection('blog').doc(link).valueChanges()
   }
 }

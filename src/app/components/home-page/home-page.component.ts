@@ -21,4 +21,8 @@ export class HomePageComponent implements OnInit {
       this.database = data
     })
   }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
+  }
 }

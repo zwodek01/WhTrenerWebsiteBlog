@@ -36,7 +36,7 @@
       uk-slideshow-item="next"></a>
   </div>
   <ul class="uk-slideshow-nav uk-dotnav uk-flex-center"></ul>
-  <div class="home-page__container-welcome">
+  <div class="home-page__container-welcome wow fadeIn" data-wow-duration="1s" data-wow-offset="300">
     <div class="uk-position-relative" uk-slideshow="animation: fade">
       <ul class="uk-slideshow-items">
         <li>
@@ -62,10 +62,9 @@
       </div>
     </div>
     <div class="home-page__container-welcome-text">
-      <h2 class="home-page__welcome-title wow fadeIn" data-wow-duration="1s" data-wow-offset="100"><span
-          class="home-page__color">WITAM</span>
+      <h2 class="home-page__welcome-title"><span class="home-page__color">WITAM</span>
         NA MOJEJ STRONIE</h2>
-      <p class="home-page__welcome-text wow fadeInUp" data-wow-duration="1s" data-wow-offset="100">
+      <p class="home-page__welcome-text">
         Cras ante enim, molestie dapibus
         urna
         eget, condimentum placerat lectus.
@@ -80,11 +79,11 @@
     </div>
   </div>
   <div class="home-page__container-cards">
-    <h2 class="home-page__card-title wow fadeIn" data-wow-duration="1s" data-wow-offset="100"><span
+    <h2 class="home-page__card-title wow fadeIn" data-wow-duration="1s" data-wow-offset="300"><span
         class="home-page__color">W CZYM</span> MOGĘ CI
       POMÓC?
     </h2>
-    <section class="home-page__card wow fadeInUp" data-wow-duration="1s" data-wow-offset="100">
+    <section class="home-page__card wow fadeIn" data-wow-duration="1s" data-wow-offset="300">
       <div>
         <div class="home-page__card-box"></div>
         <h3 class="home-page__card-sub-title">ANALIZA WYNIKÓW</h3>
@@ -99,7 +98,7 @@
         orci facilisis, scelerisque odio vel.
       </div>
     </section>
-    <section class="home-page__card wow fadeInUp" data-wow-duration="1s" data-wow-offset="100">
+    <section class="home-page__card wow fadeIn" data-wow-duration="1s" data-wow-offset="300">
       <div class="home-page__card-image">
         <div class="home-page__card-box"></div>
         <h3 class="home-page__card-sub-title">PODNOŚ SWOJE
@@ -115,7 +114,7 @@
         orci facilisis, scelerisque odio vel.
       </div>
     </section>
-    <section class="home-page__card wow fadeInUp" data-wow-duration="1s" data-wow-offset="100">
+    <section class="home-page__card wow fadeIn" data-wow-duration="1s" data-wow-offset="300">
       <div class="home-page__card-image">
         <div class="home-page__card-box"></div>
         <h3 class="home-page__card-sub-title">OSIĄGNIJ SWOJE IDEALNE
@@ -131,13 +130,14 @@
         orci facilisis, scelerisque odio vel.
       </div>
     </section>
+    <button class="home-page__card-button wow fadeIn" data-wow-duration="1s" data-wow-offset="300"
+      routerLink="wspolpraca" gradient="peach" rounded="true" mdbWavesEffect mdbBtn>Napisz do mnie</button>
   </div>
-  <div class="home-page__you-get">
+  <div class="home-page__you-get wow fadeIn" data-wow-duration="1s" data-wow-offset="300">
     <div class="home-page__container-you-get">
       <div class="home-page__wrapper-you-get">
-        <h3 class="home-page__you-get-title  wow fadeIn" data-wow-duration="1s" data-wow-offset="100"><span
-            class="home-page__color">CO ZYSKASZ</span> PRACUJĄC ZE MNĄ?</h3>
-        <div class="home-page__you-get-text wow fadeInUp" data-wow-duration="1s" data-wow-offset="100">Cras ante enim,
+        <h3 class="home-page__you-get-title"><span class="home-page__color">CO ZYSKASZ</span> PRACUJĄC ZE MNĄ?</h3>
+        <div class="home-page__you-get-text">Cras ante enim,
           molestie dapibus
           urna
           eget, condimentum placerat lectus.
@@ -169,23 +169,27 @@
     </div>
   </div>
   <div class="home-page__container-articles">
-    <h2 class="home-page__articles-title  wow fadeIn" data-wow-duration="1s" data-wow-offset="100"><span
+    <h2 class="home-page__articles-title wow fadeIn" data-wow-duration="1s" data-wow-offset="300"><span
         class="home-page__color">NAJNOWSZE
         ARTYKUŁY</span> NA BLOGU
     </h2>
+    <div #target></div>
     <article *ngFor="let post of database | paginate: { itemsPerPage: 3, currentPage: p }"
-      class="home-page__articles-wrapper wow fadeInUp" data-wow-duration="1s" data-wow-offset="100"
-      data-wow-delay="0.2s">
-
+      class="home-page__articles-wrapper wow fadeIn" data-wow-duration="1s" data-wow-offset="200">
       <img [src]=post.image class="home-page__articles-img">
-      <h3 class="home-page__articles-sub-title">{{post.title}}</h3>
+      <p class="home-page__articles-category">{{post.category}}</p>
       <p class="home-page__articles-date">{{post.date}}</p>
-      <p class="home-page__articles-text">{{post.subtitle}}</p>
-      <button class="home-page__articles-button">Czytaj więcej</button>
+      <h3 class="home-page__articles-title-one">{{post.title}}</h3>
+      <p class="home-page__articles-sub-title">{{post.subTitle}}</p>
+      <button [routerLink]="['/blog', post.link]" class="home-page__articles-button" gradient="peach" rounded="true"
+        mdbWavesEffect mdbBtn>Czytaj
+        więcej</button>
     </article>
-    <pagination-controls class="my-pagination home-page__pagination wow fadeIn" data-wow-delay="0.2s"
-      (pageChange)="p = $event" nextLabel="" previousLabel="">
-    </pagination-controls>
+    <div class="wow fadeIn" data-wow-delay="0.2s">
+      <pagination-controls class="my-pagination home-page__pagination" (pageChange)="scroll(target)"
+        (pageChange)="p = $event" nextLabel="" previousLabel="">
+      </pagination-controls>
+    </div>
   </div>
 </section>
 <app-footer></app-footer>

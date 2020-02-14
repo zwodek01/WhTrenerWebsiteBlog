@@ -68,7 +68,7 @@
   }
 
   &__content-post {
-    margin: 0 0 50px;
+    margin: 0 0 80px;
     border-radius: 20px;
     background-color: #1D1919;
     position: relative;
@@ -92,17 +92,15 @@
     margin: 5px;
     opacity: 0.5;
     padding: 0 20px;
-
   }
 
   &__content-post-title {
     margin: 10px 0;
     padding: 0 20px;
     color: #fff;
-
   }
 
-  &__content-post-text {
+  &__content-post-sub-title {
     text-align: center;
     font-size: 14px;
     padding: 10px 20px 40px;

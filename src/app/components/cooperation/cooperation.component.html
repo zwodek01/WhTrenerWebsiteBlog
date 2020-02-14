@@ -1,1 +1,27 @@
-<p>cooperation works!</p>
+<section class="cooperation">
+    <div class="cooperation__container wow fadeIn">
+        <h3 class="cooperation__title">WSPÓŁPRACA</h3>
+        <div class="cooperation__form">
+            <div class="md-form">
+                <mdb-icon fas icon="user-alt" class="prefix"></mdb-icon>
+                <input mdbInput type="text" id="name" class="form-control">
+                <label for="name">Imię</label>
+            </div>
+            <div class="md-form">
+                <mdb-icon fas icon="at" class="prefix"></mdb-icon>
+                <input mdbInput type="text" id="email" class="form-control">
+                <label for="email">E-mail</label>
+            </div>
+            <div class="md-form cooperation__message">
+                <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+                <textarea class="md-textarea form-control " rows="3" id="message" type="text" length="120"
+                    mdbCharCounter mdbInput></textarea>
+                <label for="message">Wiadomość</label>
+            </div>
+            <div class="cooperation__button">
+                <button gradient="peach" rounded="true" mdbWavesEffect mdbBtn>Wyślij</button>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
