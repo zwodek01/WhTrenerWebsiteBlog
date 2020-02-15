@@ -26,6 +26,10 @@
         <a class="nav-link wow fadeIn" data-wow-delay="1.4s" routerLinkActive="active" routerLink="nowy-post">Nowy
           post</a>
       </li>
+      <li *ngIf="isLogged" class="nav-item waves-light mr-5" mdbWavesEffect>
+        <a class="nav-link wow fadeIn" data-wow-delay="1.4s" (click)="logout()">Wyloguj
+          się</a>
+      </li>
     </ul>
   </links>
 </mdb-navbar>
