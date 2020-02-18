@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-declare var UIkit: any;
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-menu',
@@ -10,28 +10,31 @@ declare var UIkit: any;
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private afAuth: AuthService, private router: Router) { }
+  constructor(private afAuth: AuthService, private router: Router, private db: AngularFirestore) { }
   isAdmin: boolean = false;
   isLogged: boolean = false;
+  adminId: string = 'RH9lFZealkU5UPf7R1h81OvgZqG2';
 
   ngOnInit() {
     this.isUserLogged()
   }
 
   isUserLogged() {
-    this.afAuth.getCurrentUser().subscribe(user => {
+    this.afAuth.authState.subscribe(user => {
       if (user === null) {
         this.isLogged = false
       } else {
         this.isLogged = true
+        if (user.uid === this.adminId) {
+          this.isAdmin = true
+        } else {
+          this.isAdmin = false
+        }
       }
     })
   }
 
   logout() {
-    this.afAuth.logout().then(() => {
-      UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Wylogowano', status: 'success' })
-    })
-
+    this.afAuth.logout().then()
   }
 }

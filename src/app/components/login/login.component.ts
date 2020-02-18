@@ -23,25 +23,5 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.afAuth.login(this.loginForm.value)
-      .then(() => {
-        UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Zalogowano', status: 'success' })
-        this.router.navigate([''])
-      })
-      .catch(error => {
-        switch (error.code) {
-          case 'auth/user-not-found': {
-            return UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Nie odnaleziono takiego użytkownika', status: 'danger' });
-          }
-          case 'auth/invalid-email': {
-            return UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Nieprawidłowy adres e-mail', status: 'danger' });
-          }
-          case 'auth/wrong-password': {
-            return UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Nieprawidłowe hasło', status: 'danger' });
-          }
-          default: {
-            return UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Wystąpił błąd. Spróbuj jeszcze raz.', status: 'danger' });
-          }
-        }
-      })
   }
 }

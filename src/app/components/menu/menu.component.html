@@ -22,14 +22,24 @@
       <li class="nav-item waves-light mr-5" mdbWavesEffect>
         <a class="nav-link wow fadeIn" data-wow-delay="1.2s" routerLinkActive="active" routerLink="kontakt">Kontakt</a>
       </li>
-      <li class="nav-item waves-light mr-5" mdbWavesEffect>
+      <li *ngIf="isLogged" class="nav-item dropdown wow fadeIn" dropdown data-wow-delay="1.2s">
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <mdb-icon fas icon="user"></mdb-icon>Profil<span class="caret"></span>
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#" routerLink="nowy-post">Nowy post</a>
+          <a (click)="logout()" class="dropdown-item waves-light" mdbWavesEffect href="#">Wyloguj
+            się</a>
+        </div>
+      </li>
+      <!-- <li *ngIf="isAdmin" class="nav-item waves-light mr-5" mdbWavesEffect>
         <a class="nav-link wow fadeIn" data-wow-delay="1.4s" routerLinkActive="active" routerLink="nowy-post">Nowy
           post</a>
       </li>
       <li *ngIf="isLogged" class="nav-item waves-light mr-5" mdbWavesEffect>
         <a class="nav-link wow fadeIn" data-wow-delay="1.4s" (click)="logout()">Wyloguj
           się</a>
-      </li>
+      </li> -->
     </ul>
   </links>
 </mdb-navbar>

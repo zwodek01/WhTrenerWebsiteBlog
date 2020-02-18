@@ -56,25 +56,25 @@ export class NewPostComponent implements OnInit {
 
   addNewPost() {
     this.firebaseService.addNewPost(this.addNewPostForm.value.link, this.addNewPostForm.value).then(() => {
-      UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Post został dodany!', status: 'success' })
+      UIkit.notification({ message: 'Post został dodany!', status: 'success' })
       setTimeout(() => {
         window.location.reload()
       }, 500)
     })
       .catch(() => {
-        UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Wystąpił błąd. Spróbuj jeszcze raz.', status: 'danger' });
+        UIkit.notification({ message: 'Wystąpił błąd. Spróbuj jeszcze raz.', status: 'danger' });
       })
   }
 
   deletePost(idPost) {
     this.firebaseService.deletePost(idPost).then(() => {
-      UIkit.notification({ message: '<span uk-icon=\'icon: check\'></span> Post został usunięty!', status: 'success' })
+      UIkit.notification({ message: 'Post został usunięty!', status: 'success' })
       setTimeout(() => {
         window.location.reload()
       }, 1500)
     })
       .catch(() => {
-        UIkit.notification({ message: '<span uk-icon=\'icon: close\'></span> Wystąpił błąd. Spróbuj jeszcze raz.', status: 'danger' });
+        UIkit.notification({ message: 'Wystąpił błąd. Spróbuj jeszcze raz.', status: 'danger' });
       })
   }
 

@@ -26,6 +26,8 @@ import { NewPostComponent } from './components/blog/new-post/new-post.component'
 import { PostComponent } from './components/blog/post/post.component';
 import { SafePipe } from './safe.pipe';
 import { LoginComponent } from './components/login/login.component';
+import { IsAdminGuard } from './guards/is-admin.guard';
+import { IsloggedGuard } from './guards/islogged.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent, data: { animation: 'Home' } },
@@ -33,9 +35,9 @@ const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent, data: { animation: 'Blog' } },
   { path: 'wspolpraca', component: CooperationComponent, data: { animation: 'Cooperation' } },
   { path: 'kontakt', component: ContactComponent, data: { animation: 'Contact' } },
-  { path: 'nowy-post', component: NewPostComponent },
+  { path: 'nowy-post', component: NewPostComponent, canActivate: [IsAdminGuard] },
   { path: 'blog/:link', component: PostComponent, data: { animation: 'Post' } },
-  { path: 'logowanie', component: LoginComponent },
+  { path: 'logowanie', component: LoginComponent, canActivate: [IsloggedGuard] },
   { path: '**', component: PageNotFoundComponent },
   { path: '', redirectTo: 'start', pathMatch: 'full' }
 ];
@@ -70,7 +72,7 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [IsAdminGuard, IsloggedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
