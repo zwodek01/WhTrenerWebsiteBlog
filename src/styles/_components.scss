@@ -1,0 +1,24 @@
+@import '../styles/variables';
+@import '../styles/breakpoints';
+
+.button {
+  border: none;
+  padding: 1rem;
+  background-color: $primary-color;
+  font-family: 'Righteous', cursive;
+  width: 200px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 10px;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: 0px 15px 25px -5px rgba($secondary-color, 40%);
+    transform: scale(1.03);
+  }
+
+  &:active {
+    box-shadow: 0px 4px 8px rgba($secondary-color, 30%);
+    transform: scale(.98);
+  }
+}

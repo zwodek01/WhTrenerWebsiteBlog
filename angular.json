@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "whTrener": {
+    "whWebsite": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/whTrener",
+            "outputPath": "dist/whWebsite",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,38 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
-              "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
-              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
-              "node_modules/animate.css/animate.css",
-              "node_modules/@syncfusion/ej2-base/styles/material.css",
-              "node_modules/@syncfusion/ej2-icons/styles/material.css",
-              "node_modules/@syncfusion/ej2-buttons/styles/material.css",
-              "node_modules/@syncfusion/ej2-splitbuttons/styles/material.css",
-              "node_modules/@syncfusion/ej2-inputs/styles/material.css",
-              "node_modules/@syncfusion/ej2-lists/styles/material.css",
-              "node_modules/@syncfusion/ej2-navigations/styles/material.css",
-              "node_modules/@syncfusion/ej2-popups/styles/material.css",
-              "node_modules/@syncfusion/ej2-richtexteditor/styles/material.css",
-              "./node_modules/uikit/dist/css/uikit.min.css",
-              "./node_modules/uikit/dist/css/uikit-core.min.css",
-              "src/styles/styles.scss"
+              "src/styles.scss"
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles"
-              ]
-            },
-            "scripts": [
-              "node_modules/chart.js/dist/Chart.js",
-              "node_modules/hammerjs/hammer.min.js",
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/uikit/dist/js/uikit.min.js",
-              "./node_modules/uikit/dist/js/uikit-icons.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -80,8 +51,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "10mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -95,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "whTrener:build"
+            "browserTarget": "whWebsite:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "whTrener:build:production"
+              "browserTarget": "whWebsite:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "whTrener:build"
+            "browserTarget": "whWebsite:build"
           }
         },
         "test": {
@@ -143,16 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "whTrener:serve"
+            "devServerTarget": "whWebsite:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "whTrener:serve:production"
+              "devServerTarget": "whWebsite:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "whTrener"
+    }},
+  "defaultProject": "whWebsite"
 }

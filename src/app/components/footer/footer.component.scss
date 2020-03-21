@@ -1,28 +1,42 @@
-@import '~src/styles/custom';
-@import '~src/styles/variables';
-@import '~src/styles/mixins';
+@import '../../../styles/breakpoints';
+@import '../../../styles/variables';
 
 .footer {
+  background-color: $secondary-color;
+  padding: 2rem 1rem;
+  color: #fff;
+
   &__container {
-    padding: 10px 16px;
+    display: grid;
+    gap: 2rem;
+  }
+
+  &__links {
+    display: grid;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+
+    @include breakpoint(tablet) {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__link {
+    cursor: pointer;
+
+    @include breakpoint(phablet) {
+      margin: 0 10px;
+    }
+
+    @include breakpoint(laptop) {
+      margin: 0 30px;
+    }
   }
 
   &__icons {
-    display: grid;
-    grid-template-columns: 30px 30px;
+    display: flex;
     justify-content: center;
-    gap: 30px;
-  }
-
-  &__created-by {
-    margin: 0;
-    text-align: center;
-    color: #fff;
-  }
-
-  &__color {
-    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 }

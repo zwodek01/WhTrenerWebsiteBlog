@@ -1,45 +1,20 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark pink ie-nav fixed-top black" [containerInside]="false">
-  <mdb-navbar-brand>
-    <a class="logo navbar-brand wow fadeIn" data-wow-delay="0.2s"><strong>Logo</strong></a>
-  </mdb-navbar-brand>
-  <links class="justify-content-end">
-    <ul class="navbar-nav">
-      <li class="nav-item waves-light mr-5" mdbWavesEffect>
-        <a class="nav-link wow fadeIn" data-wow-delay="0.4s" [routerLink]=" ['./'] " routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact: true}">Strona
-          główna</a>
-      </li>
-      <li class="nav-item waves-light mr-5" mdbWavesEffect>
-        <a class="nav-link wow fadeIn" data-wow-delay="0.6s" routerLinkActive="active" routerLink="o-mnie">O mnie</a>
-      </li>
-      <li class="nav-item waves-light mr-5" mdbWavesEffect>
-        <a class="nav-link wow fadeIn" data-wow-delay="0.8s" routerLinkActive="active" routerLink="blog">Blog</a>
-      </li>
-      <li class="nav-item waves-light mr-5" mdbWavesEffect>
-        <a class="nav-link wow fadeIn" data-wow-delay="1s" routerLinkActive="active"
-          routerLink="wspolpraca">Współpraca</a>
-      </li>
-      <li class="nav-item waves-light mr-5" mdbWavesEffect>
-        <a class="nav-link wow fadeIn" data-wow-delay="1.2s" routerLinkActive="active" routerLink="kontakt">Kontakt</a>
-      </li>
-      <li *ngIf="isLogged" class="nav-item dropdown wow fadeIn" dropdown data-wow-delay="1.2s">
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          <mdb-icon fas icon="user"></mdb-icon>Profil<span class="caret"></span>
-        </a>
-        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#" routerLink="nowy-post">Nowy post</a>
-          <a (click)="logout()" class="dropdown-item waves-light" mdbWavesEffect href="#">Wyloguj
-            się</a>
-        </div>
-      </li>
-      <!-- <li *ngIf="isAdmin" class="nav-item waves-light mr-5" mdbWavesEffect>
-        <a class="nav-link wow fadeIn" data-wow-delay="1.4s" routerLinkActive="active" routerLink="nowy-post">Nowy
-          post</a>
-      </li>
-      <li *ngIf="isLogged" class="nav-item waves-light mr-5" mdbWavesEffect>
-        <a class="nav-link wow fadeIn" data-wow-delay="1.4s" (click)="logout()">Wyloguj
-          się</a>
-      </li> -->
+<nav class="top-nav">
+  <div class="top-nav__container">
+    <div>
+      Logo
+    </div>
+    <input class="menu-toggle" id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+      <div class='menu-button'></div>
+    </label>
+    <ul class="menu">
+      <li class="hover" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Strona
+        główna</li>
+      <li class="hover" routerLinkActive="active">O mnie</li>
+      <li class="hover" routerLinkActive="active">Współpraca</li>
+      <li class="hover" routerLinkActive="active">Kontakt</li>
+      <li class="hover" routerLinkActive="active" routerLink="/blog">Blog</li>
+      <li class="hover" routerLinkActive="active">Strefa podopiecznego</li>
     </ul>
-  </links>
-</mdb-navbar>
+  </div>
+</nav>

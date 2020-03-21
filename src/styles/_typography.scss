@@ -1,0 +1,22 @@
+// font-family: 'Righteous', cursive;
+// font-family: 'Raleway', sans-serif;
+// font-family: 'Montserrat', sans-serif;
+@import '../styles/breakpoints';
+
+.title {
+  font-family: 'Righteous', cursive;
+  font-size: 2rem;
+
+  @include breakpoint(phablet) {
+    font-size: 3rem;
+  }
+
+  @include breakpoint(laptop) {
+    font-size: 4rem;
+  }
+}
+
+.text {
+  font-size: 1.1rem;
+  line-height: 1.65;
+}

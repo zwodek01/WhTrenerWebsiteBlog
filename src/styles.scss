@@ -1,0 +1,51 @@
+@import './styles/reset';
+@import './styles/base';
+@import './styles/typography';
+@import './styles/variables';
+
+.line {
+  height: 2px;
+  background-color: $primary-color;
+}
+
+.max-width {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.hover {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: $primary-color;
+    transition: all 0.3s ease 0s;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.active {
+  outline: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: $primary-color;
+  }
+}
+
+.yellow {
+  color: $primary-color;
+}

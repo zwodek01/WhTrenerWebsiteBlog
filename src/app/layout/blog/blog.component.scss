@@ -1,0 +1,40 @@
+@import '../../../styles/breakpoints';
+@import '../../../styles/components';
+
+.blog {
+  padding: 4rem 1rem 2rem;
+
+  &__container {
+    padding: 1rem;
+
+    @include breakpoint(laptop) {
+      display: grid;
+      grid-template-columns: auto 400px;
+      gap: 3rem;
+    }
+  }
+
+  &__posts-list {
+    max-width: 600px;
+    margin: 0 auto;
+
+    @include breakpoint(laptop) {
+      max-width: 750px;
+      margin: 0;
+    }
+  }
+}
+
+
+.blog-aside {
+  display: grid;
+  gap: 3rem;
+  align-self: flex-start;
+
+  &__title {
+    font-size: 1.5rem;
+    font-family: 'Righteous', cursive;
+    line-height: 1.375;
+    text-align: left;
+  }
+}

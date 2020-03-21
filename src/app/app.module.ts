@@ -1,78 +1,71 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { RouterModule, Routes } from '@angular/router';
-import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireModule } from "@angular/fire";
-import { AngularFireAuthModule } from "@angular/fire/auth";
-import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
+import { ScullyLibModule } from '@scullyio/ng-lib';
+import { HomeComponent } from './layout/home/home.component';
+import { BlogComponent } from './layout/blog/blog.component';
+import { CooperationComponent } from './layout/cooperation/cooperation.component';
+import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './layout/login/login.component';
+import { RegisterComponent } from './layout/register/register.component';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import { DashboardAdminComponent } from './layout/dashboard-admin/dashboard-admin.component';
+import { TrainingComponent } from './layout/training/training.component';
+import { DietComponent } from './layout/diet/diet.component';
+import { SupplementationComponent } from './layout/supplementation/supplementation.component';
+import { ReportComponent } from './layout/report/report.component';
+import { QuestionnaireComponent } from './layout/questionnaire/questionnaire.component';
+import { SettingsComponent } from './layout/settings/settings.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { AboutMeComponent } from './components/about-me/about-me.component';
-import { BlogComponent } from './components/blog/blog.component';
-import { CooperationComponent } from './components/cooperation/cooperation.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { NewPostComponent } from './components/blog/new-post/new-post.component';
-import { PostComponent } from './components/blog/post/post.component';
-import { SafePipe } from './safe.pipe';
-import { LoginComponent } from './components/login/login.component';
-import { IsAdminGuard } from './guards/is-admin.guard';
-import { IsloggedGuard } from './guards/islogged.guard';
+import { PostListComponent } from './layout/blog/post-list/post-list.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomePageComponent, data: { animation: 'Home' } },
-  { path: 'o-mnie', component: AboutMeComponent, data: { animation: 'AboutMe' } },
-  { path: 'blog', component: BlogComponent, data: { animation: 'Blog' } },
-  { path: 'wspolpraca', component: CooperationComponent, data: { animation: 'Cooperation' } },
-  { path: 'kontakt', component: ContactComponent, data: { animation: 'Contact' } },
-  { path: 'nowy-post', component: NewPostComponent, canActivate: [IsAdminGuard] },
-  { path: 'blog/:link', component: PostComponent, data: { animation: 'Post' } },
-  { path: 'logowanie', component: LoginComponent, canActivate: [IsloggedGuard] },
-  { path: '**', component: PageNotFoundComponent },
-  { path: '', redirectTo: 'start', pathMatch: 'full' }
+  { path: '', component: HomeComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'wspolpraca', component: CooperationComponent },
+  { path: 'logowanie', component: LoginComponent },
+  { path: 'rejestracja', component: RegisterComponent },
+  { path: 'panel', component: DashboardComponent },
+  { path: 'panel-admin', component: DashboardAdminComponent },
+  { path: 'trening', component: TrainingComponent },
+  { path: 'dieta', component: DietComponent },
+  { path: 'suplementacja', component: SupplementationComponent },
+  { path: 'raport', component: ReportComponent },
+  { path: 'ankieta', component: QuestionnaireComponent },
+  { path: 'ustawienia', component: SettingsComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
-    HomePageComponent,
-    AboutMeComponent,
-    CooperationComponent,
+    HomeComponent,
     BlogComponent,
-    ContactComponent,
+    CooperationComponent,
     PageNotFoundComponent,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent,
+    DashboardAdminComponent,
+    TrainingComponent,
+    DietComponent,
+    SupplementationComponent,
+    ReportComponent,
+    QuestionnaireComponent,
+    SettingsComponent,
+    MenuComponent,
     FooterComponent,
-    NewPostComponent,
-    PostComponent,
-    SafePipe,
-    LoginComponent
+    PostListComponent
   ],
   imports: [
     BrowserModule,
-    MDBBootstrapModule.forRoot(),
-    RouterModule.forRoot(appRoutes, { scrollPositionRestoration: 'enabled' }),
-    RichTextEditorAllModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
-    BrowserAnimationsModule,
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    ScullyLibModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [IsAdminGuard, IsloggedGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,14 +1,19 @@
-<section class="footer black wow fadeIn" data-wow-delay=".2s">
-  <div class="footer__container">
+<footer class="footer">
+  <div class="footer__container max-width">
+    <ul class="footer__links">
+      <li class="footer__link hover" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        Strona główna</li>
+      <li class="footer__link hover">O mnie</li>
+      <li class="footer__link hover">Współpraca</li>
+      <li class="footer__link hover">Kontakt</li>
+      <li class="footer__link hover" routerLinkActive="active" routerLink="/blog">Blog</li>
+      <li class="footer__link hover">Strefa podopiecznego</li>
+    </ul>
+    <div class="line"></div>
+    <p style="text-align:center">LOGO</p>
     <div class="footer__icons">
-      <a class="wow fadeIn" data-wow-delay=".3s" href="#"><img src="../../../assets/facebook-round_3_orig.png"
-          alt=""></a>
-      <a class="wow fadeIn" data-wow-delay=".5s" href="#"><img src="../../../assets/instagram-round-new-100_1.png"
-          alt=""></a>
+      <p style="margin-right: 20px;">FB</p>
+      <p style="margin-left: 20px;">IG</p>
     </div>
-    <hr class="wow fadeIn" data-wow-delay=".7s">
-    <p class="footer__created-by wow fadeIn" data-wow-delay="1s">Created by <a class="footer__color"
-        href="mailto:wpzawadzki.m@gmail.com">Mateusz
-        Zawadzki</a></p>
   </div>
-</section>
+</footer>
