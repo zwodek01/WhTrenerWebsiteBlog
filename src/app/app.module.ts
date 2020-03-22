@@ -20,8 +20,12 @@ import { QuestionnaireComponent } from './layout/questionnaire/questionnaire.com
 import { SettingsComponent } from './layout/settings/settings.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { PostListComponent } from './layout/blog/post-list/post-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatInputModule } from '@angular/material/input';
+import { BlogPipe } from './layout/blog/blog.pipe';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'blog', component: BlogComponent },
@@ -58,12 +62,14 @@ const appRoutes: Routes = [
     SettingsComponent,
     MenuComponent,
     FooterComponent,
-    PostListComponent
-  ],
+    BlogPipe],
   imports: [
     BrowserModule,
     ScullyLibModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
