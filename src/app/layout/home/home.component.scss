@@ -60,7 +60,7 @@
   &__container {
     display: grid;
     gap: 5rem;
-    max-width: 400px;
+    max-width: 600px;
     padding: 1rem;
 
     @include breakpoint(tablet) {
@@ -90,47 +90,86 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .cooperation {
+  display: grid;
+  align-items: center;
+  justify-items: center;
   background-color: $secondary-color;
+  padding: 5rem 1rem;
+  color: #fff;
+
+  &__container {
+    display: grid;
+    justify-items: center;
+    gap: 5rem;
+    max-width: 600px;
+    padding: 1rem;
+
+    @include breakpoint(laptop) {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1300px;
+      gap: 10rem;
+    }
+  }
+
+  &__title {
+    color: $primary-color;
+    text-align: center;
+
+    @include breakpoint(laptop) {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+  }
+
+  &__card {
+    display: grid;
+    gap: 2rem;
+    justify-items: center;
+    background-color: $secondary-light-color;
+    padding: 3rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  &__card-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    transform: rotate(45deg);
+    background-color: $primary-color;
+  }
+
+  &__card-title {
+    font-size: 2rem;
+    font-family: 'Righteous', cursive;
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .slider {}
 
