@@ -35,6 +35,10 @@
   margin: 0 1rem;
 }
 
+.menu>li:nth-last-child(1) {
+  margin: 0;
+}
+
 .menu>li:hover {
   cursor: pointer;
 }

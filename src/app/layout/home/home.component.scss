@@ -7,11 +7,11 @@
   align-items: center;
   background: url('../../../assets/ezgif.com-webp-to-jpg.jpg');
   color: #fff;
+  padding: 5rem 1rem;
 
   &__container {
     display: grid;
     gap: 2rem;
-    padding: 5rem 1rem;
     text-align: center;
 
     @include breakpoint(phablet) {
@@ -44,57 +44,89 @@
   }
 }
 
-
-.fa-chevron-right {
-  margin-left: 10px;
-  transition: .3s;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .about-me {
   background: url('../../../assets/home-11-bg-01.jpg');
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  gap: 5rem;
+  padding: 5rem 1rem;
+
+  @include breakpoint(tablet) {
+    gap: 2rem;
+
+  }
+
+  &__container {
+    display: grid;
+    gap: 5rem;
+    max-width: 400px;
+    padding: 1rem;
+
+    @include breakpoint(tablet) {
+      grid-template-columns: 1fr 1fr;
+      max-width: 1300px;
+      gap: 10rem;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+
+  &__text-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    background-color: $secondary-light-color;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .cooperation {
   background-color: $secondary-color;
@@ -355,4 +387,10 @@
   margin: 0 3px;
   color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
+}
+
+
+.fa-chevron-right {
+  margin-left: 10px;
+  transition: .3s;
 }

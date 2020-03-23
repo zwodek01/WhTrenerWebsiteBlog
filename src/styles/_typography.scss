@@ -29,6 +29,31 @@
   }
 }
 
+.title-section {
+  font-family: 'Righteous', cursive;
+  font-size: 2rem;
+  position: relative;
+
+  @include breakpoint(phablet) {
+    font-size: 3rem;
+  }
+
+  @include breakpoint(laptop) {
+    font-size: 4rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 10px;
+    width: 80px;
+    background-color: #fff;
+  }
+}
+
 .text {
   font-size: 1.1rem;
   line-height: 1.65;
