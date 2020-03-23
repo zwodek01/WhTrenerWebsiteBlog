@@ -63,7 +63,8 @@
   }
 
   &__button-category {
-    margin: 0.3rem;
+    margin: 0.4rem;
+    background-color: #ccc;
   }
 }
 
@@ -76,6 +77,12 @@
     font-size: 1.5rem;
     font-family: 'Righteous', cursive;
     line-height: 1.375;
+    cursor: pointer;
+    justify-self: flex-start;
+
+    &:hover {
+      color: $primary-color;
+    }
   }
 
   &__photo {
@@ -89,4 +96,9 @@
   &__button {
     max-width: 200px;
   }
+}
+
+.phase-active {
+  background-color: $primary-color;
+  transform: scale(1.1);
 }

@@ -37,6 +37,11 @@ export class BlogComponent implements OnInit {
 
   searchText: string;
   list = postList;
+  activeButton = 1;
+
+  showPhase(event) {
+    this.activeButton = event;
+  }
 
   filterCategory($event) {
     this.list = [];

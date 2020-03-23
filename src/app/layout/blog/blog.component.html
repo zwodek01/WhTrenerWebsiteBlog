@@ -27,10 +27,14 @@
       <div class="line"></div>
       <h4 class="blog-aside__title">KATEGORIE</h4>
       <div class="blog-aside__category">
-        <button (click)="filterCategory($event)" class="button blog-aside__button-category">Wszystkie</button>
-        <button (click)="filterCategory($event)" class="button blog-aside__button-category">Sport</button>
-        <button (click)="filterCategory($event)" class="button blog-aside__button-category">Siłownia</button>
-        <button (click)="filterCategory($event)" class="button blog-aside__button-category">Odżywianie</button>
+        <button (click)="showPhase(1)" (click)="filterCategory($event)" [class.phase-active]="activeButton === 1"
+          class="button blog-aside__button-category">Wszystkie</button>
+        <button (click)="showPhase(2)" (click)="filterCategory($event)" [class.phase-active]="activeButton === 2"
+          class="button blog-aside__button-category">Sport</button>
+        <button (click)="showPhase(3)" (click)="filterCategory($event)" [class.phase-active]="activeButton === 3"
+          class="button blog-aside__button-category">Siłownia</button>
+        <button (click)="showPhase(4)" (click)="filterCategory($event)" [class.phase-active]="activeButton === 4"
+          class="button blog-aside__button-category">Odżywianie</button>
       </div>
     </aside>
   </div>
