@@ -5,6 +5,19 @@
 
 .title {
   font-family: 'Righteous', cursive;
+  font-size: 3rem;
+
+  @include breakpoint(phablet) {
+    font-size: 4rem;
+  }
+
+  @include breakpoint(laptop) {
+    font-size: 5rem;
+  }
+}
+
+.sub-title {
+  font-family: 'Raleway', cursive;
   font-size: 2rem;
 
   @include breakpoint(phablet) {

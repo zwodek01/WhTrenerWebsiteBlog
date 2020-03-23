@@ -30,6 +30,10 @@ $whWebsite-theme: mat-light-theme($whWebsite-primary, $whWebsite-accent, $whWebs
 @import './styles/typography';
 @import './styles/variables';
 
+html {
+  scroll-behavior: smooth;
+}
+
 .line {
   height: 2px;
   background-color: $primary-color;

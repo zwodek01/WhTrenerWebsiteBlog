@@ -1,20 +1,22 @@
-<nav class="top-nav">
-  <div class="top-nav__container">
-    <div>
-      Logo
+<header>
+  <nav class="top-nav">
+    <div class="top-nav__container">
+      <div>
+        Logo
+      </div>
+      <input class="menu-toggle" id="menu-toggle" type="checkbox" />
+      <label class='menu-button-container' for="menu-toggle">
+        <div class='menu-button'></div>
+      </label>
+      <ul class="menu">
+        <li class="hover" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Strona
+          główna</li>
+        <li class="hover" routerLinkActive="active">O mnie</li>
+        <li class="hover" routerLinkActive="active">Współpraca</li>
+        <li class="hover" routerLinkActive="active">Kontakt</li>
+        <li class="hover" routerLinkActive="active" routerLink="/blog">Blog</li>
+        <li class="hover" routerLinkActive="active">Strefa podopiecznego</li>
+      </ul>
     </div>
-    <input class="menu-toggle" id="menu-toggle" type="checkbox" />
-    <label class='menu-button-container' for="menu-toggle">
-      <div class='menu-button'></div>
-    </label>
-    <ul class="menu">
-      <li class="hover" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Strona
-        główna</li>
-      <li class="hover" routerLinkActive="active">O mnie</li>
-      <li class="hover" routerLinkActive="active">Współpraca</li>
-      <li class="hover" routerLinkActive="active">Kontakt</li>
-      <li class="hover" routerLinkActive="active" routerLink="/blog">Blog</li>
-      <li class="hover" routerLinkActive="active">Strefa podopiecznego</li>
-    </ul>
-  </div>
-</nav>
+  </nav>
+</header>
