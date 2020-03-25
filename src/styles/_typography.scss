@@ -33,6 +33,7 @@
   font-family: 'Righteous', cursive;
   font-size: 2rem;
   position: relative;
+  text-align: center;
 
   @include breakpoint(phablet) {
     font-size: 3rem;

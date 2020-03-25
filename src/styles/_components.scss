@@ -29,40 +29,52 @@ mat-label {
 
 ::ng-deep .mat-form-field.mat-focused {
   .mat-form-field-label {
-    color: $secondary-light-color;
+    color: $primary-color;
   }
 
   .mat-form-field-ripple {
-    background-color: $secondary-light-color;
+    background-color: $primary-color;
   }
 
   .mat-form-field-required-marker {
-    color: $secondary-light-color;
+    color: $primary-color;
   }
 
   .mat-input-element {
-    color: $secondary-light-color;
+    color: $primary-color;
   }
+
+
 }
+
+
 
 ::ng-deep .mat-form-field {
   .mat-input-element {
-    color: $secondary-light-color;
+    color: $primary-color;
   }
 
   .mat-form-field-label {
-    color: $secondary-light-color;
+    color: $primary-color;
   }
 
   .mat-form-field-underline {
-    background-color: $secondary-light-color;
+    background-color: $primary-color;
   }
 
   .mat-form-field-ripple {
-    background-color: $secondary-light-color;
+    background-color: $primary-color;
   }
 
   .mat-form-field-required-marker {
-    color: $secondary-light-color;
+    color: $primary-color;
+  }
+
+  .mat-form-field-appearance-outline {
+    color: $primary-color;
+  }
+
+  .mat-form-field-outline {
+    color: $primary-color;
   }
 }

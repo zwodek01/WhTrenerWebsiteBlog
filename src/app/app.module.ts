@@ -7,7 +7,7 @@ import { HomeComponent } from './layout/home/home.component';
 import { BlogComponent } from './layout/blog/blog.component';
 import { CooperationComponent } from './layout/cooperation/cooperation.component';
 import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { LoginComponent } from './layout/login/login.component';
 import { RegisterComponent } from './layout/register/register.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { BlogPipe } from './layout/blog/blog.pipe';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,6 +42,12 @@ const appRoutes: Routes = [
   { path: 'ustawienia', component: SettingsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
+
+const routerOptions: ExtraOptions = {
+  useHash: false,
+  anchorScrolling: 'enabled',
+  scrollPositionRestoration: 'enabled'
+};
 
 @NgModule({
   declarations: [
@@ -66,12 +73,13 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     ScullyLibModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, routerOptions),
     BrowserAnimationsModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

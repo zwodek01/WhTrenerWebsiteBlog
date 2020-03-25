@@ -1,19 +1,20 @@
 <footer class="footer">
   <div class="footer__container max-width">
     <ul class="footer__links">
-      <li class="footer__link hover" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <li class="footer__link hover" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        (click)="scrollToTarget('hero')">
         Strona główna</li>
-      <li class="footer__link hover">O mnie</li>
-      <li class="footer__link hover">Współpraca</li>
-      <li class="footer__link hover">Kontakt</li>
+      <li class="footer__link hover" (click)="scrollToTarget('about-me')">O mnie</li>
+      <li (click)="scrollToTarget('cooperation')" class="footer__link hover">Współpraca</li>
+      <li (click)="scrollToTarget('contact')" class="footer__link hover">Kontakt</li>
       <li class="footer__link hover" routerLinkActive="active" routerLink="/blog">Blog</li>
-      <li class="footer__link hover">Strefa podopiecznego</li>
+      <li *ngIf=false class="footer__link hover">Strefa podopiecznego</li>
     </ul>
     <div class="line"></div>
     <p style="text-align:center">LOGO</p>
     <div class="footer__icons">
-      <p style="margin-right: 20px;">FB</p>
-      <p style="margin-left: 20px;">IG</p>
+      <a class="footer__icon footer__icon--fb hover hover-effect" href="#"><i class="fab fa-facebook-f"></i></a>
+      <a class="footer__icon footer__icon--ig hover hover-effect" href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </div>
 </footer>
