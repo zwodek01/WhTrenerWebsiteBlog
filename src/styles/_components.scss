@@ -9,6 +9,16 @@
   outline: none;
   border-radius: 1rem;
   transition: .3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 220px;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    height: 31px;
+  }
 
   &:hover:enabled {
     cursor: pointer;

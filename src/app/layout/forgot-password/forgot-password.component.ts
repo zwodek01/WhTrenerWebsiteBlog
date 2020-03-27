@@ -15,11 +15,18 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  showLoader: boolean;
+
   forgotForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]]
   });
 
   forgotPassword() {
-    this.firebaseService.forgotPassword(this.forgotForm.value.email);
+    this.showLoader = true;
+    this.firebaseService
+      .forgotPassword(this.forgotForm.value.email)
+      .then(() => {
+        this.showLoader = false;
+      });
   }
 }

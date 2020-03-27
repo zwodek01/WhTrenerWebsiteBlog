@@ -45,6 +45,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { VerifyPopupComponent } from './components/popups/verify-popup/verify-popup.component';
 import { RegisterPopupComponent } from './components/popups/register-popup/register-popup.component';
 import { ForgotPopupComponent } from './components/popups/forgot-popup/forgot-popup.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // ROUTES
 const appRoutes: Routes = [
@@ -85,7 +86,11 @@ const appRoutes: Routes = [
     component: SettingsComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'przypomnij-haslo', component: ForgotPasswordComponent },
+  {
+    path: 'przypomnij-haslo',
+    component: ForgotPasswordComponent,
+    canActivate: [UserLoggedGuard]
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -131,6 +136,7 @@ const routerOptions: ExtraOptions = {
     ReactiveFormsModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

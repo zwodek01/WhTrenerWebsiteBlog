@@ -53,10 +53,7 @@ export class FirebaseService {
       .then(res => {
         this.setUserData(res.user);
         if (res.user.emailVerified === false) {
-          this.router.navigate(['/']);
-          setTimeout(() => {
-            this.openPopup(VerifyPopupComponent);
-          }, 300);
+          this.openPopup(VerifyPopupComponent);
         } else {
           this.notificationService.notifycation('Zalogowano 💪✔', 'done');
           setTimeout(() => {
@@ -155,7 +152,6 @@ export class FirebaseService {
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
         this.openPopup(ForgotPopupComponent);
-        this.router.navigate(['/']);
       })
       .catch(error => {
         switch (error.code) {

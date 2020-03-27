@@ -31,9 +31,11 @@
         </mat-error>
       </mat-form-field>
       <mat-checkbox formControlName="rules" required>Akceptuje wszystkie regulaminy</mat-checkbox>
-      <button type="button" (click)="register()" [disabled]="!registerForm.valid" class="button register__button"><span
-          *ngIf="!registerForm.valid">WYPEŁNIJ WSZYTSKIE POLA</span> <span
-          *ngIf="registerForm.valid">REJESTRUJ</span></button>
+      <button type="submit" (click)="register()" [disabled]="!registerForm.valid" class="button register__button"><span
+          class="button__text" *ngIf="!registerForm.valid && !showLoader">WYPEŁNIJ WSZYTSKIE POLA</span> <span
+          class="button__text" *ngIf="registerForm.valid && !showLoader">REJESTRUJ</span>
+        <mat-spinner *ngIf="showLoader" [diameter]="31"></mat-spinner>
+      </button>
     </form>
   </div>
 </section>

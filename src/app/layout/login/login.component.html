@@ -16,8 +16,10 @@
           Wpisz hasło (minimum 6 znaków)
         </mat-error>
       </mat-form-field>
-      <button type="button" (click)="loginWithEmailAndPassword()" [disabled]="!loginForm.valid" class="button">
-        <span *ngIf="!loginForm.valid">WYPEŁNIJ WSZYTSKIE POLA</span> <span *ngIf="loginForm.valid">ZALOGUJ</span>
+      <button type="submit" (click)="loginWithEmailAndPassword()" [disabled]="!loginForm.valid" class="button">
+        <span class="button__text" *ngIf="!loginForm.valid && !showLoader">WYPEŁNIJ WSZYTSKIE POLA</span> <span
+          class="button__text" *ngIf="loginForm.valid && !showLoader">ZALOGUJ</span>
+        <mat-spinner *ngIf="showLoader" [diameter]="31"></mat-spinner>
       </button>
     </form>
     <p class="text">LUB</p>

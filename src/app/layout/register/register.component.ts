@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  showLoader: boolean;
+
   registerForm = this.fb.group(
     {
       name: ['', [Validators.required, Validators.minLength(3)]],
@@ -42,10 +44,13 @@ export class RegisterComponent implements OnInit {
       }
     };
   }
+
   register() {
-    this.firebaseService.register(
-      this.registerForm.value.email,
-      this.registerForm.value.password
-    );
+    this.showLoader = true;
+    this.firebaseService
+      .register(this.registerForm.value.email, this.registerForm.value.password)
+      .then(() => {
+        this.showLoader = false;
+      });
   }
 }

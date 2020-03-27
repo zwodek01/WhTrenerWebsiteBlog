@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  showLoader: boolean;
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -21,10 +23,15 @@ export class LoginComponent implements OnInit {
   });
 
   loginWithEmailAndPassword() {
-    this.firebaseService.loginWithEmailAndPassword(
-      this.loginForm.value.email,
-      this.loginForm.value.password
-    );
+    this.showLoader = true;
+    this.firebaseService
+      .loginWithEmailAndPassword(
+        this.loginForm.value.email,
+        this.loginForm.value.password
+      )
+      .then(() => {
+        this.showLoader = false;
+      });
   }
 
   loginWithGoogle() {
