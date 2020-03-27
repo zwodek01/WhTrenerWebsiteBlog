@@ -2,6 +2,8 @@
 
 # compiled output
 /dist
+/dist/*
+/dist/static
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -30,6 +32,7 @@ speed-measure-plugin*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+.vscode/
 
 # misc
 /.sass-cache
