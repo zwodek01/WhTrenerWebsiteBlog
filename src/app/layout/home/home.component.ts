@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   constructor(private menuComponent: MenuComponent) {}
 
   ngOnInit(): void {}
+
   bmiForm = new FormGroup({
     weight: new FormControl('', [Validators.required]),
     height: new FormControl('', [Validators.required])

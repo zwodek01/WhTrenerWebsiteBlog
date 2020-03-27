@@ -1,0 +1,26 @@
+@import '../../../styles/components';
+@import '../../../styles/variables';
+
+.popup {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 1rem;
+
+  @include breakpoint(laptop) {
+    gap: 3rem;
+  }
+
+  &__icon {
+    font-size: 5rem;
+  }
+
+  &__button {
+    width: 300px;
+  }
+
+  &__warning {
+    color: $warning;
+    font-weight: bold;
+  }
+}
