@@ -13,6 +13,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthGuard } from './guards/auth.guard';
 import { UserLoggedGuard } from './guards/user-logged.guard';
+import { AdminGuard } from './guards/admin.guard';
+
 import 'firebase/firestore';
 
 // COMPONENTS
@@ -66,7 +68,7 @@ const appRoutes: Routes = [
   {
     path: 'panel-admin',
     component: DashboardAdminComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AdminGuard]
   },
   { path: 'trening', component: TrainingComponent, canActivate: [AuthGuard] },
   { path: 'dieta', component: DietComponent, canActivate: [AuthGuard] },

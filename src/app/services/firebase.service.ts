@@ -11,7 +11,8 @@ import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { RegisterPopupComponent } from '../components/popups/register-popup/register-popup.component';
 import { VerifyPopupComponent } from '../components/popups/verify-popup/verify-popup.component';
 import { ForgotPopupComponent } from '../components/popups/forgot-popup/forgot-popup.component';
-
+import { map, first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class FirebaseService {
 
   constructor(
     private afs: AngularFirestore,
-    private afAuth: AngularFireAuth,
+    public afAuth: AngularFireAuth,
     private router: Router,
     private notificationService: NotificationService,
     private dialog: MatDialog,
@@ -34,6 +35,20 @@ export class FirebaseService {
         localStorage.setItem('user', null);
       }
     });
+  }
+
+  async isAdmin() {
+    const res = await this.afAuth.authState.pipe(first()).toPromise();
+    if (res === null) {
+      return false;
+    } else {
+      return this.afs
+        .collection('users')
+        .doc(res.uid)
+        .valueChanges()
+        .pipe(first())
+        .toPromise();
+    }
   }
 
   get isLoggedIn(): string {
