@@ -55,19 +55,10 @@ mat-label {
   .mat-form-field-required-marker {
     color: $primary-color;
   }
-
-  .mat-input-element {
-    color: #fff;
-    font-weight: bold;
-  }
 }
 
 ::ng-deep .mat-form-field {
   width: 100%;
-
-  .mat-input-element {
-    color: #fff;
-  }
 
   .mat-form-field-label {
     color: $primary-color;

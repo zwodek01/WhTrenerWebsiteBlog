@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-admin.component.scss']
 })
 export class DashboardAdminComponent implements OnInit {
-
-  constructor() { }
+  constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit(): void {
+    this.getAllDataUser();
   }
 
+  userData;
+
+  getAllDataUser() {
+    this.userData = this.firebaseService.afs
+      .collection('users')
+      .valueChanges()
+      .subscribe(users => {
+        console.log(users);
+      });
+  }
+
+  ngOnDestroy() {
+    this.userData.unsubscribe();
+  }
 }

@@ -1,18 +1,15 @@
 import { Injectable, NgZone } from '@angular/core';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument
-} from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { NotificationService } from './notification.service';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { RegisterPopupComponent } from '../components/popups/register-popup/register-popup.component';
 import { VerifyPopupComponent } from '../components/popups/verify-popup/verify-popup.component';
 import { ForgotPopupComponent } from '../components/popups/forgot-popup/forgot-popup.component';
-import { map, first } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +17,7 @@ export class FirebaseService {
   userData: any;
 
   constructor(
-    private afs: AngularFirestore,
+    public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     private router: Router,
     private notificationService: NotificationService,
@@ -193,9 +190,6 @@ export class FirebaseService {
   }
 
   setUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
     const userData = {
       uid: user.uid,
       email: user.email,
@@ -203,9 +197,10 @@ export class FirebaseService {
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     };
-    return userRef.set(userData, {
-      merge: true
-    });
+    return this.afs
+      .collection('users')
+      .doc(user.uid)
+      .set(userData, { merge: true });
   }
 
   logout() {
@@ -228,5 +223,9 @@ export class FirebaseService {
     dialogConfig.disableClose = true;
     dialogConfig.maxWidth = 800;
     this.dialog.open(component, dialogConfig);
+  }
+
+  getAllDataUser() {
+    return this.afs.collection('user').valueChanges();
   }
 }
