@@ -48,6 +48,7 @@ import { VerifyPopupComponent } from './components/popups/verify-popup/verify-po
 import { RegisterPopupComponent } from './components/popups/register-popup/register-popup.component';
 import { ForgotPopupComponent } from './components/popups/forgot-popup/forgot-popup.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 // ROUTES
 const appRoutes: Routes = [
@@ -142,7 +143,8 @@ const routerOptions: ExtraOptions = {
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ],
   providers: [MenuComponent, AngularFirestore],
   bootstrap: [AppComponent]
