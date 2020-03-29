@@ -1,18 +1,21 @@
-<app-menu *ngIf="activeRoute">
+<app-menu *ngIf="route">
 </app-menu>
 <mat-sidenav-container (backdropClick)="close('backdrop')">
-  <mat-sidenav *ngIf="!activeRoute" class="sidenav" #sidenav>
+  <mat-sidenav *ngIf="!route" class="sidenav" #sidenav>
     <button class="sidenav__button sidenav__button--close" (click)="close('backdrop')"><i
         class="fas fa-times"></i></button>
     <div class="sidenav__container">
       <h1>LOGO</h1>
       <div class="line"></div>
-      <div class="sidenav__circle"></div>
-      <h2>Nazwa profilu</h2>
+      <div *ngIf="user" class="sidenav__circle" [ngStyle]="{'background-image': 'url(' + user?.photoURL + ')'}"></div>
+      <h2>{{user?.displayName}}</h2>
       <div class="line"></div>
       <ul class="sidenav__menu">
         <li (click)="close('backdrop')" routerLink="/panel" routerLinkActive="active" class="sidenav__menu-item hover">
           Panel użytkownika</li>
+        <li *ngIf="admin" (click)="close('backdrop')" routerLink="/panel-admin" routerLinkActive="active"
+          class="sidenav__menu-item hover">
+          Panel admina</li>
         <li (click)="close('backdrop')" routerLink="/trening" routerLinkActive="active"
           class="sidenav__menu-item hover">Treningi</li>
         <li (click)="close('backdrop')" routerLink="/dieta" routerLinkActive="active" class="sidenav__menu-item hover">
@@ -28,11 +31,12 @@
         <li (click)="close('backdrop')" routerLink="/ustawienia" routerLinkActive="active"
           class="sidenav__menu-item hover">Ustawienia</li>
       </ul>
+      <button (click)="logout()" class="button">Wyloguj się</button>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <button class="sidenav__button sidenav__button--open" (click)="sidenav.open()"><i class="fas fa-bars"></i></button>
     <router-outlet></router-outlet>
-    <app-footer *ngIf="activeRoute"></app-footer>
+    <app-footer *ngIf="route"></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

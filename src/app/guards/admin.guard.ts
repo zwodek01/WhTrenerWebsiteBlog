@@ -30,7 +30,7 @@ export class AdminGuard implements CanActivate {
       if (value['admin'] === true) {
         return true;
       } else {
-        this.router.navigate(['/404']);
+        this.router.navigate(['/logowanie']);
         return false;
       }
     });

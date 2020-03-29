@@ -1,0 +1,29 @@
+<div class="popup">
+  <span class="popup__icon">✉</span>
+  <h2 class="sub-title">Zmień e-mail</h2>
+  <mat-dialog-content>
+    <form autocomplete="off" [formGroup]="changeEmailForm" class="popup__form">
+      <mat-form-field appearance="outline">
+        <mat-label>Wpisz nowy e-mail</mat-label>
+        <input matInput formControlName="email" name="email">
+        <mat-error>
+          Wpisz poprawny e-mail
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Powtórz e-mail</mat-label>
+        <input matInput formControlName="repeatEmail" name="repeatEmail">
+        <mat-error>
+          E-mail musi być taki sam
+        </mat-error>
+      </mat-form-field>
+      <button type="submit" (click)="changeEmail()" [disabled]="!changeEmailForm.valid" class="button popup__button-ok">
+        <span class="button__text" *ngIf="!changeEmailForm.valid && !showLoader">WYPEŁNIJ WSZYTSKIE POLA</span> <span
+          class="button__text" *ngIf="changeEmailForm.valid && !showLoader">ZALOGUJ</span>
+        <mat-spinner *ngIf="showLoader" [diameter]="31"></mat-spinner>
+      </button>
+    </form>
+
+  </mat-dialog-content>
+  <button [mat-dialog-close]="true" class="popup__close-button"><i class="fas fa-times"></i></button>
+</div>

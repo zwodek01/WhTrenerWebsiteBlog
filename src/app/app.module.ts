@@ -49,6 +49,10 @@ import { RegisterPopupComponent } from './components/popups/register-popup/regis
 import { ForgotPopupComponent } from './components/popups/forgot-popup/forgot-popup.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ChangeNamePopupComponent } from './components/popups/change-name-popup/change-name-popup.component';
+import { ChangeEmailPopupComponent } from './components/popups/change-email-popup/change-email-popup.component';
+import { ChangePasswordPopupComponent } from './components/popups/change-password-popup/change-password-popup.component';
+import { DeleteAccountPopupComponent } from './components/popups/delete-account-popup/delete-account-popup.component';
 
 // ROUTES
 const appRoutes: Routes = [
@@ -127,7 +131,11 @@ const routerOptions: ExtraOptions = {
     VeryfiEmailComponent,
     VerifyPopupComponent,
     RegisterPopupComponent,
-    ForgotPopupComponent
+    ForgotPopupComponent,
+    ChangeNamePopupComponent,
+    ChangeEmailPopupComponent,
+    ChangePasswordPopupComponent,
+    DeleteAccountPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -146,7 +154,7 @@ const routerOptions: ExtraOptions = {
     MatDialogModule,
     MatSidenavModule
   ],
-  providers: [MenuComponent, AngularFirestore],
+  providers: [MenuComponent, AngularFirestore, VerifyPopupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

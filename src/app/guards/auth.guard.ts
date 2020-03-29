@@ -9,6 +9,7 @@ import {
 import { Observable } from 'rxjs';
 import { FirebaseService } from '../services/firebase.service';
 import { VerifyPopupComponent } from '../components/popups/verify-popup/verify-popup.component';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +28,16 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.firebaseService.isLoggedIn === 'notLogged') {
-      this.router.navigate(['/logowanie']);
-    } else if (this.firebaseService.isLoggedIn === 'notVerify') {
-      this.router.navigate(['/']);
-      this.firebaseService.openPopup(VerifyPopupComponent);
-    } else {
-      return true;
-    }
+    return this.firebaseService.authState$.pipe(
+      map(user => {
+        if (user === null) {
+          this.router.navigate(['/logowanie']);
+        } else if (user.emailVerified === false) {
+          this.firebaseService.openPopup(VerifyPopupComponent);
+        } else {
+          return true;
+        }
+      })
+    );
   }
 }

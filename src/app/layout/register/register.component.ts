@@ -48,7 +48,11 @@ export class RegisterComponent implements OnInit {
   register() {
     this.showLoader = true;
     this.firebaseService
-      .register(this.registerForm.value.email, this.registerForm.value.password)
+      .register(
+        this.registerForm.value.email,
+        this.registerForm.value.password,
+        this.registerForm.value.name
+      )
       .then(() => {
         this.showLoader = false;
       });

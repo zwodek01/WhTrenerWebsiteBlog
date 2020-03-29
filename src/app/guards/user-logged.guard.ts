@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FirebaseService } from '../services/firebase.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +27,14 @@ export class UserLoggedGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.firebaseService.isLoggedIn === 'logged') {
-      this.router.navigate(['/panel']);
-    } else {
-      return true;
-    }
+    return this.firebaseService.authState$.pipe(
+      map(user => {
+        if (user !== null) {
+          this.router.navigate(['/panel']);
+        } else {
+          return true;
+        }
+      })
+    );
   }
 }

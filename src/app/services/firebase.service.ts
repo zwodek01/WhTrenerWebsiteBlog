@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { auth } from 'firebase/app';
+import { auth, User } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -9,12 +9,16 @@ import { RegisterPopupComponent } from '../components/popups/register-popup/regi
 import { VerifyPopupComponent } from '../components/popups/verify-popup/verify-popup.component';
 import { ForgotPopupComponent } from '../components/popups/forgot-popup/forgot-popup.component';
 import { first } from 'rxjs/operators';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
   userData: any;
+  admin;
+  authState$: Observable<User | null> = this.afAuth.authState;
 
   constructor(
     public afs: AngularFirestore,
@@ -27,10 +31,18 @@ export class FirebaseService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
+        sessionStorage.setItem(
+          'userDetails',
+          JSON.stringify({
+            uid: this.userData.uid
+          })
+        );
       } else {
-        localStorage.setItem('user', null);
+        sessionStorage.setItem('userDetails', null);
       }
+    });
+    this.isAdmin().then(user => {
+      this.admin = user['admin'];
     });
   }
 
@@ -48,26 +60,15 @@ export class FirebaseService {
     }
   }
 
-  get isLoggedIn(): string {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user === null) {
-      return 'notLogged';
-    } else if (user.emailVerified === false) {
-      return 'notVerify';
-    } else {
-      return 'logged';
-    }
-  }
-
   loginWithEmailAndPassword(email: string, password: string) {
     return this.afAuth.auth
       .signInWithEmailAndPassword(email, password)
       .then(res => {
-        this.setUserData(res.user);
+        this.setUserData(res.user, res.user.displayName);
         if (res.user.emailVerified === false) {
           this.openPopup(VerifyPopupComponent);
         } else {
-          this.notificationService.notifycation('Zalogowano 💪✔', 'done');
+          this.notificationService.notifycation('Zalogowano ✔', 'done');
           setTimeout(() => {
             this.router.navigate(['/panel']);
           }, 300);
@@ -77,19 +78,19 @@ export class FirebaseService {
         switch (error.code) {
           case 'auth/user-not-found':
             this.notificationService.notifycation(
-              'Nieprawidłowy e-mail ❌😔',
+              'Nieprawidłowy e-mail ❌',
               'error'
             );
             break;
           case 'auth/wrong-password':
             this.notificationService.notifycation(
-              'Nieprawidłowe hasło ❌😔',
+              'Nieprawidłowe hasło ❌',
               'error'
             );
             break;
           default:
             this.notificationService.notifycation(
-              'Błąd z logowaniem. Spróbuj jeszcze raz ❌😔',
+              'Błąd z logowaniem. Spróbuj jeszcze raz ❌',
               'error'
             );
             console.log(error);
@@ -105,8 +106,8 @@ export class FirebaseService {
     return this.afAuth.auth
       .signInWithPopup(provider)
       .then(res => {
-        this.setUserData(res.user);
-        this.notificationService.notifycation('Zalogowano 💪✔', 'done');
+        this.setUserData(res.user, res.user.displayName);
+        this.notificationService.notifycation('Zalogowano ✔', 'done');
         setTimeout(() => {
           this.ngZone.run(() => {
             this.router.navigate(['/panel']);
@@ -115,37 +116,42 @@ export class FirebaseService {
       })
       .catch(error => {
         this.notificationService.notifycation(
-          'Błąd z logowaniem. Spróbuj jeszcze raz ❌😔',
+          'Błąd z logowaniem. Spróbuj jeszcze raz ❌',
           'error'
         );
         console.log(error);
       });
   }
 
-  register(email, password) {
+  register(email, password, name) {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
         this.sendVerificationMail();
-        this.setUserData(res.user);
+        this.setUserData(res.user, name);
+        firebase.auth().currentUser.updateProfile({
+          displayName: name,
+          photoURL:
+            'https://firebasestorage.googleapis.com/v0/b/test-pelicar.appspot.com/o/avatar.jpg?alt=media&token=4d987f86-4cac-4a74-a599-1df42d877ff3'
+        });
       })
       .catch(error => {
         switch (error.code) {
           case 'auth/invalid-email':
             this.notificationService.notifycation(
-              'Nieprawidłowy e-mail ❌😔',
+              'Nieprawidłowy e-mail ❌',
               'error'
             );
             break;
           case 'auth/email-already-in-use':
             this.notificationService.notifycation(
-              'Konto już istnieje ❌😔',
+              'Konto już istnieje ❌',
               'error'
             );
             break;
           default:
             this.notificationService.notifycation(
-              'Błąd z logowaniem. Spróbuj jeszcze raz ❌😔',
+              'Błąd z logowaniem. Spróbuj jeszcze raz ❌',
               'error'
             );
             console.log(error);
@@ -169,19 +175,19 @@ export class FirebaseService {
         switch (error.code) {
           case 'auth/invalid-email':
             this.notificationService.notifycation(
-              'Nieprawidłowy e-mail. Popraw go ❌😔',
+              'Nieprawidłowy e-mail. Popraw go ❌',
               'error'
             );
             break;
           case 'auth/user-not-found':
             this.notificationService.notifycation(
-              'Nie ma takiego konta ❌😔',
+              'Nie ma takiego konta ❌',
               'error'
             );
             break;
           default:
             this.notificationService.notifycation(
-              'Błąd! Spróbuj jeszcze raz ❌😔',
+              'Błąd! Spróbuj jeszcze raz ❌',
               'error'
             );
             console.log(error);
@@ -189,11 +195,11 @@ export class FirebaseService {
       });
   }
 
-  setUserData(user) {
+  setUserData(user, name) {
     const userData = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      displayName: name,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     };
@@ -212,7 +218,7 @@ export class FirebaseService {
       })
       .catch(() => {
         this.notificationService.notifycation(
-          'Błąd! Spróbuj jeszcze raz ❌😔',
+          'Błąd! Spróbuj jeszcze raz ❌',
           'error'
         );
       });
@@ -222,10 +228,32 @@ export class FirebaseService {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.maxWidth = 800;
+    dialogConfig.autoFocus = false;
     this.dialog.open(component, dialogConfig);
   }
 
-  getAllDataUser() {
-    return this.afs.collection('user').valueChanges();
+  getUserDetails(uid: string) {
+    return this.afs
+      .collection('users')
+      .doc(uid)
+      .valueChanges();
   }
+
+  // changeEmail(email) {
+  //   return firebase
+  //     .auth()
+  //     .currentUser.updateEmail(email)
+  //     .then(() => {
+  //       this.notificationService.notifycation(
+  //         'E-mail został zmieniony ✔\nAby dalej korzystać z serwisu wejdź \nna e-maila podanego w formualrzu\ni zaakceptuj zmianę.',
+  //         'done'
+  //       );
+  //     })
+  //     .catch(() => {
+  //       this.notificationService.notifycation(
+  //         'Błąd! Spróbuj jeszcze raz ❌',
+  //         'error'
+  //       );
+  //     });
+  // }
 }
