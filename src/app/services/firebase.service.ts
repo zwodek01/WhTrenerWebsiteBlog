@@ -8,7 +8,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { RegisterPopupComponent } from '../components/popups/register-popup/register-popup.component';
 import { VerifyPopupComponent } from '../components/popups/verify-popup/verify-popup.component';
 import { ForgotPopupComponent } from '../components/popups/forgot-popup/forgot-popup.component';
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 

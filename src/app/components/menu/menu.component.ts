@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { AppComponent } from 'src/app/app.component';
+import { AppAreaComponent } from 'src/app/app-area/app-area.component';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -12,8 +12,7 @@ export class MenuComponent implements OnInit {
   constructor(
     private router: Router,
     private viewportScroller: ViewportScroller,
-    private firebaseService: FirebaseService,
-    private appComponent: AppComponent
+    private firebaseService: FirebaseService
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +40,6 @@ export class MenuComponent implements OnInit {
   }
 
   logout() {
-    this.appComponent.adminData.unsubscribe();
     this.firebaseService.logout();
   }
 }

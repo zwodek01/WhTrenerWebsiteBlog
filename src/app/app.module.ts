@@ -2,7 +2,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ScullyLibModule } from '@scullyio/ng-lib';
-import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,30 +13,30 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthGuard } from './guards/auth.guard';
 import { UserLoggedGuard } from './guards/user-logged.guard';
 import { AdminGuard } from './guards/admin.guard';
-
+import { AppRoutingModule } from './app-routing.module';
 import 'firebase/firestore';
 
 // COMPONENTS
 import { AppComponent } from './app.component';
-import { HomeComponent } from './layout/home/home.component';
-import { BlogComponent } from './layout/blog/blog.component';
-import { CooperationComponent } from './layout/cooperation/cooperation.component';
-import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
-import { LoginComponent } from './layout/login/login.component';
-import { RegisterComponent } from './layout/register/register.component';
-import { DashboardComponent } from './layout/dashboard/dashboard.component';
-import { DashboardAdminComponent } from './layout/dashboard-admin/dashboard-admin.component';
-import { TrainingComponent } from './layout/training/training.component';
-import { DietComponent } from './layout/diet/diet.component';
-import { SupplementationComponent } from './layout/supplementation/supplementation.component';
-import { ReportComponent } from './layout/report/report.component';
-import { QuestionnaireComponent } from './layout/questionnaire/questionnaire.component';
-import { SettingsComponent } from './layout/settings/settings.component';
+import { HomeComponent } from './website/home/home.component';
+import { BlogComponent } from './website/blog/blog.component';
+import { CooperationComponent } from './website/cooperation/cooperation.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './website/login/login.component';
+import { RegisterComponent } from './website/register/register.component';
+import { DashboardComponent } from './app-area/dashboard/dashboard.component';
+import { DashboardAdminComponent } from './app-area/dashboard-admin/dashboard-admin.component';
+import { TrainingComponent } from './app-area/training/training.component';
+import { DietComponent } from './app-area/diet/diet.component';
+import { SupplementationComponent } from './app-area/supplementation/supplementation.component';
+import { ReportComponent } from './app-area/report/report.component';
+import { QuestionnaireComponent } from './app-area/questionnaire/questionnaire.component';
+import { SettingsComponent } from './app-area/settings/settings.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BlogPipe } from './layout/blog/blog.pipe';
-import { ForgotPasswordComponent } from './layout/forgot-password/forgot-password.component';
-import { VeryfiEmailComponent } from './layout/veryfi-email/veryfi-email.component';
+import { BlogPipe } from './website/blog/blog.pipe';
+import { ForgotPasswordComponent } from './website/forgot-password/forgot-password.component';
+import { VeryfiEmailComponent } from './website/veryfi-email/veryfi-email.component';
 
 // ANGULAR MATERIAL
 import { MatInputModule } from '@angular/material/input';
@@ -53,59 +52,8 @@ import { ChangeNamePopupComponent } from './components/popups/change-name-popup/
 import { ChangeEmailPopupComponent } from './components/popups/change-email-popup/change-email-popup.component';
 import { ChangePasswordPopupComponent } from './components/popups/change-password-popup/change-password-popup.component';
 import { DeleteAccountPopupComponent } from './components/popups/delete-account-popup/delete-account-popup.component';
-
-// ROUTES
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'blog', component: BlogComponent },
-  { path: 'wspolpraca', component: CooperationComponent },
-  {
-    path: 'logowanie',
-    component: LoginComponent,
-    canActivate: [UserLoggedGuard]
-  },
-  {
-    path: 'rejestracja',
-    component: RegisterComponent,
-    canActivate: [UserLoggedGuard]
-  },
-  { path: 'panel', component: DashboardComponent, canActivate: [AuthGuard] },
-  {
-    path: 'panel-admin',
-    component: DashboardAdminComponent,
-    canActivate: [AdminGuard]
-  },
-  { path: 'trening', component: TrainingComponent, canActivate: [AuthGuard] },
-  { path: 'dieta', component: DietComponent, canActivate: [AuthGuard] },
-  {
-    path: 'suplementacja',
-    component: SupplementationComponent,
-    canActivate: [AuthGuard]
-  },
-  { path: 'raport', component: ReportComponent, canActivate: [AuthGuard] },
-  {
-    path: 'ankieta',
-    component: QuestionnaireComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'ustawienia',
-    component: SettingsComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'przypomnij-haslo',
-    component: ForgotPasswordComponent,
-    canActivate: [UserLoggedGuard]
-  },
-  { path: '**', component: PageNotFoundComponent }
-];
-
-const routerOptions: ExtraOptions = {
-  useHash: false,
-  anchorScrolling: 'enabled',
-  scrollPositionRestoration: 'enabled'
-};
+import { WebsiteComponent } from './website/website.component';
+import { AppAreaComponent } from './app-area/app-area.component';
 
 @NgModule({
   declarations: [
@@ -135,12 +83,14 @@ const routerOptions: ExtraOptions = {
     ChangeNamePopupComponent,
     ChangeEmailPopupComponent,
     ChangePasswordPopupComponent,
-    DeleteAccountPopupComponent
+    DeleteAccountPopupComponent,
+    WebsiteComponent,
+    AppAreaComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     ScullyLibModule,
-    RouterModule.forRoot(appRoutes, routerOptions),
     BrowserAnimationsModule,
     MatInputModule,
     FormsModule,
@@ -154,7 +104,12 @@ const routerOptions: ExtraOptions = {
     MatDialogModule,
     MatSidenavModule
   ],
-  providers: [MenuComponent, AngularFirestore, VerifyPopupComponent],
+  providers: [
+    MenuComponent,
+    AppAreaComponent,
+    AngularFirestore,
+    VerifyPopupComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

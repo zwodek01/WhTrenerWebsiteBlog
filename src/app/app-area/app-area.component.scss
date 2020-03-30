@@ -1,0 +1,84 @@
+@import '../../styles/variables';
+@import '../../styles/components';
+
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  color: #fff;
+
+  &__button {
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    position: fixed;
+    transition: .3s;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0;
+
+    &--close {
+      color: #fff;
+    }
+
+    &--open {
+      color: #fff;
+      position: fixed;
+    }
+
+    &:hover {
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+
+  &__container {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  &__circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid $primary-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__menu {
+    display: grid;
+    justify-items: center;
+    gap: 2rem;
+  }
+
+  &__menu-item {
+    cursor: pointer;
+    outline: none;
+  }
+
+  &__logout-button {
+    margin: 0 auto;
+  }
+}
+
+
+.mat-drawer {
+  background-color: $secondary-color;
+}
+
+.mat-drawer-inner-container {
+  position: relative;
+}
+
+// .fa-bars {
+//   color: #fff;
+// }
