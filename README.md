@@ -1,4 +1,20 @@
+```diff
+STILL IN DEVELOPMENT
+```
+
 # WhWebsite
+Static website with blog and app for a personal trainer to manage training, diet, supplementation and progress reports
+
+## Technologies
+- Angular 9
+- <a href="https://github.com/scullyio/scully" target="_blank">`Scully`</a>
+
+## Database
+- Firebase
+
+## Style
+- Scss && Angular Material
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0-next.3.
 
