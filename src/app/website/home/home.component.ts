@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MenuComponent } from '../../components/menu/menu.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(private menuComponent: MenuComponent) {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   bmiForm = new FormGroup({
     weight: new FormControl('', [Validators.required]),
@@ -18,10 +18,6 @@ export class HomeComponent implements OnInit {
 
   resultBmi: number;
   textBmi: string;
-
-  scrollToTarget(target: string) {
-    this.menuComponent.scrollToTarget(target);
-  }
 
   calculateBmi() {
     const height = this.bmiForm.value.height;

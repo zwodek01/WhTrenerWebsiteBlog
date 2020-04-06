@@ -1,12 +1,11 @@
 <footer class="footer">
   <div class="footer__container max-width">
     <ul class="footer__links">
-      <li class="footer__link hover" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-        (click)="scrollToTarget('hero')">
+      <li class="footer__link hover" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         Strona główna</li>
-      <li class="footer__link hover" (click)="scrollToTarget('about-me')">O mnie</li>
-      <li (click)="scrollToTarget('cooperation')" class="footer__link hover">Współpraca</li>
-      <li (click)="scrollToTarget('contact')" class="footer__link hover">Kontakt</li>
+      <li class="footer__link hover">O mnie</li>
+      <li class="footer__link hover" routerLinkActive="active" routerLink="/wspolpraca">Współpraca</li>
+      <li class="footer__link hover" routerLinkActive="active" routerLink="/kontakt">Kontakt</li>
       <li class="footer__link hover" routerLinkActive="active" routerLink="/blog">Blog</li>
       <li *ngIf=false class="footer__link hover">Strefa podopiecznego</li>
     </ul>

@@ -9,12 +9,11 @@
         <div class='menu-button'></div>
       </label>
       <ul class="menu">
-        <li (click)="scrollToTarget('hero')" routerLink="/" routerLinkActive="active" class="hover"
-          [routerLinkActiveOptions]="{exact: true}">Strona
+        <li routerLink="/" routerLinkActive="active" class="hover" [routerLinkActiveOptions]="{exact: true}">Strona
           główna</li>
-        <li (click)="scrollToTarget('about-me')" class="hover">O mnie</li>
-        <li (click)="scrollToTarget('cooperation')" class="hover">Współpraca</li>
-        <li (click)="scrollToTarget('contact')" class="hover">Kontakt</li>
+        <li class="hover">O mnie</li>
+        <li routerLink="/wspolpraca" routerLinkActive="active" class="hover">Współpraca</li>
+        <li routerLink="/kontakt" routerLinkActive="active" class="hover">Kontakt</li>
         <li class="hover" routerLink="/blog" routerLinkActive="active">Blog</li>
         <li class="hover" routerLink="/panel"> <i class="fas fa-user"></i> Strefa Podopiecznego</li>
         <li class="hover" *ngIf="isLoggedStatus" (click)="logout()">Wyloguj</li>

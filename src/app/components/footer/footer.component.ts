@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-footer',
@@ -7,11 +6,7 @@ import { MenuComponent } from '../menu/menu.component';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  constructor(private menuComponent: MenuComponent) {}
+  constructor() { }
 
-  ngOnInit(): void {}
-
-  scrollToTarget(target: string) {
-    this.menuComponent.scrollToTarget(target);
-  }
+  ngOnInit(): void { }
 }

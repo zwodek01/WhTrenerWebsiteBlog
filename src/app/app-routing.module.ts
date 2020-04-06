@@ -4,6 +4,7 @@ import { WebsiteComponent } from './website/website.component';
 import { HomeComponent } from './website/home/home.component';
 import { BlogComponent } from './website/blog/blog.component';
 import { CooperationComponent } from './website/cooperation/cooperation.component';
+import { ContactComponent } from './website/contact/contact.component'
 import { LoginComponent } from './website/login/login.component';
 import { UserLoggedGuard } from './guards/user-logged.guard';
 import { RegisterComponent } from './website/register/register.component';
@@ -21,6 +22,7 @@ import { ReportComponent } from './app-area/report/report.component';
 import { QuestionnaireComponent } from './app-area/questionnaire/questionnaire.component';
 import { SettingsComponent } from './app-area/settings/settings.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -30,6 +32,7 @@ const routes: Routes = [
 
       { path: 'blog', component: BlogComponent },
       { path: 'wspolpraca', component: CooperationComponent },
+      { path: 'kontakt', component: ContactComponent },
       {
         path: 'logowanie',
         component: LoginComponent,
@@ -98,4 +101,4 @@ const routerOptions: ExtraOptions = {
   imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

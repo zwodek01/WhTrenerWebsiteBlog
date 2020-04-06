@@ -54,6 +54,7 @@ import { ChangePasswordPopupComponent } from './components/popups/change-passwor
 import { DeleteAccountPopupComponent } from './components/popups/delete-account-popup/delete-account-popup.component';
 import { WebsiteComponent } from './website/website.component';
 import { AppAreaComponent } from './app-area/app-area.component';
+import { ContactComponent } from './website/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { AppAreaComponent } from './app-area/app-area.component';
     ChangePasswordPopupComponent,
     DeleteAccountPopupComponent,
     WebsiteComponent,
-    AppAreaComponent
+    AppAreaComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -105,11 +107,9 @@ import { AppAreaComponent } from './app-area/app-area.component';
     MatSidenavModule
   ],
   providers: [
-    MenuComponent,
-    AppAreaComponent,
     AngularFirestore,
     VerifyPopupComponent
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
