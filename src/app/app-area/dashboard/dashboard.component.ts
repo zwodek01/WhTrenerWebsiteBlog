@@ -7,7 +7,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(private firebaseService: FirebaseService) { }
 
   uid = JSON.parse(sessionStorage.getItem('userDetails')).uid;
   userDetails;

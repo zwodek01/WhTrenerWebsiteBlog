@@ -1,1 +1,12 @@
-<p>delete-account-popup works!</p>
+<div class="popup">
+    <span class="popup__icon">🗑</span>
+    <h2 class="sub-title">Usuń konto</h2>
+    <mat-dialog-content class="popup__container">
+        <p class="text">Czy na pewno chcesz usunąć konto? Nie będzie możliwości przywrócenia!</p>
+        <div class="popup__buttons-container">
+            <button [mat-dialog-close]="true" (click)="deleteUser()" class="popup__button-delete button">Usuń</button>
+            <button [mat-dialog-close]="true" class="button">Wróć</button>
+        </div>
+    </mat-dialog-content>
+    <button [mat-dialog-close]="true" class="popup__close-button"><i class="fas fa-times"></i></button>
+</div>

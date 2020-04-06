@@ -195,6 +195,19 @@ export class FirebaseService {
       });
   }
 
+  deleteUser(uid) {
+    this.afAuth.auth.currentUser.delete().then(() => {
+      this.afs.collection('users').doc(uid).delete();
+      this.logout("Konto usunięto poprawnie ✔");
+    }).catch(error => {
+      this.notificationService.notifycation(
+        'Błąd! Spróbuj jeszcze raz ❌',
+        'error'
+      );
+      console.log(error)
+    })
+  }
+
   setUserData(user, name) {
     const userData = {
       uid: user.uid,
@@ -209,11 +222,11 @@ export class FirebaseService {
       .set(userData, { merge: true });
   }
 
-  logout() {
+  logout(text: string) {
     return this.afAuth.auth
       .signOut()
       .then(() => {
-        this.notificationService.notifycation('Wylogowano ✔', 'done');
+        this.notificationService.notifycation(text, 'done');
         this.router.navigate(['/']);
       })
       .catch(() => {

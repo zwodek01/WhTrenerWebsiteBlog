@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
     private router: Router,
     private viewportScroller: ViewportScroller,
     private firebaseService: FirebaseService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.isLogged();
@@ -40,6 +40,6 @@ export class MenuComponent implements OnInit {
   }
 
   logout() {
-    this.firebaseService.logout();
+    this.firebaseService.logout("Wylogowano ✔");
   }
 }

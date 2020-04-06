@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-delete-account-popup',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../popup.scss']
 })
 export class DeleteAccountPopupComponent implements OnInit {
-  constructor() {}
+  constructor(private firebaseService: FirebaseService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+  uid = JSON.parse(sessionStorage.getItem('userDetails')).uid;
+
+  deleteUser() {
+    this.firebaseService.deleteUser(this.uid);
+  }
 }

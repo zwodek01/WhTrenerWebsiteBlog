@@ -8,7 +8,7 @@ import { FirebaseService } from '../services/firebase.service';
   styleUrls: ['./app-area.component.scss']
 })
 export class AppAreaComponent implements OnInit {
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(private firebaseService: FirebaseService) { }
 
   @ViewChild('sidenav') sidenav: MatSidenav;
   reason = '';
@@ -42,7 +42,7 @@ export class AppAreaComponent implements OnInit {
   }
 
   logout() {
-    this.firebaseService.logout();
+    this.firebaseService.logout('Wylogowano ✔');
   }
 
   close(reason: string) {

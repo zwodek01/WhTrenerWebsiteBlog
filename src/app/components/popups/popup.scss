@@ -8,6 +8,10 @@
   gap: 1rem;
   position: relative;
 
+  &__container {
+    margin: 0 auto;
+  }
+
   @include breakpoint(laptop) {
     gap: 3rem;
   }
@@ -18,6 +22,21 @@
 
   &__button {
     width: 300px;
+  }
+
+  &__buttons-container {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+
+    @include breakpoint(phablet) {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  &__button-delete {
+    background-color: #FF0033;
   }
 
   &__warning {
