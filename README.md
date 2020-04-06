@@ -15,7 +15,7 @@ Static website with blog and app for a personal trainer to manage training, diet
 ## Style
 - Scss && Angular Material
 
-
+##
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0-next.3.
 
 ## Development server
