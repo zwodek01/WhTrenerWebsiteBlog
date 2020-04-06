@@ -1,0 +1,12 @@
+<div class="popup">
+  <span class="popup__icon">⛔</span>
+  <h2 class="sub-title">Zakaz wjazdu!</h2>
+  <mat-dialog-content>
+    <p class="text">Aby wejść do strefy podopiecznego najpierw zweryfikuj konto.</p>
+    <p class="text">Na skrzynkę którą podałeś przy rejestracji otrzymałeś maila z linkiem aktywującym konto.</p>
+    <p class="text">Jeśli już to zrobiłeś odśwież stronę.</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button [mat-dialog-close]="true" (click)="closeVerifyPopup()" class="button popup__button">OK</button>
+  </mat-dialog-actions>
+</div>

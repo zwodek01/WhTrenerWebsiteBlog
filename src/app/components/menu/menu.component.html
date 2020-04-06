@@ -16,7 +16,8 @@
         <li (click)="scrollToTarget('cooperation')" class="hover">Współpraca</li>
         <li (click)="scrollToTarget('contact')" class="hover">Kontakt</li>
         <li class="hover" routerLink="/blog" routerLinkActive="active">Blog</li>
-        <li *ngIf=false class="hover">Strefa podopiecznego</li>
+        <li class="hover" routerLink="/panel"> <i class="fas fa-user"></i> Strefa Podopiecznego</li>
+        <li class="hover" *ngIf="isLoggedStatus" (click)="logout()">Wyloguj</li>
       </ul>
     </div>
   </nav>

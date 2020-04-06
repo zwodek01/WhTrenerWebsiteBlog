@@ -1,0 +1,49 @@
+@import "../../../styles/variables";
+@import "../../../styles/components";
+
+.register {
+  background: url("../../../assets/home-11-bg-01.jpg");
+
+  &__title {
+    color: #000;
+  }
+
+  &__container {
+    margin-top: 4rem;
+    background-color: $secondary-color;
+    border-radius: 1rem;
+  }
+
+
+  &__form {
+    display: grid;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    justify-items: center;
+
+    @include breakpoint(tablet) {
+      width: 500px;
+      padding: 2rem;
+      gap: 1rem;
+    }
+
+    &__button {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.center {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 5rem 1rem;
+  color: #fff;
+}

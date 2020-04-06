@@ -1,0 +1,48 @@
+@import '../../../styles/components';
+@import '../../../styles/variables';
+
+.popup {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 1rem;
+  position: relative;
+
+  @include breakpoint(laptop) {
+    gap: 3rem;
+  }
+
+  &__icon {
+    font-size: 5rem;
+  }
+
+  &__button {
+    width: 300px;
+  }
+
+  &__warning {
+    color: $warning;
+    font-weight: bold;
+  }
+
+  &__close-button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    outline: none;
+    transition: .3s;
+    padding: 0;
+
+    &:hover {
+      cursor: pointer;
+      color: $primary-color;
+    }
+  }
+
+  &__button-ok {
+    margin: 0 auto;
+  }
+}

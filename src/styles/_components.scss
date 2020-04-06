@@ -6,18 +6,34 @@
   padding: 1rem;
   background-color: $primary-color;
   font-family: 'Righteous', cursive;
-  cursor: pointer;
   outline: none;
-  border-radius: 10px;
+  border-radius: 1rem;
   transition: .3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 220px;
 
-  &:hover {
+  &__text {
+    display: flex;
+    align-items: center;
+    height: 31px;
+  }
+
+  &:hover:enabled {
+    cursor: pointer;
+    background-color: $secondary-light-color;
+    color: $primary-color;
     box-shadow: 0px 15px 25px -5px rgba($secondary-color, 40%);
   }
 
-  &:active {
+  &:active:enabled {
     box-shadow: 0px 4px 8px rgba($secondary-color, 30%);
     transform: scale(.98);
+  }
+
+  &:disabled {
+    background-color: $secondary-light-color;
   }
 }
 
@@ -39,20 +55,10 @@ mat-label {
   .mat-form-field-required-marker {
     color: $primary-color;
   }
-
-  .mat-input-element {
-    color: $primary-color;
-  }
-
-
 }
 
-
-
 ::ng-deep .mat-form-field {
-  .mat-input-element {
-    color: $primary-color;
-  }
+  width: 100%;
 
   .mat-form-field-label {
     color: $primary-color;
@@ -77,4 +83,29 @@ mat-label {
   .mat-form-field-outline {
     color: $primary-color;
   }
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: $primary-color;
+}
+
+::ng-deep .mat-checkbox-frame {
+  border-color: $primary-color;
+}
+
+::ng-deep snack-bar-container.error {
+  background: $warning;
+  color: $secondary-color;
+  white-space: pre;
+}
+
+::ng-deep snack-bar-container.done {
+  background: $success;
+  color: $secondary-color;
+  white-space: pre;
+}
+
+::ng-deep .mat-button-wrapper {
+  color: $secondary-color;
 }

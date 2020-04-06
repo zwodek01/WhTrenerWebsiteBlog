@@ -1,0 +1,10 @@
+<div class="popup">
+  <span class="popup__icon">✔</span>
+  <h2 class="sub-title">Hasło zresetowano!</h2>
+  <mat-dialog-content>
+    <p class="text">Aby zmienić hasło sprawdź maila którego podałeś przy rejestracji i kliknij w wysłany link</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button [mat-dialog-close]="true" (click)="closeForgotPopup()" class="button popup__button">OK</button>
+  </mat-dialog-actions>
+</div>

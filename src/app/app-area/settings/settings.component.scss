@@ -1,0 +1,21 @@
+@import "../../../styles/variables";
+@import "../../../styles/components";
+
+.settings {
+  background: url("../../../assets/home-11-bg-01.jpg");
+  min-height: 100vh;
+  padding: 3rem 1rem;
+
+  &__container {
+    display: grid;
+    gap: 2rem;
+    margin: 5rem auto 0;
+    padding: 2rem;
+    background-color: $secondary-color;
+    max-width: 500px;
+  }
+
+  &__button {
+    background-color: $warning;
+  }
+}

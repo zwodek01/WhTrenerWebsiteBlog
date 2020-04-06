@@ -1,0 +1,41 @@
+<section class="register background center">
+  <h3 class="register__title title-section">REJESTRACJA</h3>
+  <div class="register__container max-width">
+    <form autocomplete="off" [formGroup]="registerForm" class="register__form">
+      <mat-form-field appearance="outline">
+        <mat-label>Imię</mat-label>
+        <input type="text" matInput formControlName="name" name="name">
+        <mat-error>
+          Wpisz imię (minimum 3 znaki)
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input type="email" matInput formControlName="email" name="email">
+        <mat-error>
+          Wpisz poprawny e-mail
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Hasło</mat-label>
+        <input type="password" matInput formControlName="password" name="password">
+        <mat-error>
+          Wpisz hasło (minimum 6 znaków)
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Powtórz hasło</mat-label>
+        <input type="password" matInput formControlName="confirmPass" name="confirmPass">
+        <mat-error>
+          Hasła muszą być takie same
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox formControlName="rules" required>Akceptuje wszystkie regulaminy</mat-checkbox>
+      <button type="submit" (click)="register()" [disabled]="!registerForm.valid" class="button register__button"><span
+          class="button__text" *ngIf="!registerForm.valid && !showLoader">WYPEŁNIJ WSZYTSKIE POLA</span> <span
+          class="button__text" *ngIf="registerForm.valid && !showLoader">REJESTRUJ</span>
+        <mat-spinner *ngIf="showLoader" [diameter]="31"></mat-spinner>
+      </button>
+    </form>
+  </div>
+</section>
