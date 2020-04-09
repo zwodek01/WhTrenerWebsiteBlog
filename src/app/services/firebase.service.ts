@@ -251,22 +251,4 @@ export class FirebaseService {
       .doc(uid)
       .valueChanges();
   }
-
-  // changeEmail(email) {
-  //   return firebase
-  //     .auth()
-  //     .currentUser.updateEmail(email)
-  //     .then(() => {
-  //       this.notificationService.notifycation(
-  //         'E-mail został zmieniony ✔\nAby dalej korzystać z serwisu wejdź \nna e-maila podanego w formualrzu\ni zaakceptuj zmianę.',
-  //         'done'
-  //       );
-  //     })
-  //     .catch(() => {
-  //       this.notificationService.notifycation(
-  //         'Błąd! Spróbuj jeszcze raz ❌',
-  //         'error'
-  //       );
-  //     });
-  // }
 }

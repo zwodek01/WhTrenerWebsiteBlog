@@ -38,7 +38,6 @@ import { BlogPipe } from './website/blog/blog.pipe';
 import { ForgotPasswordComponent } from './website/forgot-password/forgot-password.component';
 import { VeryfiEmailComponent } from './website/veryfi-email/veryfi-email.component';
 import { ChangeNamePopupComponent } from './components/popups/change-name-popup/change-name-popup.component';
-import { ChangeEmailPopupComponent } from './components/popups/change-email-popup/change-email-popup.component';
 import { ChangePasswordPopupComponent } from './components/popups/change-password-popup/change-password-popup.component';
 import { DeleteAccountPopupComponent } from './components/popups/delete-account-popup/delete-account-popup.component';
 import { WebsiteComponent } from './website/website.component';
@@ -85,7 +84,6 @@ import { ContactPopupComponent } from './components/popups/contact-popup/contact
     RegisterPopupComponent,
     ForgotPopupComponent,
     ChangeNamePopupComponent,
-    ChangeEmailPopupComponent,
     ChangePasswordPopupComponent,
     DeleteAccountPopupComponent,
     WebsiteComponent,
