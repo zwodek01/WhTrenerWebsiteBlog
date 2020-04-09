@@ -37,6 +37,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BlogPipe } from './website/blog/blog.pipe';
 import { ForgotPasswordComponent } from './website/forgot-password/forgot-password.component';
 import { VeryfiEmailComponent } from './website/veryfi-email/veryfi-email.component';
+import { ChangeNamePopupComponent } from './components/popups/change-name-popup/change-name-popup.component';
+import { ChangeEmailPopupComponent } from './components/popups/change-email-popup/change-email-popup.component';
+import { ChangePasswordPopupComponent } from './components/popups/change-password-popup/change-password-popup.component';
+import { DeleteAccountPopupComponent } from './components/popups/delete-account-popup/delete-account-popup.component';
+import { WebsiteComponent } from './website/website.component';
+import { AppAreaComponent } from './app-area/app-area.component';
+import { ContactComponent } from './website/contact/contact.component';
+import { FabComponent } from './components/fab/fab.component';
 
 // ANGULAR MATERIAL
 import { MatInputModule } from '@angular/material/input';
@@ -48,13 +56,8 @@ import { RegisterPopupComponent } from './components/popups/register-popup/regis
 import { ForgotPopupComponent } from './components/popups/forgot-popup/forgot-popup.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ChangeNamePopupComponent } from './components/popups/change-name-popup/change-name-popup.component';
-import { ChangeEmailPopupComponent } from './components/popups/change-email-popup/change-email-popup.component';
-import { ChangePasswordPopupComponent } from './components/popups/change-password-popup/change-password-popup.component';
-import { DeleteAccountPopupComponent } from './components/popups/delete-account-popup/delete-account-popup.component';
-import { WebsiteComponent } from './website/website.component';
-import { AppAreaComponent } from './app-area/app-area.component';
-import { ContactComponent } from './website/contact/contact.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ContactPopupComponent } from './components/popups/contact-popup/contact-popup.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +90,9 @@ import { ContactComponent } from './website/contact/contact.component';
     DeleteAccountPopupComponent,
     WebsiteComponent,
     AppAreaComponent,
-    ContactComponent
+    ContactComponent,
+    FabComponent,
+    ContactPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +109,8 @@ import { ContactComponent } from './website/contact/contact.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatDialogModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTooltipModule
   ],
   providers: [
     AngularFirestore,
