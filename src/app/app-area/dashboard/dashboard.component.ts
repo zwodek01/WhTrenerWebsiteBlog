@@ -9,7 +9,6 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class DashboardComponent implements OnInit {
   constructor(private firebaseService: FirebaseService) { }
 
-  uid = JSON.parse(sessionStorage.getItem('userDetails')).uid;
   userDetails;
   user;
 
@@ -19,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   getUserDetails() {
     this.userDetails = this.firebaseService
-      .getUserDetails(this.uid)
+      .getUserDetails()
       .subscribe(user => {
         this.user = user;
         console.log(user);

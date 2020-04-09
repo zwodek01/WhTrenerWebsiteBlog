@@ -1,1 +1,21 @@
-<p>change-name-popup works!</p>
+<div class="popup">
+    <span class="popup__icon">✏</span>
+    <h2 class="sub-title">Zmień nazwę</h2>
+    <mat-dialog-content>
+        <form autocomplete="off" [formGroup]="nameForm" class="popup__form">
+            <mat-form-field appearance="outline">
+                <mat-label>Wpisz nową nazwę</mat-label>
+                <input matInput formControlName="name" name="name">
+                <mat-error>
+                    Pole wymagane
+                </mat-error>
+            </mat-form-field>
+            <button type="submit" (click)="changeName()" [disabled]="!nameForm.valid" class="button popup__button-ok">
+                <span class="button__text" *ngIf="!nameForm.valid && !showLoader">WYPEŁNIJ POLE</span>
+                <span class="button__text" *ngIf="nameForm.valid && !showLoader">ZMIEŃ</span>
+                <mat-spinner *ngIf="showLoader" [diameter]="31"></mat-spinner>
+            </button>
+        </form>
+    </mat-dialog-content>
+    <button [mat-dialog-close]="true" class="popup__close-button"><i class="fas fa-times"></i></button>
+</div>
