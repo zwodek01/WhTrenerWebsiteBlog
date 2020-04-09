@@ -13,7 +13,7 @@
 
   &__container {
     display: grid;
-    justify-content: center;
+    justify-items: center;
     align-content: center;
     height: 100%;
     text-align: center;
@@ -30,5 +30,11 @@
     @include breakpoint(laptop) {
       font-size: 10rem;
     }
+  }
+  &__back {
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
   }
 }

@@ -12,8 +12,6 @@ export class ChangePasswordPopupComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  showLoader: boolean;
-
   passwordForm = this.fb.group(
     {
       password: ['', [Validators.required, Validators.minLength(6)]],

@@ -60,7 +60,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'panel-admin',
+        path: 'lista',
         component: DashboardAdminComponent,
         canActivate: [AdminGuard]
       },

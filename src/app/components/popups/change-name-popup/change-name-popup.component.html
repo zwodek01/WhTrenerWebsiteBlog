@@ -11,9 +11,8 @@
                 </mat-error>
             </mat-form-field>
             <button type="submit" (click)="changeName()" [disabled]="!nameForm.valid" class="button popup__button-ok">
-                <span class="button__text" *ngIf="!nameForm.valid && !showLoader">WYPEŁNIJ POLE</span>
-                <span class="button__text" *ngIf="nameForm.valid && !showLoader">ZMIEŃ</span>
-                <mat-spinner *ngIf="showLoader" [diameter]="31"></mat-spinner>
+                <span class="button__text" *ngIf="!nameForm.valid">WYPEŁNIJ POLE</span>
+                <span class="button__text" *ngIf="nameForm.valid">ZMIEŃ</span>
             </button>
         </form>
     </mat-dialog-content>

@@ -13,7 +13,7 @@ export class ChangeNamePopupComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  showLoader: boolean;
+  uid = JSON.parse(sessionStorage.getItem('userDetails')).uid;
 
   nameForm = this.fb.group(
     {
@@ -22,6 +22,6 @@ export class ChangeNamePopupComponent implements OnInit {
   );
 
   changeName() {
-    this.firebaseService.changeNameUser(this.nameForm.value.name)
+    this.firebaseService.changeNameUser(this.nameForm.value.name, this.uid)
   }
 }

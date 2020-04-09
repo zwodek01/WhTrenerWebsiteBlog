@@ -9,24 +9,27 @@
       <h2>{{user?.displayName}}</h2>
       <div class="line"></div>
       <ul class="sidenav__menu">
-        <li (click)="close('backdrop')" routerLink="/panel" routerLinkActive="active" class="sidenav__menu-item hover">
-          Panel użytkownika</li>
-        <li *ngIf="admin" (click)="close('backdrop')" routerLink="/panel-admin" routerLinkActive="active"
+        <li *ngIf="!admin" (click)="close('backdrop')" routerLink="/panel" routerLinkActive="active"
           class="sidenav__menu-item hover">
-          Panel admina</li>
-        <li (click)="close('backdrop')" routerLink="/trening" routerLinkActive="active"
+          Panel użytkownika</li>
+        <li *ngIf="admin" (click)="close('backdrop')" routerLink="/lista" routerLinkActive="active"
+          class="sidenav__menu-item hover">
+          Lista podopiecznych</li>
+        <li *ngIf="!admin" (click)="close('backdrop')" routerLink="/trening" routerLinkActive="active"
           class="sidenav__menu-item hover">Treningi</li>
-        <li (click)="close('backdrop')" routerLink="/dieta" routerLinkActive="active" class="sidenav__menu-item hover">
+        <li *ngIf="!admin" (click)="close('backdrop')" routerLink="/dieta" routerLinkActive="active"
+          class="sidenav__menu-item hover">
           Dieta</li>
-        <li (click)="close('backdrop')" routerLink="/suplementacja" routerLinkActive="active"
+        <li *ngIf="!admin" (click)="close('backdrop')" routerLink="/suplementacja" routerLinkActive="active"
           class="sidenav__menu-item hover">Suplementacja</li>
-        <li (click)="close('backdrop')" routerLink="/raport" routerLinkActive="active" class="sidenav__menu-item hover">
+        <li *ngIf="!admin" (click)="close('backdrop')" routerLink="/raport" routerLinkActive="active"
+          class="sidenav__menu-item hover">
           Stwórz raport</li>
-        <li (click)="close('backdrop')" routerLink="/trening" routerLinkActive="active"
+        <li *ngIf="!admin" (click)="close('backdrop')" routerLink="/trening" routerLinkActive="active"
           class="sidenav__menu-item hover">Wykresy postępów</li>
-        <li (click)="close('backdrop')" routerLink="/ankieta" routerLinkActive="active"
+        <li *ngIf="!admin" (click)="close('backdrop')" routerLink="/ankieta" routerLinkActive="active"
           class="sidenav__menu-item hover">Ankieta</li>
-        <li (click)="close('backdrop')" routerLink="/ustawienia" routerLinkActive="active"
+        <li *ngIf="!admin" (click)="close('backdrop')" routerLink="/ustawienia" routerLinkActive="active"
           class="sidenav__menu-item hover">Ustawienia</li>
       </ul>
       <button (click)="logout()" class="button">Wyloguj się</button>

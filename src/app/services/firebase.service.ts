@@ -208,6 +208,27 @@ export class FirebaseService {
     })
   }
 
+  changeNameUser(name: string, uid: string) {
+    this.afAuth.auth.currentUser.updateProfile({ displayName: name }).then(() => {
+      this.notificationService.notifycation("Nazwa zmieniona ✔", 'done');
+      this.afs.collection('users').doc(uid).update({ displayName: name });
+      this.dialog.closeAll();
+    }).catch(error => {
+      this.notificationService.notifycation(
+        'Błąd! Spróbuj jeszcze raz ❌',
+        'error'
+      );
+      console.log(error)
+    })
+  }
+
+  changePasswordUser(password: string) {
+    this.afAuth.auth.currentUser.updatePassword(password).then(() => {
+      this.notificationService.notifycation("Hasło zmienione poprawnie ✔", 'done');
+      this.dialog.closeAll();
+    })
+  }
+
   setUserData(user, name) {
     const userData = {
       uid: user.uid,

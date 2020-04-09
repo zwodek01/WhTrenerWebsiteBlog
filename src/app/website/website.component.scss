@@ -2,4 +2,32 @@
     position: fixed;
     bottom: .5rem;
     right: .5rem;
+    animation: shake 7s infinite;
 }
+
+@keyframes shake {
+    93% {
+        transform: translateX(0px);
+    }
+    94% {
+        transform: translateX(-7px);
+    }
+    95% {
+        transform: translateX(7px);
+    }
+    96% {
+        transform: translateX(0px);
+    }
+    97% {
+        transform: translateX(0px);
+    }
+    98% {
+        transform: translateX(-7px);
+    }
+    99% {
+        transform: translateX(7px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+  }
