@@ -10,8 +10,9 @@ export class DeleteAccountPopupComponent implements OnInit {
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void { }
+  uid = JSON.parse(sessionStorage.getItem('userDetails')).uid;
 
   deleteUser() {
-    this.firebaseService.deleteUser();
+    this.firebaseService.deleteUser(this.uid);
   }
 }

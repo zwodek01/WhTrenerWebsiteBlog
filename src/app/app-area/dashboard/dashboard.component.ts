@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
 
   userDetails;
   user;
+  uid = JSON.parse(sessionStorage.getItem('userDetails')).uid;
 
   ngOnInit(): void {
     this.getUserDetails();
@@ -18,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   getUserDetails() {
     this.userDetails = this.firebaseService
-      .getUserDetails()
+      .getUserDetails(this.uid)
       .subscribe(user => {
         this.user = user;
         console.log(user);

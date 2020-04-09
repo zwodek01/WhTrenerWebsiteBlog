@@ -19,7 +19,6 @@ export class FirebaseService {
   userData: any;
   admin;
   authState$: Observable<User | null> = this.afAuth.authState;
-  uid = JSON.parse(sessionStorage.getItem('userDetails')).uid;
 
   constructor(
     public afs: AngularFirestore,
@@ -196,9 +195,9 @@ export class FirebaseService {
       });
   }
 
-  deleteUser() {
+  deleteUser(uid) {
     this.afAuth.auth.currentUser.delete().then(() => {
-      this.afs.collection('users').doc(this.uid).delete();
+      this.afs.collection('users').doc(uid).delete();
       this.logout("Konto usunięto poprawnie ✔");
     }).catch(error => {
       this.notificationService.notifycation(
@@ -207,34 +206,6 @@ export class FirebaseService {
       );
       console.log(error)
     })
-  }
-
-  changePasswordUser(password: string) {
-    this.afAuth.auth.currentUser.updatePassword(password).then(() => {
-      this.notificationService.notifycation('Nazwa została zmieniona! ✔', 'done');
-      this.dialog.closeAll();
-    }).catch(error => {
-      this.notificationService.notifycation(
-        'Błąd! Spróbuj jeszcze raz ❌',
-        'error'
-      );
-      console.log(error)
-    })
-  }
-
-  changeNameUser(name: string) {
-    this.afAuth.auth.currentUser.updateProfile({ displayName: name }).then(() => {
-      this.afs.collection('users').doc(this.uid).update({ displayName: name });
-      this.notificationService.notifycation('Nazwa została zmieniona! ✔', 'done');
-      this.dialog.closeAll();
-    })
-      .catch(error => {
-        this.notificationService.notifycation(
-          'Błąd! Spróbuj jeszcze raz ❌',
-          'error'
-        );
-        console.log(error)
-      })
   }
 
   setUserData(user, name) {
@@ -274,10 +245,10 @@ export class FirebaseService {
     this.dialog.open(component, dialogConfig);
   }
 
-  getUserDetails() {
+  getUserDetails(uid: string) {
     return this.afs
       .collection('users')
-      .doc(this.uid)
+      .doc(uid)
       .valueChanges();
   }
 }
