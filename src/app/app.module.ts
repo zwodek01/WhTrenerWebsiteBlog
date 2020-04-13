@@ -57,6 +57,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ContactPopupComponent } from './components/popups/contact-popup/contact-popup.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { DetailsComponent } from './app-area/details/details.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +93,8 @@ import { ContactPopupComponent } from './components/popups/contact-popup/contact
     AppAreaComponent,
     ContactComponent,
     FabComponent,
-    ContactPopupComponent
+    ContactPopupComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,12 +112,11 @@ import { ContactPopupComponent } from './components/popups/contact-popup/contact
     AngularFireAuthModule,
     MatDialogModule,
     MatSidenavModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule,
+    MatIconModule,
   ],
-  providers: [
-    AngularFirestore,
-    VerifyPopupComponent
-  ],
-  bootstrap: [AppComponent]
+  providers: [AngularFirestore, VerifyPopupComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

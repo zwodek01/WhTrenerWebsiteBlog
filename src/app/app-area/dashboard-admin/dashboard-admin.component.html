@@ -1,1 +1,37 @@
-<p>dashboard-admin works!</p>
+<section class="list background">
+    <h3 class="title-section ">LISTA PODOPIECZNYCH</h3>
+    <app-details *ngIf="selectedUser" [user]="selectedUser"></app-details>
+    <div class="list__container max-width">
+        <table>
+            <thead>
+                <tr>
+                    <th class="list__avatar"></th>
+                    <th>Nazwa</th>
+                    <th class="list__email">Email</th>
+                    <th>Opcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userList">
+                    <ng-container *ngIf="user.admin !== true">
+                        <td class="list__avatar"><img class="list__avatar" [src]="user.photoURL" alt=""></td>
+                        <td>{{user.displayName}}</td>
+                        <td class="list__email">{{user.email}}</td>
+                        <td class="list__options">
+                            <button class="list__more" mat-icon-button [matMenuTriggerFor]="menu"
+                                aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="onSelect(user)">
+                                    <mat-icon>add</mat-icon>
+                                    <span>Zobacz więcej</span>
+                                </button>
+                            </mat-menu>
+                        </td>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

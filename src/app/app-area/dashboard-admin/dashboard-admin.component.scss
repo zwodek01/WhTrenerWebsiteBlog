@@ -1,0 +1,53 @@
+@import "../../../styles/variables";
+@import "../../../styles/components";
+
+.list {
+  background: url("../../../assets/home-11-bg-01.jpg");
+  min-height: 100vh;
+  padding: 3rem 1rem;
+
+  &__container {
+    margin-top: 4rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  &__avatar {
+    display: none;
+    width: 25px;
+    @include breakpoint(phablet) {
+      display: table-cell;
+    }
+  }
+  &__more {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  &__email {
+    display: none;
+    @include breakpoint(phablet) {
+      display: table-cell;
+    }
+  }
+  &__options {
+    width: 30px;
+    text-align: center;
+  }
+  th {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  th,
+  td {
+    border: 1px solid $gray;
+    padding: 1rem;
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    text-align: left;
+  }
+}

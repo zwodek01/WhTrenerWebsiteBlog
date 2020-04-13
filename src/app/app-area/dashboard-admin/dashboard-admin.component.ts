@@ -4,7 +4,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 @Component({
   selector: 'app-dashboard-admin',
   templateUrl: './dashboard-admin.component.html',
-  styleUrls: ['./dashboard-admin.component.scss']
+  styleUrls: ['./dashboard-admin.component.scss'],
 })
 export class DashboardAdminComponent implements OnInit {
   constructor(private firebaseService: FirebaseService) {}
@@ -14,14 +14,21 @@ export class DashboardAdminComponent implements OnInit {
   }
 
   userData;
+  userList;
+  selectedUser;
 
   getAllDataUser() {
     this.userData = this.firebaseService.afs
       .collection('users')
       .valueChanges()
-      .subscribe(users => {
+      .subscribe((users) => {
+        this.userList = users;
         console.log(users);
       });
+  }
+
+  onSelect(user): void {
+    this.selectedUser = user;
   }
 
   ngOnDestroy() {
