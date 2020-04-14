@@ -1,0 +1,40 @@
+<section class="questionaire max-width">
+    <h3 class="title-section">ANKIETA</h3>
+    <div class="questionaire__container">
+        <p class="questionaire__question questionaire--bold" *ngIf="currentQuestion !== null">
+            {{currentQuestion?.question}}</p>
+        <form *ngIf="currentQuestion !== null" autocomplete="off" [formGroup]="questionaireForm"
+            class="questionaire__form">
+            <mat-form-field appearance="outline">
+                <mat-label>Odpowiedź</mat-label>
+                <textarea formControlName="answer" name="answer" matInput cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10"></textarea>
+            </mat-form-field>
+            <button class="button questionaire__button" type="submit" (click)="addAnswer()"
+                [disabled]="!questionaireForm.value.answer">
+                <span *ngIf="!questionaireForm.value.answer">WPISZ ODPOWIEDŹ</span> <span
+                    *ngIf="questionaireForm.value.answer">DODAJ</span>
+            </button>
+        </form>
+        <p class="questionaire__title sub-title">Lista pytań</p>
+        <p *ngIf="questionsList?.length === 0" class="details__title">Lista jest pusta. Musisz poczekać aż trener zada
+            Ci pytania.</p>
+        <ng-container *ngIf="questionsList?.length !== 0">
+            <div *ngFor="let question of questionsList, let i = index" class="questionaire__question-container">
+                <p class="questionaire__question">
+                    Pytanie nr {{i + 1}}: <span class="questionaire--bold">{{question?.question}}</span>
+                </p>
+                <p *ngIf="question.answer !== ''" class="questionaire__question">
+                    Odpowiedź: <span class="questionaire--bold">{{question?.answer}}</span>
+                </p>
+                <button matTooltip="Odpowiedz na pytanie" (click)="getQuestion(question)">
+                    <mat-icon *ngIf="question.answer !== ''">edit</mat-icon>
+                    <mat-icon *ngIf="question.answer === ''">question_answer</mat-icon>
+                </button>
+                <button *ngIf="question.answer !== ''" matTooltip="Usuń odpowiedź" (click)="deleteAnswer(question)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </ng-container>
+    </div>
+</section>

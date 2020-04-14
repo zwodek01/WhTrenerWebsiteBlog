@@ -19,6 +19,7 @@ export class FirebaseService {
   userData: any;
   admin;
   authState$: Observable<User | null> = this.afAuth.authState;
+  authStateStatus;
 
   constructor(
     public afs: AngularFirestore,
@@ -28,7 +29,7 @@ export class FirebaseService {
     private dialog: MatDialog,
     private ngZone: NgZone
   ) {
-    this.afAuth.authState.subscribe((user) => {
+    this.authStateStatus = this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
         sessionStorage.setItem(
@@ -132,7 +133,7 @@ export class FirebaseService {
         firebase.auth().currentUser.updateProfile({
           displayName: name,
           photoURL:
-            'https://firebasestorage.googleapis.com/v0/b/test-pelicar.appspot.com/o/avatar.jpg?alt=media&token=4d987f86-4cac-4a74-a599-1df42d877ff3',
+            'https://firebasestorage.googleapis.com/v0/b/test-pelicar.appspot.com/o/avatar.png?alt=media&token=c6420afb-50cf-4f30-9c95-99d86bddc20b',
         });
       })
       .catch((error) => {
@@ -278,5 +279,74 @@ export class FirebaseService {
 
   getUserDetails(uid: string) {
     return this.afs.collection('users').doc(uid).valueChanges();
+  }
+
+  addQuestion(uid: string, id: string, data: object) {
+    return this.afs
+      .collection('users')
+      .doc(uid)
+      .collection('questions')
+      .doc(id)
+      .set(data)
+      .then(() => {
+        this.notificationService.notifycation(
+          'Pytanie dodano poprawnie ✔',
+          'done'
+        );
+      })
+      .catch(() => {
+        this.notificationService.notifycation(
+          'Błąd! Spróbuj jeszcze raz ❌',
+          'error'
+        );
+      });
+  }
+
+  updateAnswer(uid: string, id: string, data: string, add: boolean) {
+    return this.afs
+      .collection('users')
+      .doc(uid)
+      .collection('questions')
+      .doc(id)
+      .update({ answer: data })
+      .then(() => {
+        this.notificationService.notifycation(
+          add
+            ? 'Odpowiedź dodano poprawnie ✔'
+            : 'Odpowiedź usunięto poprawnie ✔',
+          'done'
+        );
+      })
+      .catch(() => {
+        this.notificationService.notifycation(
+          'Błąd! Spróbuj jeszcze raz ❌',
+          'error'
+        );
+      });
+  }
+
+  deleteQuestion(uid: string, id: string) {
+    this.afs
+      .collection('users')
+      .doc(uid)
+      .collection('questions')
+      .doc(id)
+      .delete()
+      .then(() => {
+        this.notificationService.notifycation(
+          'Pytanie usunięto poprawnie ✔',
+          'done'
+        );
+      })
+      .catch(() => {
+        this.notificationService.notifycation(
+          'Błąd! Spróbuj jeszcze raz ❌',
+          'error'
+        );
+      });
+  }
+
+  ngOnDestroy() {
+    this.authStateStatus.unsubscribe();
   }
 }

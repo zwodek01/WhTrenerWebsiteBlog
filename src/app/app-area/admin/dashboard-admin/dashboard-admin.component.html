@@ -17,7 +17,8 @@
                         <td>{{user.displayName}}</td>
                         <td class="list__email">{{user.email}}</td>
                         <td class="list__options">
-                            <mat-icon class="list__icon" [routerLink]="['/lista', user.uid]">edit</mat-icon>
+                            <mat-icon matTooltip="Zobacz więcej" class="list__icon" [routerLink]="['/lista', user.uid]">
+                                edit</mat-icon>
                         </td>
                     </ng-container>
                 </tr>

@@ -1,7 +1,6 @@
 <section class="details max-width">
-    <img class="details__avatar" [src]="user?.photoURL">
     <h3 class="title-section">{{user?.displayName}}</h3>
-
+    <img class="details__avatar" [src]="user?.photoURL">
     <div class="details__container">
         <p class="details__status" [ngClass]="{'premium': statusAccount(), 'no-premium': !statusAccount()}">Status
             konta:
@@ -41,26 +40,50 @@
             </li>
         </ul>
         <p class="details__title sub-title">{{activeTab}}</p>
-        <div class="details__tab-container">
-            <ng-container *ngIf="activeTab === 'Wykresy'">
-                Test Wykresy
+        <ng-container *ngIf="activeTab === 'Wykresy'">
+            Test Wykresy
+        </ng-container>
+        <ng-container *ngIf="activeTab === 'Ankieta'">
+            <form autocomplete="off" [formGroup]="questionaireForm" class="details__questionaire">
+                <mat-form-field appearance="outline">
+                    <mat-label>Pytanie nr {{questionsList.length + 1}}</mat-label>
+                    <textarea formControlName="question" name="question" matInput cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10"></textarea>
+                </mat-form-field>
+                <button class="button details__questionaire-button" type="submit" (click)="addQuestion()"
+                    [disabled]="!questionaireForm.value.question">
+                    DODAJ PYTANIE
+                </button>
+            </form>
+            <p class="details__title sub-title">Lista pytań</p>
+            <p *ngIf="questionsList?.length === 0" class="details__title">Lista jest pusta. Dodaj pytania do
+                podopiecznego.</p>
+            <ng-container *ngIf="questionsList?.length !== 0">
+                <div *ngFor="let question of questionsList, let i = index" class="details__question-container">
+                    <p class="details__question">
+                        Pytanie nr {{i + 1}}: <span class="details--bold">{{question?.question}}</span>
+                    </p>
+                    <p *ngIf="question.answer !== ''" class="details__question">
+                        Odpowiedź: <span class="details--bold">{{question?.answer}}</span>
+                    </p>
+                    <button matTooltip="Usuń pytanie" (click)=deleteQuestion(question.id)>
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
             </ng-container>
-            <ng-container *ngIf="activeTab === 'Ankieta'">
-                Test Ankieta
-            </ng-container>
-            <ng-container *ngIf="activeTab === 'Suplementacja'">
-                Test Suplementacja
-            </ng-container>
-            <ng-container *ngIf="activeTab === 'Dieta'">
-                Test Dieta
-            </ng-container>
-            <ng-container *ngIf="activeTab === 'Trening'">
-                Test Trening
-            </ng-container>
-            <ng-container *ngIf="activeTab === 'Raport'">
-                Test Raport
-            </ng-container>
-        </div>
 
+        </ng-container>
+        <ng-container *ngIf="activeTab === 'Suplementacja'">
+            Test Suplementacja
+        </ng-container>
+        <ng-container *ngIf="activeTab === 'Dieta'">
+            Test Dieta
+        </ng-container>
+        <ng-container *ngIf="activeTab === 'Trening'">
+            Test Trening
+        </ng-container>
+        <ng-container *ngIf="activeTab === 'Raport'">
+            Test Raport
+        </ng-container>
     </div>
 </section>

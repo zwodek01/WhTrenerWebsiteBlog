@@ -1,0 +1,46 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/components";
+
+.questionaire {
+  text-align: center;
+  &__container {
+    margin-top: 2rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  &__form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  &__button {
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin: 2rem 0;
+    font-weight: bold;
+  }
+
+  &__question-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+    border-bottom: 1px solid $gray;
+
+    &:nth-last-child(1) {
+      border: none;
+    }
+  }
+
+  &--bold {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  &__question {
+    margin: 2rem 0;
+  }
+}

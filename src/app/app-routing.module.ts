@@ -9,19 +9,19 @@ import { LoginComponent } from './website/login/login.component';
 import { UserLoggedGuard } from './guards/user-logged.guard';
 import { RegisterComponent } from './website/register/register.component';
 import { AppAreaComponent } from './app-area/app-area.component';
-import { DashboardComponent } from './app-area/dashboard/dashboard.component';
+import { DashboardComponent } from './app-area/user/dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './website/forgot-password/forgot-password.component';
-import { DashboardAdminComponent } from './app-area/dashboard-admin/dashboard-admin.component';
+import { DashboardAdminComponent } from './app-area/admin/dashboard-admin/dashboard-admin.component';
 import { AdminGuard } from './guards/admin.guard';
-import { DietComponent } from './app-area/diet/diet.component';
-import { TrainingComponent } from './app-area/training/training.component';
-import { SupplementationComponent } from './app-area/supplementation/supplementation.component';
-import { ReportComponent } from './app-area/report/report.component';
-import { QuestionnaireComponent } from './app-area/questionnaire/questionnaire.component';
-import { SettingsComponent } from './app-area/settings/settings.component';
-import { DetailsComponent } from './app-area/details/details.component';
+import { DietComponent } from './app-area/user/diet/diet.component';
+import { TrainingComponent } from './app-area/user/training/training.component';
+import { SupplementationComponent } from './app-area/user/supplementation/supplementation.component';
+import { ReportComponent } from './app-area/user/report/report.component';
+import { QuestionnaireComponent } from './app-area/user/questionnaire/questionnaire.component';
+import { SettingsComponent } from './app-area/user/settings/settings.component';
+import { DetailsComponent } from './app-area/admin/details/details.component';
 
 const routes: Routes = [
   {

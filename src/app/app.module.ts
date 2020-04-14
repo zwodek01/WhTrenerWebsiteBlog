@@ -24,14 +24,14 @@ import { CooperationComponent } from './website/cooperation/cooperation.componen
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './website/login/login.component';
 import { RegisterComponent } from './website/register/register.component';
-import { DashboardComponent } from './app-area/dashboard/dashboard.component';
-import { DashboardAdminComponent } from './app-area/dashboard-admin/dashboard-admin.component';
-import { TrainingComponent } from './app-area/training/training.component';
-import { DietComponent } from './app-area/diet/diet.component';
-import { SupplementationComponent } from './app-area/supplementation/supplementation.component';
-import { ReportComponent } from './app-area/report/report.component';
-import { QuestionnaireComponent } from './app-area/questionnaire/questionnaire.component';
-import { SettingsComponent } from './app-area/settings/settings.component';
+import { DashboardComponent } from './app-area/user/dashboard/dashboard.component';
+import { DashboardAdminComponent } from './app-area/admin/dashboard-admin/dashboard-admin.component';
+import { TrainingComponent } from './app-area/user/training/training.component';
+import { DietComponent } from './app-area/user/diet/diet.component';
+import { SupplementationComponent } from './app-area/user/supplementation/supplementation.component';
+import { ReportComponent } from './app-area/user/report/report.component';
+import { QuestionnaireComponent } from './app-area/user/questionnaire/questionnaire.component';
+import { SettingsComponent } from './app-area/user/settings/settings.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BlogPipe } from './website/blog/blog.pipe';
@@ -44,7 +44,7 @@ import { WebsiteComponent } from './website/website.component';
 import { AppAreaComponent } from './app-area/app-area.component';
 import { ContactComponent } from './website/contact/contact.component';
 import { FabComponent } from './components/fab/fab.component';
-import { DetailsComponent } from './app-area/details/details.component';
+import { DetailsComponent } from './app-area/admin/details/details.component';
 
 // ANGULAR MATERIAL
 import { MatInputModule } from '@angular/material/input';

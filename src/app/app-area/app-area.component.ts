@@ -5,15 +5,16 @@ import { FirebaseService } from '../services/firebase.service';
 @Component({
   selector: 'app-app-area',
   templateUrl: './app-area.component.html',
-  styleUrls: ['./app-area.component.scss']
+  styleUrls: ['./app-area.component.scss'],
 })
 export class AppAreaComponent implements OnInit {
-  constructor(private firebaseService: FirebaseService) { }
+  constructor(private firebaseService: FirebaseService) {}
 
   @ViewChild('sidenav') sidenav: MatSidenav;
   reason = '';
   user;
   adminData;
+  adminStatus;
   admin: boolean;
 
   ngOnInit(): void {
@@ -22,23 +23,26 @@ export class AppAreaComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.adminData.unsubscribe();
+    this.adminStatus.unsubscribe();
   }
 
   isAdmin() {
-    this.firebaseService.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.user = user;
-        this.adminData = this.firebaseService.afs
-          .collection('users')
-          .doc(user.uid)
-          .valueChanges()
-          .subscribe(user => {
-            if (user) {
-              this.admin = user['admin'];
-            }
-          });
+    this.adminStatus = this.firebaseService.afAuth.authState.subscribe(
+      (user) => {
+        if (user) {
+          this.user = user;
+          this.adminData = this.firebaseService.afs
+            .collection('users')
+            .doc(user.uid)
+            .valueChanges()
+            .subscribe((user) => {
+              if (user) {
+                this.admin = user['admin'];
+              }
+            });
+        }
       }
-    });
+    );
   }
 
   logout() {
