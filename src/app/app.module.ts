@@ -44,6 +44,7 @@ import { WebsiteComponent } from './website/website.component';
 import { AppAreaComponent } from './app-area/app-area.component';
 import { ContactComponent } from './website/contact/contact.component';
 import { FabComponent } from './components/fab/fab.component';
+import { DetailsComponent } from './app-area/details/details.component';
 
 // ANGULAR MATERIAL
 import { MatInputModule } from '@angular/material/input';
@@ -59,7 +60,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ContactPopupComponent } from './components/popups/contact-popup/contact-popup.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { DetailsComponent } from './app-area/details/details.component';
 
 @NgModule({
   declarations: [

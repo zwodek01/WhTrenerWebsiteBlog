@@ -1,7 +1,6 @@
-<section class="list background">
+<section class="list max-width">
     <h3 class="title-section ">LISTA PODOPIECZNYCH</h3>
-    <app-details *ngIf="selectedUser" [user]="selectedUser"></app-details>
-    <div class="list__container max-width">
+    <div class="list__container">
         <table>
             <thead>
                 <tr>
@@ -18,16 +17,7 @@
                         <td>{{user.displayName}}</td>
                         <td class="list__email">{{user.email}}</td>
                         <td class="list__options">
-                            <button class="list__more" mat-icon-button [matMenuTriggerFor]="menu"
-                                aria-label="Example icon-button with a menu">
-                                <mat-icon>more_vert</mat-icon>
-                            </button>
-                            <mat-menu #menu="matMenu">
-                                <button mat-menu-item (click)="onSelect(user)">
-                                    <mat-icon>add</mat-icon>
-                                    <span>Zobacz więcej</span>
-                                </button>
-                            </mat-menu>
+                            <mat-icon class="list__icon" [routerLink]="['/lista', user.uid]">edit</mat-icon>
                         </td>
                     </ng-container>
                 </tr>

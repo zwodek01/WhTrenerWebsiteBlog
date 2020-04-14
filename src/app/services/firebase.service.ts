@@ -13,7 +13,7 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FirebaseService {
   userData: any;
@@ -28,20 +28,20 @@ export class FirebaseService {
     private dialog: MatDialog,
     private ngZone: NgZone
   ) {
-    this.afAuth.authState.subscribe(user => {
+    this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
         sessionStorage.setItem(
           'userDetails',
           JSON.stringify({
-            uid: this.userData.uid
+            uid: this.userData.uid,
           })
         );
       } else {
         sessionStorage.setItem('userDetails', null);
       }
     });
-    this.isAdmin().then(user => {
+    this.isAdmin().then((user) => {
       this.admin = user['admin'];
     });
   }
@@ -63,7 +63,7 @@ export class FirebaseService {
   loginWithEmailAndPassword(email: string, password: string) {
     return this.afAuth.auth
       .signInWithEmailAndPassword(email, password)
-      .then(res => {
+      .then((res) => {
         this.setUserData(res.user, res.user.displayName);
         if (res.user.emailVerified === false) {
           this.openPopup(VerifyPopupComponent);
@@ -74,7 +74,7 @@ export class FirebaseService {
           }, 300);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         switch (error.code) {
           case 'auth/user-not-found':
             this.notificationService.notifycation(
@@ -105,7 +105,7 @@ export class FirebaseService {
   authLogin(provider) {
     return this.afAuth.auth
       .signInWithPopup(provider)
-      .then(res => {
+      .then((res) => {
         this.setUserData(res.user, res.user.displayName);
         this.notificationService.notifycation('Zalogowano ✔', 'done');
         setTimeout(() => {
@@ -114,7 +114,7 @@ export class FirebaseService {
           });
         }, 1000);
       })
-      .catch(error => {
+      .catch((error) => {
         this.notificationService.notifycation(
           'Błąd z logowaniem. Spróbuj jeszcze raz ❌',
           'error'
@@ -126,16 +126,16 @@ export class FirebaseService {
   register(email, password, name) {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
-      .then(res => {
+      .then((res) => {
         this.sendVerificationMail();
         this.setUserData(res.user, name);
         firebase.auth().currentUser.updateProfile({
           displayName: name,
           photoURL:
-            'https://firebasestorage.googleapis.com/v0/b/test-pelicar.appspot.com/o/avatar.jpg?alt=media&token=4d987f86-4cac-4a74-a599-1df42d877ff3'
+            'https://firebasestorage.googleapis.com/v0/b/test-pelicar.appspot.com/o/avatar.jpg?alt=media&token=4d987f86-4cac-4a74-a599-1df42d877ff3',
         });
       })
-      .catch(error => {
+      .catch((error) => {
         switch (error.code) {
           case 'auth/invalid-email':
             this.notificationService.notifycation(
@@ -171,7 +171,7 @@ export class FirebaseService {
       .then(() => {
         this.openPopup(ForgotPopupComponent);
       })
-      .catch(error => {
+      .catch((error) => {
         switch (error.code) {
           case 'auth/invalid-email':
             this.notificationService.notifycation(
@@ -196,37 +196,46 @@ export class FirebaseService {
   }
 
   deleteUser(uid) {
-    this.afAuth.auth.currentUser.delete().then(() => {
-      this.afs.collection('users').doc(uid).delete();
-      this.logout("Konto usunięto poprawnie ✔");
-    }).catch(error => {
-      this.notificationService.notifycation(
-        'Błąd! Spróbuj jeszcze raz ❌',
-        'error'
-      );
-      console.log(error)
-    })
+    this.afAuth.auth.currentUser
+      .delete()
+      .then(() => {
+        this.afs.collection('users').doc(uid).delete();
+        this.logout('Konto usunięto poprawnie ✔');
+      })
+      .catch((error) => {
+        this.notificationService.notifycation(
+          'Błąd! Spróbuj jeszcze raz ❌',
+          'error'
+        );
+        console.log(error);
+      });
   }
 
   changeNameUser(name: string, uid: string) {
-    this.afAuth.auth.currentUser.updateProfile({ displayName: name }).then(() => {
-      this.notificationService.notifycation("Nazwa zmieniona ✔", 'done');
-      this.afs.collection('users').doc(uid).update({ displayName: name });
-      this.dialog.closeAll();
-    }).catch(error => {
-      this.notificationService.notifycation(
-        'Błąd! Spróbuj jeszcze raz ❌',
-        'error'
-      );
-      console.log(error)
-    })
+    this.afAuth.auth.currentUser
+      .updateProfile({ displayName: name })
+      .then(() => {
+        this.notificationService.notifycation('Nazwa zmieniona ✔', 'done');
+        this.afs.collection('users').doc(uid).update({ displayName: name });
+        this.dialog.closeAll();
+      })
+      .catch((error) => {
+        this.notificationService.notifycation(
+          'Błąd! Spróbuj jeszcze raz ❌',
+          'error'
+        );
+        console.log(error);
+      });
   }
 
   changePasswordUser(password: string) {
     this.afAuth.auth.currentUser.updatePassword(password).then(() => {
-      this.notificationService.notifycation("Hasło zmienione poprawnie ✔", 'done');
+      this.notificationService.notifycation(
+        'Hasło zmienione poprawnie ✔',
+        'done'
+      );
       this.dialog.closeAll();
-    })
+    });
   }
 
   setUserData(user, name) {
@@ -235,7 +244,8 @@ export class FirebaseService {
       email: user.email,
       displayName: name,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: user.emailVerified,
+      premium: false,
     };
     return this.afs
       .collection('users')
@@ -267,9 +277,6 @@ export class FirebaseService {
   }
 
   getUserDetails(uid: string) {
-    return this.afs
-      .collection('users')
-      .doc(uid)
-      .valueChanges();
+    return this.afs.collection('users').doc(uid).valueChanges();
   }
 }

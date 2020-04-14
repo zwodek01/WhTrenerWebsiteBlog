@@ -1,0 +1,91 @@
+@import "../../../styles/variables";
+@import "../../../styles/components";
+
+.details {
+  text-align: center;
+
+  &__avatar {
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  &__container {
+    margin-top: 4rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  &__status {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__menu {
+    display: grid;
+    grid-template-columns: repeat(2, 8rem);
+    gap: 1rem;
+    justify-content: center;
+    @include breakpoint(phablet) {
+      grid-template-columns: repeat(3, 8rem);
+      gap: 2rem;
+    }
+    @include breakpoint(laptop) {
+      grid-template-columns: repeat(6, 8rem);
+      gap: 2.5rem;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &__status {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  &__button {
+    margin: 2rem 0;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+
+    &--active {
+      background-color: $success;
+    }
+
+    &--inactive {
+      background-color: $warning;
+    }
+  }
+}
+
+.premium {
+  color: $success;
+}
+
+.no-premium {
+  color: $warning;
+}
+
+.activeTab {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: $primary-color;
+    transition: all 0.3s ease 0s;
+  }
+}

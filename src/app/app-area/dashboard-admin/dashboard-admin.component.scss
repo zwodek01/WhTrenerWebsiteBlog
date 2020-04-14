@@ -2,10 +2,6 @@
 @import "../../../styles/components";
 
 .list {
-  background: url("../../../assets/home-11-bg-01.jpg");
-  min-height: 100vh;
-  padding: 3rem 1rem;
-
   &__container {
     margin-top: 4rem;
     background-color: #fff;
@@ -35,6 +31,10 @@
   &__options {
     width: 30px;
     text-align: center;
+  }
+  &__icon {
+    cursor: pointer;
+    outline: none;
   }
   th {
     font-weight: bold;

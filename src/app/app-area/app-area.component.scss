@@ -1,6 +1,10 @@
-@import '../../styles/variables';
-@import '../../styles/components';
-
+@import "../../styles/variables";
+@import "../../styles/components";
+.area {
+  background: url("../../assets/home-11-bg-01.jpg");
+  min-height: 100vh;
+  padding: 3rem 1rem;
+}
 .sidenav {
   position: fixed;
   top: 0;
@@ -14,7 +18,7 @@
     background-color: transparent;
     outline: none;
     position: fixed;
-    transition: .3s;
+    transition: 0.3s;
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -69,7 +73,6 @@
     margin: 0 auto;
   }
 }
-
 
 .mat-drawer {
   background-color: $secondary-color;

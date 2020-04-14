@@ -1,3 +1,66 @@
-<div>
-    <h2>{{user.displayName}}</h2>
-</div>
+<section class="details max-width">
+    <img class="details__avatar" [src]="user?.photoURL">
+    <h3 class="title-section">{{user?.displayName}}</h3>
+
+    <div class="details__container">
+        <p class="details__status" [ngClass]="{'premium': statusAccount(), 'no-premium': !statusAccount()}">Status
+            konta:
+            <span *ngIf="statusAccount()">Aktywne</span>
+            <span *ngIf="!statusAccount()">Nieaktywne</span>
+        </p>
+        <button class="details__button details__button--active" *ngIf="!user?.premium"
+            (click)="changeAccountStatus(true)">Aktywuj
+            konto</button>
+        <button class="details__button details__button--inactive" *ngIf="user?.premium"
+            (click)="changeAccountStatus(false)">Dezaktywuj
+            konto</button>
+        <ul class="details__menu">
+            <li class="details__item hover" id="Wykresy" [ngClass]="{'activeTab': activeTab === 'Wykresy'}"
+                (click)="changeTab($event)">
+                <mat-icon id="Wykresy">bar_chart</mat-icon> <span id="Wykresy">Wykresy</span>
+            </li>
+            <li class="details__item hover" id="Ankieta" [ngClass]="{'activeTab': activeTab === 'Ankieta'}"
+                (click)="changeTab($event)">
+                <mat-icon id="Ankieta">insert_comment</mat-icon> <span id="Ankieta">Ankieta</span>
+            </li>
+            <li class="details__item hover" id="Suplementacja" [ngClass]="{'activeTab': activeTab === 'Suplementacja'}"
+                (click)="changeTab($event)">
+                <mat-icon id="Suplementacja">tonality</mat-icon> <span id="Suplementacja">Suplementacja</span>
+            </li>
+            <li class="details__item hover" id="Dieta" [ngClass]="{'activeTab': activeTab === 'Dieta'}"
+                (click)="changeTab($event)">
+                <mat-icon id="Dieta">restaurant</mat-icon> <span id="Dieta">Dieta</span>
+            </li>
+            <li class="details__item hover" id="Trening" [ngClass]="{'activeTab': activeTab === 'Trening'}"
+                (click)="changeTab($event)">
+                <mat-icon id="Trening">sports</mat-icon> <span id="Trening">Trening</span>
+            </li>
+            <li class="details__item hover" id="Raport" [ngClass]="{'activeTab': activeTab === 'Raport'}"
+                (click)="changeTab($event)">
+                <mat-icon id="Raport">assignment</mat-icon> <span id="Raport">Raport</span>
+            </li>
+        </ul>
+        <p class="details__title sub-title">{{activeTab}}</p>
+        <div class="details__tab-container">
+            <ng-container *ngIf="activeTab === 'Wykresy'">
+                Test Wykresy
+            </ng-container>
+            <ng-container *ngIf="activeTab === 'Ankieta'">
+                Test Ankieta
+            </ng-container>
+            <ng-container *ngIf="activeTab === 'Suplementacja'">
+                Test Suplementacja
+            </ng-container>
+            <ng-container *ngIf="activeTab === 'Dieta'">
+                Test Dieta
+            </ng-container>
+            <ng-container *ngIf="activeTab === 'Trening'">
+                Test Trening
+            </ng-container>
+            <ng-container *ngIf="activeTab === 'Raport'">
+                Test Raport
+            </ng-container>
+        </div>
+
+    </div>
+</section>

@@ -15,7 +15,6 @@ export class DashboardAdminComponent implements OnInit {
 
   userData;
   userList;
-  selectedUser;
 
   getAllDataUser() {
     this.userData = this.firebaseService.afs
@@ -23,12 +22,7 @@ export class DashboardAdminComponent implements OnInit {
       .valueChanges()
       .subscribe((users) => {
         this.userList = users;
-        console.log(users);
       });
-  }
-
-  onSelect(user): void {
-    this.selectedUser = user;
   }
 
   ngOnDestroy() {

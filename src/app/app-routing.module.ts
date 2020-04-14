@@ -4,7 +4,7 @@ import { WebsiteComponent } from './website/website.component';
 import { HomeComponent } from './website/home/home.component';
 import { BlogComponent } from './website/blog/blog.component';
 import { CooperationComponent } from './website/cooperation/cooperation.component';
-import { ContactComponent } from './website/contact/contact.component'
+import { ContactComponent } from './website/contact/contact.component';
 import { LoginComponent } from './website/login/login.component';
 import { UserLoggedGuard } from './guards/user-logged.guard';
 import { RegisterComponent } from './website/register/register.component';
@@ -21,7 +21,7 @@ import { SupplementationComponent } from './app-area/supplementation/supplementa
 import { ReportComponent } from './app-area/report/report.component';
 import { QuestionnaireComponent } from './app-area/questionnaire/questionnaire.component';
 import { SettingsComponent } from './app-area/settings/settings.component';
-
+import { DetailsComponent } from './app-area/details/details.component';
 
 const routes: Routes = [
   {
@@ -36,19 +36,19 @@ const routes: Routes = [
       {
         path: 'logowanie',
         component: LoginComponent,
-        canActivate: [UserLoggedGuard]
+        canActivate: [UserLoggedGuard],
       },
       {
         path: 'rejestracja',
         component: RegisterComponent,
-        canActivate: [UserLoggedGuard]
+        canActivate: [UserLoggedGuard],
       },
       {
         path: 'przypomnij-haslo',
         component: ForgotPasswordComponent,
-        canActivate: [UserLoggedGuard]
-      }
-    ]
+        canActivate: [UserLoggedGuard],
+      },
+    ],
   },
   {
     path: '',
@@ -57,48 +57,53 @@ const routes: Routes = [
       {
         path: 'panel',
         component: DashboardComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'lista',
         component: DashboardAdminComponent,
-        canActivate: [AdminGuard]
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'lista/:id',
+        component: DetailsComponent,
+        canActivate: [AdminGuard],
       },
       {
         path: 'trening',
         component: TrainingComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       { path: 'dieta', component: DietComponent, canActivate: [AuthGuard] },
       {
         path: 'suplementacja',
         component: SupplementationComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       { path: 'raport', component: ReportComponent, canActivate: [AuthGuard] },
       {
         path: 'ankieta',
         component: QuestionnaireComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'ustawienia',
         component: SettingsComponent,
-        canActivate: [AuthGuard]
-      }
-    ]
+        canActivate: [AuthGuard],
+      },
+    ],
   },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 const routerOptions: ExtraOptions = {
   useHash: false,
   anchorScrolling: 'enabled',
-  scrollPositionRestoration: 'enabled'
+  scrollPositionRestoration: 'enabled',
 };
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, routerOptions)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
