@@ -1,6 +1,47 @@
-<p>displayName: {{user?.displayName}}</p>
-<p>email: {{user?.email}}</p>
-<p>emailVerified: {{user?.emailVerified}}</p>
-<p>photoURL: {{user?.photoURL}}</p>
-<p>uid: {{user?.uid}}</p>
-<p>admin: {{user?.admin}}</p>
+<section class="dashboard max-width">
+    <h3 class="title-section">PANEL GŁÓWNY</h3>
+    <div class="dashboard__container">
+        <div class="dashboard__text--bold dashboard__wrapper">
+            <p>Hej!</p>
+            <p>Witaj w strefie podopiecznego!</p>
+            <p>Po lewej stronie znajdziesz menu z konkretnymi stronami.</p>
+            <p>Poniżej znajdziesz małą ściagę jak się poruszać po strefie :)</p>
+        </div>
+        <div class="line"></div>
+        <div class="dashboard__description-wrapper">
+            <h4 class="dashboard__title-wrapper hover" routerLink="/trening">TRENINGI</h4>
+            <p class="dashboard__text-wrapper">Tu znajdziesz rozpiskę treningów które przygotował Tobie Twój trener.</p>
+        </div>
+        <div class="line"></div>
+        <div class="dashboard__description-wrapper">
+            <h4 class="dashboard__title-wrapper hover" routerLink="/dieta">DIETA</h4>
+            <p class="dashboard__text-wrapper">Tu znajdziesz rozpiskę diety którą przygotował Tobie Twój trener.</p>
+        </div>
+        <div class="line"></div>
+        <div class="dashboard__description-wrapper">
+            <h4 class="dashboard__title-wrapper hover" routerLink="/suplementacja">SUPLEMENTACJA</h4>
+            <p class="dashboard__text-wrapper">Tu znajdziesz rozpiskę suplementacji którą przygotował Tobie Twój trener.
+            </p>
+        </div>
+        <div class="line"></div>
+        <div class="dashboard__description-wrapper">
+            <h4 class="dashboard__title-wrapper hover" routerLink="/raport">STWÓRZ RAPORT</h4>
+            <p class="dashboard__text-wrapper">Tu stworzysz raport postępów i prześlesz wyniki swojemu trenerowi.</p>
+        </div>
+        <div class="line"></div>
+        <div class="dashboard__description-wrapper">
+            <h4 class="dashboard__title-wrapper hover">WYKRES POSTĘPÓW</h4>
+            <p class="dashboard__text-wrapper">Tu znajdziesz wykresy i podsumowanie swoich postępów.</p>
+        </div>
+        <div class="line"></div>
+        <div class="dashboard__description-wrapper">
+            <h4 class="dashboard__title-wrapper hover" routerLink="/ankieta">ANKIETA</h4>
+            <p class="dashboard__text-wrapper">Tu odpowiesz na pytania które zadał Tobie Twój trener.</p>
+        </div>
+        <div class="line"></div>
+        <div class="dashboard__description-wrapper">
+            <h4 class="dashboard__title-wrapper hover" routerLink="/ustawienia">USTAWIENIA</h4>
+            <p class="dashboard__text-wrapper">Tu możesz zmienić nazwę konta, hasło lub usunąć konto.</p>
+        </div>
+    </div>
+</section>
