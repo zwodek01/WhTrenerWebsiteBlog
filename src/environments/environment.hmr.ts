@@ -1,6 +1,6 @@
 export const environment = {
-  production: true,
-  hmr: false,
+  production: false,
+  hmr: true,
   firebaseConfig: {
     apiKey: 'AIzaSyBIdHonM_qNdP1AiIkMF4wEFvTrGvPVe-M',
     authDomain: 'test-pelicar.firebaseapp.com',

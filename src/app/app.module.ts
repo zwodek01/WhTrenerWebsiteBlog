@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.hmr';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthGuard } from './guards/auth.guard';
 import { UserLoggedGuard } from './guards/user-logged.guard';
